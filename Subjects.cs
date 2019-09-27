@@ -9,6 +9,7 @@ namespace University_advisor
 
         public Subjects()
         {
+            //
             // reikės iš kažkur ištraukti duomenis ar ranka visus surašyt?
             // dar pridėti kategorijas (pasirenkamieji, jų grupės, BUS'ai)
             arr = new Subject[]
