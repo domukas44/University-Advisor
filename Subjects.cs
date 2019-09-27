@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace University_advisor
 {
-    public class Subjects : IEnumerable
+    public class Subjects : IEnumerable<Subject>
     {
         public Subject[] arr;
 
@@ -19,14 +20,20 @@ namespace University_advisor
                 new Subject("Informatikos teisė", 4),
             };
         }
+
+        IEnumerator<Subject> IEnumerable<Subject>.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return (IEnumerator) GetEnumerator();
+            return GetEnumerator();
         }
 
         public SubjectEnum GetEnumerator()
         {
             return new SubjectEnum(arr);
         }
+
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace University_advisor
 {
-    public class SubjectEnum : IEnumerator
+    public class SubjectEnum : IEnumerator<Subject>
     {
         public Subject[] subjects;
 
@@ -23,6 +24,11 @@ namespace University_advisor
         public void Reset()
         {
             position = -1;
+        }
+
+
+        public void Dispose()
+        {
         }
 
         object IEnumerator.Current

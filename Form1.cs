@@ -44,14 +44,13 @@ namespace University_advisor
         {
             // filtruoti dalykus pagal tai, kas įvesta textBox1
 
-            // šitie neveikia, bet maždaug panašiai turėtų atrodyt (LINQ)
-            //IEnumerable<string> query = from s in subjects
-            //                           where s .Contains(searchText) 
-            //                            select s;
-            //IEnumerable<string> query = subjects.Where(s => searchText.All(t => s.Contains(t)));
+            IEnumerable<Subject> query = subjects.Where(s => searchText.All(t => s.Name.ToLower().Contains(t.ToString().ToLower())));
+            foreach(Subject s in query)
+            {
+                MessageBox.Show(s.Name);
+            }
 
-            MessageBox.Show("insert search functionality here");
-
+            // rodyti atfiltruotus dalykus dataGridView'e
             //...
         }
 
