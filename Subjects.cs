@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 namespace University_advisor
 {
@@ -16,13 +17,23 @@ namespace University_advisor
         public void createSubjects()
         {
             // reikės iš kažkur ištraukti duomenis ar ranka visus surašyt?
+           
             // dar pridėti kategorijas (pasirenkamieji, jų grupės, BUS'ai)
-            arr = new Subject[]
+            int counter = 0;
+            string line;
+
+            System.IO.StreamReader file =
+            new System.IO.StreamReader(@"C:\Users\dojo5745\Downloads\projektas\University-Advisor\info.txt"); 
+
+            arr = new Subject[5];
+            while ((line = file.ReadLine()) != null)
             {
-                new Subject("Bioinformatika", 5),
-                new Subject("Buhalterinė apskaita", 8),
-                new Subject("Informatikos teisė", 4),
-            };
+                string[] words = line.Split(' ');
+                arr[counter] = new Subject(words[0], float.Parse(words[1]));
+                counter++;
+            }  
+
+           
         }
 
         IEnumerator<Subject> IEnumerable<Subject>.GetEnumerator()
