@@ -22,8 +22,16 @@ namespace University_advisor
             int counter = 0;
             string line;
 
+            // fullpathname nuskaito failo patha
+            string fullPathName= System.Reflection.Assembly.GetEntryAssembly().Location;
+
+            fullPathName = fullPathName.Substring(0, fullPathName.Length-32);
+            fullPathName+="info.txt";
+            //baigiamas patho sukurimas
+
+            // duomenu nuskaitymas is info.txt failo
             System.IO.StreamReader file =
-            new System.IO.StreamReader(@"C:\Users\dojo5745\Downloads\projektas\University-Advisor\info.txt"); 
+            new System.IO.StreamReader(fullPathName); 
 
             arr = new Subject[5];
             while ((line = file.ReadLine()) != null)
@@ -32,6 +40,9 @@ namespace University_advisor
                 arr[counter] = new Subject(words[0], float.Parse(words[1]));
                 counter++;
             }  
+
+            //nuskaitymo pabaiga
+           
 
            
         }
