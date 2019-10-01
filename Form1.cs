@@ -8,7 +8,9 @@ namespace University_advisor
 {
     public partial class Form1 : Form
     {
-        private Subjects subjects;
+        private Subjects allSubjects;
+        private Subjects shownSubjects;
+
         private Form2 subjectInfoForm;
         private string searchText;
 
@@ -19,11 +21,12 @@ namespace University_advisor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            subjects = new Subjects();
-            populateTable();
+            allSubjects = new Subjects();
+            allSubjects.createSubjects();
+            populateTable(allSubjects);
         }
 
-        public void populateTable()
+        public void populateTable(Subjects subjects)
         {
             dataGridView1.DataSource = subjects.arr;
             dataGridView1.AutoGenerateColumns = false;
@@ -44,14 +47,15 @@ namespace University_advisor
         {
             // filtruoti dalykus pagal tai, kas įvesta textBox1
 
-            IEnumerable<Subject> query = subjects.Where(s => searchText.All(t => s.Name.ToLower().Contains(t.ToString().ToLower())));
+            IEnumerable<Subject> query = allSubjects.Where(s => searchText.All(t => s.Name.ToLower().Contains(t.ToString().ToLower())));
+            shownSubjects = new Subjects();
+            int i = 0;
             foreach(Subject s in query)
             {
-                MessageBox.Show(s.Name);
+                shownSubjects.arr[i++] = s;
             }
-
-            // rodyti atfiltruotus dalykus dataGridView'e
-            //...
+            populateTable(shownSubjects);
+            i = 0;
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)

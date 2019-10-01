@@ -10,7 +10,11 @@ namespace University_advisor
 
         public Subjects()
         {
-            //
+            arr = new Subject[100];        // temp size, change later
+        }
+
+        public void createSubjects()
+        {
             // reikės iš kažkur ištraukti duomenis ar ranka visus surašyt?
             // dar pridėti kategorijas (pasirenkamieji, jų grupės, BUS'ai)
             arr = new Subject[]
