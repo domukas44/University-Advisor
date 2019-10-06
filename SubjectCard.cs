@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace University_advisor
 {
-    public partial class Form2 : Form
+    public partial class SubjectCard : Form
     {
-        public Form2()
+        public SubjectCard()
         {
             InitializeComponent();
+        }
+
+        public void ShowInformation(string name, double rating)
+        {
+            label1.Text = name;
+            label3.Text = rating.ToString() + "/5";       
         }
     }
 }

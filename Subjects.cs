@@ -4,40 +4,22 @@ using System.Collections.Generic;
 
 namespace University_advisor
 {
-    public class Subjects : IEnumerable<Subject>
+    public class Subjects : IEnumerable
     {
-        public Subject[] arr;
+
+        private List<Subject> subjectList;
 
         public Subjects()
         {
-            arr = new Subject[100];        // temp size, change later
+            subjectList = new List<Subject>();
+            subjectList.Add(new Subject("Bioinformatika", 0.00));
+            subjectList.Add(new Subject("Buhalterinė apskaita", 0.00));
         }
 
-        public void createSubjects()
+        public IEnumerator GetEnumerator()
         {
-            // reikės iš kažkur ištraukti duomenis ar ranka visus surašyt?
-            // dar pridėti kategorijas (pasirenkamieji, jų grupės, BUS'ai)
-            arr = new Subject[]
-            {
-                new Subject("Bioinformatika", 5),
-                new Subject("Buhalterinė apskaita", 8),
-                new Subject("Informatikos teisė", 4),
-            };
+            foreach (Subject subject in subjectList)
+                yield return subject;
         }
-
-        IEnumerator<Subject> IEnumerable<Subject>.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        public SubjectEnum GetEnumerator()
-        {
-            return new SubjectEnum(arr);
-        }
-
     }
 }

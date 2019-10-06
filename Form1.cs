@@ -11,7 +11,7 @@ namespace University_advisor
         private Subjects allSubjects;
         private Subjects shownSubjects;
 
-        private Form2 subjectInfoForm;
+        //private Form2 subjectInfoForm;
         private string searchText;
 
         public Form1()
@@ -21,41 +21,40 @@ namespace University_advisor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            allSubjects = new Subjects();
-            allSubjects.createSubjects();
-            populateTable(allSubjects);
+        //    allSubjects = new Subjects();
+        //    populateTable(allSubjects);
         }
 
-        public void populateTable(Subjects subjects)
-        {
-            dataGridView1.DataSource = subjects.arr;
-            dataGridView1.AutoGenerateColumns = false;
-        }
+        //public void populateTable(Subjects subjects)
+        //{
+        //    dataGridView1.DataSource = subjects.arr;
+        //    dataGridView1.AutoGenerateColumns = false;
+        //}
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // rodyti kitą Form su dalyko informacija?
-            if (subjectInfoForm == null)
-            {
-                subjectInfoForm = new Form2();
-            }
+            //if (subjectInfoForm == null)
+            //{
+            //    subjectInfoForm = new Form2();
+            //}
 
             //...
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            // filtruoti dalykus pagal tai, kas įvesta textBox1
+        //    // filtruoti dalykus pagal tai, kas įvesta textBox1
 
-            IEnumerable<Subject> query = allSubjects.Where(s => searchText.All(t => s.Name.ToLower().Contains(t.ToString().ToLower())));
-            shownSubjects = new Subjects();
-            int i = 0;
-            foreach(Subject s in query)
-            {
-                shownSubjects.arr[i++] = s;
-            }
-            populateTable(shownSubjects);
-            i = 0;
+        //   IEnumerable<Subject> query = allSubjects.Where(s => searchText.All(t => s.Name.ToLower().Contains(t.ToString().ToLower())));
+        //    shownSubjects = new Subjects();
+        //    int i = 0;
+        //    foreach(Subject s in query)
+        //    {
+        //        shownSubjects.arr[i++] = s;
+        //    }
+        //    populateTable(shownSubjects);
+        //    i = 0;
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
