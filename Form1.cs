@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace University_advisor
     {
         private Subjects allSubjects;
         private Subjects shownSubjects;
-
+        private List<Subject> subjectsList;
         //private Form2 subjectInfoForm;
         private string searchText;
 
@@ -21,15 +22,16 @@ namespace University_advisor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-        //    allSubjects = new Subjects();
-        //    populateTable(allSubjects);
+            allSubjects = new Subjects();
+            populateTable(allSubjects);
         }
 
-        //public void populateTable(Subjects subjects)
-        //{
-        //    dataGridView1.DataSource = subjects.arr;
-        //    dataGridView1.AutoGenerateColumns = false;
-        //}
+        public void populateTable(Subjects subjects)
+        {
+            subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
+            dataGridView1.DataSource = subjectsList;
+            dataGridView1.AutoGenerateColumns = false;
+        }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -46,15 +48,15 @@ namespace University_advisor
         {
         //    // filtruoti dalykus pagal tai, kas įvesta textBox1
 
-        //   IEnumerable<Subject> query = allSubjects.Where(s => searchText.All(t => s.Name.ToLower().Contains(t.ToString().ToLower())));
-        //    shownSubjects = new Subjects();
-        //    int i = 0;
-        //    foreach(Subject s in query)
-        //    {
-        //        shownSubjects.arr[i++] = s;
-        //    }
-        //    populateTable(shownSubjects);
-        //    i = 0;
+           //IEnumerable<Subject> query = subjectsList.Where(s => searchText.All(t => s.Name.ToLower().Contains(t.ToString().ToLower())));
+           //shownSubjects = new Subjects();
+           //int i = 0;
+           //foreach(Subject s in query)
+           //{
+           //    shownSubjects. = s;
+           //}
+           //populateTable(shownSubjects);
+           //i = 0;
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
