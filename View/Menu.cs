@@ -8,10 +8,11 @@ namespace University_advisor
 {
     public partial class Menu : Form
     {
-        enum AllSubjects
+        enum AllSubjects //should be something else as subjects are not constant
         {
             Bioinformatika = 0,
-            Buhalterine_apskaita = 1
+            Buhalterine_apskaita = 1,
+            Verslo_vadyba = 2
         }
 
         private List<ListViewItem> mainList;
@@ -74,6 +75,9 @@ namespace University_advisor
                     break;
                 case (int)AllSubjects.Buhalterine_apskaita:
                     subjectCardForm.ShowInformation(subjectsList[(int)AllSubjects.Buhalterine_apskaita].Name, subjectsList[(int)AllSubjects.Buhalterine_apskaita].Rating);
+                    break;
+                case (int)AllSubjects.Verslo_vadyba:
+                    subjectCardForm.ShowInformation(subjectsList[(int)AllSubjects.Verslo_vadyba].Name, subjectsList[(int)AllSubjects.Verslo_vadyba].Rating);
                     break;
 
             }
