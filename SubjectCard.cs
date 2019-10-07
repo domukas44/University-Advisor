@@ -22,5 +22,10 @@ namespace University_advisor
             label1.Text = name;
             label3.Text = rating.ToString() + "/5";       
         }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            Visible = false;
+        }
     }
 }
