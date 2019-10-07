@@ -32,6 +32,9 @@
             this.pasirenkamiejiDalykaiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
+            this.subjectListView = new System.Windows.Forms.ListView();
+            this.ListName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ListRating = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +56,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(524, 4);
+            this.textBox1.Location = new System.Drawing.Point(510, 7);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(169, 20);
             this.textBox1.TabIndex = 1;
@@ -69,11 +72,36 @@
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
+            // subjectListView
+            // 
+            this.subjectListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ListName,
+            this.ListRating});
+            this.subjectListView.GridLines = true;
+            this.subjectListView.HideSelection = false;
+            this.subjectListView.Location = new System.Drawing.Point(12, 42);
+            this.subjectListView.Name = "subjectListView";
+            this.subjectListView.Size = new System.Drawing.Size(364, 383);
+            this.subjectListView.TabIndex = 3;
+            this.subjectListView.UseCompatibleStateImageBehavior = false;
+            this.subjectListView.View = System.Windows.Forms.View.Details;
+            // 
+            // ListName
+            // 
+            this.ListName.Text = "Subject Name";
+            this.ListName.Width = 150;
+            // 
+            // ListRating
+            // 
+            this.ListRating.Text = "Rating";
+            this.ListRating.Width = 50;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.subjectListView);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
@@ -94,5 +122,8 @@
         private System.Windows.Forms.ToolStripMenuItem pasirenkamiejiDalykaiToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.ListView subjectListView;
+        private System.Windows.Forms.ColumnHeader ListName;
+        private System.Windows.Forms.ColumnHeader ListRating;
     }
 }

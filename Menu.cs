@@ -77,6 +77,16 @@ namespace University_advisor
         private void Menu_Load(object sender, EventArgs e)
         {
             Load_MenuToolStripMenuItem();
+            subjectListView.Items.Clear();
+            Subjects subjects = new Subjects();
+            var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
+            foreach (var subject in subjectsList)
+            {
+                var row = new string[] { subject.Name, subject.Rating.ToString("0.##") };
+                var lvi = new ListViewItem(row);
+                lvi.Tag = subject;
+                subjectListView.Items.Add(lvi);
+            }
         }
 
         private void searchButton_Click(object sender, EventArgs e)
