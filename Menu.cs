@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace University_advisor
@@ -19,11 +14,32 @@ namespace University_advisor
             Buhalterine_apskaita = 1
         }
 
-        private string searchText;
+        private List<ListViewItem> mainList;
+        Subjects subjects;
 
         public Menu()
         {
             InitializeComponent();
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            subjects = new Subjects();
+            mainList = new List<ListViewItem>();
+            var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
+
+            Load_MenuToolStripMenuItem();
+            mainList.Clear();
+
+            foreach (var subject in subjectsList)
+            {
+                var row = new string[] { subject.Name, subject.Rating.ToString("0.##") };
+                var lvi = new ListViewItem(row);
+                lvi.Tag = subject;
+                mainList.Add(lvi);
+            }
+
+            DisplayItems();
         }
 
         private void Load_MenuToolStripMenuItem()
@@ -42,7 +58,11 @@ namespace University_advisor
 
         private void Item_click(Object sender, EventArgs e)
         {
-            Subjects subjects = new Subjects();
+            openCard(sender); // is ok?            
+        }
+
+        private void openCard(Object sender)
+        {
             var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
 
             ToolStripMenuItem item = sender as ToolStripMenuItem;
@@ -50,21 +70,19 @@ namespace University_advisor
             switch (item.Tag)
             {
                 case (int)AllSubjects.Bioinformatika:
-                    subjectCardForm.ShowInformation(subjectsList[(int)AllSubjects.Bioinformatika].Name, subjectsList[(int)AllSubjects.Bioinformatika].Rating);                   
+                    subjectCardForm.ShowInformation(subjectsList[(int)AllSubjects.Bioinformatika].Name, subjectsList[(int)AllSubjects.Bioinformatika].Rating);
                     break;
                 case (int)AllSubjects.Buhalterine_apskaita:
                     subjectCardForm.ShowInformation(subjectsList[(int)AllSubjects.Buhalterine_apskaita].Name, subjectsList[(int)AllSubjects.Buhalterine_apskaita].Rating);
                     break;
 
             }
-            //subjectCardForm.ShowInformation("vienas", 2.00);
             subjectCardForm.Show();
         }
 
         private List<String> GetMenuItemsList()
         {
-            List<String> menuItems = new List<String>();
-            Subjects subjects = new Subjects();     
+            List<String> menuItems = new List<String>();    
 
             foreach (var subject in subjects)
             {
@@ -74,32 +92,24 @@ namespace University_advisor
             return menuItems;
         }
 
-        private void Menu_Load(object sender, EventArgs e)
+        private void DisplayItems()
         {
-            Load_MenuToolStripMenuItem();
             subjectListView.Items.Clear();
-            Subjects subjects = new Subjects();
-            var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
-            foreach (var subject in subjectsList)
-            {
-                var row = new string[] { subject.Name, subject.Rating.ToString("0.##") };
-                var lvi = new ListViewItem(row);
-                lvi.Tag = subject;
-                subjectListView.Items.Add(lvi);
-            }
-        }
 
-        private void searchButton_Click(object sender, EventArgs e)
-        {
-            Subjects subjects = new Subjects();
-            var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
-            IEnumerable<Subject> query = subjectsList.Where(s => searchText.All(t => s.Name.ToLower().Contains(t.ToString().ToLower())));
-                
+            foreach (ListViewItem item in mainList.Where(lvi => lvi.Text.ToLower().Contains(textBox1.Text.ToLower().Trim())))
+            {
+                subjectListView.Items.Add(item);
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            searchText = textBox1.Text;
+            DisplayItems();
+        }
+
+        private void subjectListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //openCard(sender);
         }
     }
 }

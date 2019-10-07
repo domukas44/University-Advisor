@@ -20,7 +20,9 @@ namespace University_advisor
         public void ShowInformation(string name, double rating)
         {
             label1.Text = name;
-            label3.Text = rating.ToString() + "/5";       
+            label3.Text = rating.ToString("0.##") + "/5.00";
+            this.Text = name;
+            this.Update();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
