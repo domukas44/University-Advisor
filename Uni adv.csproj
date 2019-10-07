@@ -62,36 +62,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SubjectCard.cs">
+    <Compile Include="View\SubjectCard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubjectCard.Designer.cs">
+    <Compile Include="View\SubjectCard.Designer.cs">
       <DependentUpon>SubjectCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
+    <Compile Include="View\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
+    <Compile Include="View\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subjects.cs" />
-    <Compile Include="SubjectEnum.cs" />
-    <Compile Include="Subject.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Controllers\Subjects.cs" />
+    <Compile Include="Controllers\SubjectEnum.cs" />
+    <Compile Include="Controllers\Subject.cs" />
+    <Compile Include="Controllers\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SubjectCard.resx">
+    <EmbeddedResource Include="View\SubjectCard.resx">
       <DependentUpon>SubjectCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
+    <EmbeddedResource Include="View\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

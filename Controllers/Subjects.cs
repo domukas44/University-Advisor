@@ -11,9 +11,19 @@ namespace University_advisor
 
         public Subjects()
         {
+            PopulateData();
+        }
+
+        private void PopulateData()
+        {
             subjectList = new List<Subject>();
-            subjectList.Add(new Subject("Bioinformatika", 4.55));
-            subjectList.Add(new Subject("Buhalterinė apskaita", 3.00));
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\TestData.txt");
+
+            foreach (string line in lines)
+            {
+                string[] linesSplit = line.Split('\t');
+                subjectList.Add(new Subject(linesSplit[0], Convert.ToDouble(linesSplit[1])));
+            }
         }
 
         public IEnumerator GetEnumerator()
