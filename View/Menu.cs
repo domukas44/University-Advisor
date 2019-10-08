@@ -59,7 +59,7 @@ namespace University_advisor
 
         private void Item_click(Object sender, EventArgs e)
         {
-            openCard(sender); // is ok?            
+            openCard(sender);           
         }
 
         private void openCard(Object sender)
@@ -68,19 +68,9 @@ namespace University_advisor
 
             ToolStripMenuItem item = sender as ToolStripMenuItem;
             SubjectCard subjectCardForm = new SubjectCard();
-            switch (item.Tag)
-            {
-                case (int)AllSubjects.Bioinformatika:
-                    subjectCardForm.ShowInformation(subjectsList[(int)AllSubjects.Bioinformatika].Name, subjectsList[(int)AllSubjects.Bioinformatika].Rating);
-                    break;
-                case (int)AllSubjects.Buhalterine_apskaita:
-                    subjectCardForm.ShowInformation(subjectsList[(int)AllSubjects.Buhalterine_apskaita].Name, subjectsList[(int)AllSubjects.Buhalterine_apskaita].Rating);
-                    break;
-                case (int)AllSubjects.Verslo_vadyba:
-                    subjectCardForm.ShowInformation(subjectsList[(int)AllSubjects.Verslo_vadyba].Name, subjectsList[(int)AllSubjects.Verslo_vadyba].Rating);
-                    break;
 
-            }
+            subjectCardForm.ShowInformation(subjectsList[Convert.ToInt32(item.Tag)].Name, subjectsList[Convert.ToInt32(item.Tag)].Rating);
+
             subjectCardForm.Show();
         }
 
