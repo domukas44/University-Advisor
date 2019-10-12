@@ -6,7 +6,6 @@ namespace University_advisor
 {
     public class Subjects : IEnumerable
     {
-
         private List<Subject> subjectList;
 
         public Subjects()
