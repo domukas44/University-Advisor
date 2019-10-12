@@ -69,7 +69,7 @@ namespace University_advisor
             ToolStripMenuItem item = sender as ToolStripMenuItem;
             SubjectCard subjectCardForm = new SubjectCard();
 
-            subjectCardForm.ShowInformation(subjectsList[Convert.ToInt32(item.Tag)]);
+            subjectCardForm.ShowInformation(subjectsList[Convert.ToInt32(item.Tag)].Name, subjectsList[Convert.ToInt32(item.Tag)].Rating);
 
             subjectCardForm.Show();
         }
