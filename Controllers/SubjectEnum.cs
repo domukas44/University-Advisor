@@ -6,11 +6,11 @@ namespace University_advisor
 {
     public class SubjectEnum : IEnumerator<Subject>
     {
-        public Subject[] subjects;
+        public List<Subject> subjects;
 
         int position = -1;
 
-        public SubjectEnum(Subject[] subjects)
+        public SubjectEnum(List<Subject> subjects)
         {
            this.subjects = subjects;
         }
@@ -18,7 +18,7 @@ namespace University_advisor
         public bool MoveNext()
         {
             position++;
-            return (position < subjects.Length);
+            return (position < subjects.Count);
         }
 
         public void Reset()
