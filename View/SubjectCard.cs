@@ -24,7 +24,7 @@ namespace University_advisor
         private void saveButton_Click(object sender, EventArgs e)
         {
             Visible = false;
-            Serializer.serialize(new Review(subject, "author1", richTextBox1.Text, 10));
+            Serializer.serialize(new Review(subject, "author1", richTextBox1.Text, 10));        // placeholder author and rating values
             MessageBox.Show("Atsiliepimas sėkmingai išsaugotas.");
         }
     }
