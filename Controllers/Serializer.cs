@@ -15,6 +15,7 @@ namespace University_advisor.Controllers
             using (JsonWriter writer2 = new JsonTextWriter(sw2))
             {
                 serializer.Serialize(writer, review);
+                sw.WriteLine();
                 serializer.Serialize(writer2, review);
             }
         }
@@ -22,10 +23,8 @@ namespace University_advisor.Controllers
         public static Review deserialize()
         {
             using (StreamReader sr = new StreamReader(@"..\..\Resources\LastReview.txt"))
-            using (JsonReader reader = new JsonTextReader(sr))
             {
-                string s = sr.ReadToEnd();
-                return JsonConvert.DeserializeObject<Review>(s);
+                return JsonConvert.DeserializeObject<Review>(sr.ReadToEnd());
             }
         }
     }
