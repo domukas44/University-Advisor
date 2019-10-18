@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using University_advisor.Controllers;
+using University_advisor.View;
 
 namespace University_advisor
 {
@@ -23,8 +24,35 @@ namespace University_advisor
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            Object o = comboBox1.SelectedItem;
+
+            // jei nepasirinko įvertinimo, neleidžia išsaugoti
+            if (o == null)
+            {
+                MessageBox.Show("Būtina pasirinkti įvertinimą.");
+            }
+
+            // jei pasirinko, tai tikrina, ar pakomentavo
+            else
+            {
+                if (richTextBox1.Text != "")
+                {
+                    confirmReview();
+                }
+
+                // jei nepakomentavo, tai paprašo patvirtinti, ar tikrai taip norėjo
+                else
+                {
+                    ConfirmationBox confirmationBox = new ConfirmationBox(this);
+                    confirmationBox.Show();
+                }
+            }
+        }
+
+        public void confirmReview()
+        {
             Visible = false;
-            Serializer.serialize(new Review(subject, "author1", richTextBox1.Text, 10));        // placeholder author and rating values
+            Serializer.serialize(new Review(subject, "author1", richTextBox1.Text, Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder author value
             MessageBox.Show("Atsiliepimas sėkmingai išsaugotas.");
         }
     }

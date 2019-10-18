@@ -67,6 +67,12 @@
   <ItemGroup>
     <Compile Include="Controllers\Serializer.cs" />
     <Compile Include="Controllers\Review.cs" />
+    <Compile Include="View\ConfirmationBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ConfirmationBox.Designer.cs">
+      <DependentUpon>ConfirmationBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SubjectCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     <Compile Include="Controllers\Subject.cs" />
     <Compile Include="Controllers\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="View\ConfirmationBox.resx">
+      <DependentUpon>ConfirmationBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\SubjectCard.resx">
       <DependentUpon>SubjectCard.cs</DependentUpon>
     </EmbeddedResource>
