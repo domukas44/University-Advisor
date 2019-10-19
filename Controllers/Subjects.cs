@@ -21,7 +21,7 @@ namespace University_advisor
             foreach (string line in lines)
             {
                 string[] linesSplit = line.Split('\t');
-                subjectList.Add(new Subject(linesSplit[0], Convert.ToDouble(linesSplit[1])));
+                subjectList.Add(new Subject(linesSplit[0], Convert.ToDouble(linesSplit[1]), Convert.ToInt32(linesSplit[2])));
             }
         }
 

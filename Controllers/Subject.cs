@@ -4,6 +4,9 @@ namespace University_advisor
 {
     public class Subject
     {
+        //changes by Dominykas
+        int RatingsCount = 0;
+        double TotalRatings = 0;
         public int id { get; set; }
         private static int idNr = 0;
         public string Name { get; set; }
@@ -19,12 +22,20 @@ namespace University_advisor
 
         }
 
-        public Subject(string name, double rating)
+        public Subject(string name, double rating, int count)
         {
             id = idNr++;
             Name = name;
             Rating = rating;
+            TotalRatings = rating * count;
+            RatingsCount = count;
             //reviewList = new List<Review>();
+        }
+
+        public void AddRating(int NewRating)
+        {
+            RatingsCount++;
+            Rating = (TotalRatings + NewRating) / RatingsCount;
         }
 
        /* public void addReview(Review review)

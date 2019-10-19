@@ -105,5 +105,10 @@ namespace University_advisor
         {
             //openCard(sender);
         }
+
+        public void UpdateRating(double rating, string name)
+        {
+
+        }
     }
 }

@@ -141,6 +141,7 @@
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "Atsiliepimai:";
+            this.label5.Click += new System.EventHandler(this.Label5_Click);
             // 
             // SubjectCard
             // 

@@ -61,11 +61,41 @@ namespace University_advisor
         {
             Visible = false;
             Serializer.serialize(new Review(subject, "author1", richTextBox1.Text, Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder author value
+            subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
+            label3.Text = subject.Rating.ToString("0.##") + "/10";
+            UpdateData(subject.Rating, subject.Name);
             MessageBox.Show("Atsiliepimas sėkmingai išsaugotas.");
         }
 
         private void SubjectCard_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateData(double NewRating, string name)
+        {
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\TestData.txt");
+      
+                for(int i=0; i< lines.Length; i++)
+                {
+                    string[] linesSplit = lines[i].Split('\t');
+                    if(linesSplit[0] == name)
+                    {
+                        linesSplit[1] = NewRating.ToString("0.##");
+                        int temp = Convert.ToInt32(linesSplit[2]);
+                        temp++;
+                        linesSplit[2] = (temp).ToString();
+                        lines[i] = linesSplit[0] + "\t" + linesSplit[1] + "\t" + linesSplit[2];
+                        break;
+                    }
+                }
+            System.IO.File.WriteAllLines(@"..\..\Resources\TestData.txt", lines);
+
 
         }
     }
