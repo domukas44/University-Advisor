@@ -1,0 +1,5 @@
+{"subject":{"id":0,"Name":"Bioinformatika"},"author":"author1","comment":"bio","rating":5,"id":0}
+{"subject":{"id":0,"Name":"Bioinformatika"},"author":"author1","comment":"bio","rating":8,"id":1}
+{"subject":{"id":2,"Name":"Verslo vadyba"},"author":"author1","comment":"vv","rating":2,"id":2}
+{"subject":{"id":1,"Name":"Buhalterine apskaita"},"author":"author1","comment":"ba","rating":4,"id":3}
+{"subject":{"id":0,"Name":"Bioinformatika"},"author":"author1","comment":"asd","rating":10,"id":4}

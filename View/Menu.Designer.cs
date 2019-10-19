@@ -78,13 +78,13 @@
             // 
             // ListName
             // 
-            this.ListName.Text = "Subject Name";
-            this.ListName.Width = 150;
+            this.ListName.Text = "Dalyko pavadinimas";
+            this.ListName.Width = 162;
             // 
             // ListRating
             // 
-            this.ListRating.Text = "Rating";
-            this.ListRating.Width = 50;
+            this.ListRating.Text = "Įvertinimas";
+            this.ListRating.Width = 62;
             // 
             // Menu
             // 
