@@ -35,7 +35,8 @@ namespace University_advisor
         public void AddRating(int NewRating)
         {
             RatingsCount++;
-            Rating = (TotalRatings + NewRating) / RatingsCount;
+            TotalRatings += NewRating;
+            Rating = TotalRatings / RatingsCount;
         }
 
        /* public void addReview(Review review)

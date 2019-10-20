@@ -1,1 +1,1 @@
-{"subject":{"id":2,"Name":"Verslo vadyba"},"author":"author1","comment":"toks neblogas","rating":7,"id":15}
+{"subject":{"id":2,"Name":"Verslo vadyba"},"author":"author1","comment":"","rating":1,"id":4}

@@ -1,3 +1,3 @@
-Bioinformatika	5	3
-Buhalterine apskaita	10,00	1
-Verslo vadyba	8,5	2
+Bioinformatika	5,67	3
+Buhalterine apskaita	0	0
+Verslo vadyba	5,5	2
