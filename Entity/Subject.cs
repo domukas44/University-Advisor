@@ -26,7 +26,7 @@ namespace University_advisor.Controller
         {
             Id = idNr++;
             Name = name;
-            Rating = Rating;
+            this.Rating = Rating;
             TotalRatings = Rating * count;
             RatingsCount = count;
             //reviewList = new List<Review>();
