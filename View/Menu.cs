@@ -67,7 +67,7 @@ namespace University_advisor
             var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
 
             ToolStripMenuItem item = sender as ToolStripMenuItem;
-            SubjectCard subjectCardForm = new SubjectCard();
+            SubjectCard subjectCardForm = new SubjectCard(this);
 
             subjectCardForm.ShowInformation(subjectsList[Convert.ToInt32(item.Tag)]);
 
@@ -106,9 +106,19 @@ namespace University_advisor
             //openCard(sender);
         }
 
-        public void UpdateRating(double rating, string name)
+        public void UpdateRatings()
         {
+            var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
+            mainList.Clear();
 
+            foreach (var subject in subjectsList)
+            {
+                var row = new string[] { subject.Name, subject.Rating.ToString("0.##") };
+                var lvi = new ListViewItem(row);
+                lvi.Tag = subject;
+                mainList.Add(lvi);
+            }
+            DisplayItems();
         }
     }
 }

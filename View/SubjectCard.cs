@@ -8,9 +8,11 @@ namespace University_advisor
     public partial class SubjectCard : Form
     {
         private Subject subject;
-        public SubjectCard()
+        private Menu menu;
+        public SubjectCard(Menu menu)
         {
             InitializeComponent();
+            this.menu = menu;
         }
 
         public void ShowInformation(Subject subject)
@@ -64,6 +66,7 @@ namespace University_advisor
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
             label3.Text = subject.Rating.ToString("0.##") + "/10";
             UpdateData(subject.Rating, subject.Name);
+            menu.UpdateRatings();
             MessageBox.Show("Atsiliepimas sėkmingai išsaugotas.");
         }
 
@@ -95,8 +98,6 @@ namespace University_advisor
                     }
                 }
             System.IO.File.WriteAllLines(@"..\..\Resources\TestData.txt", lines);
-
-
         }
     }
 }
