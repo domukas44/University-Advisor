@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using University_advisor.Controller;
+using University_advisor.Data.Enum;
 
 namespace University_advisor
 {
@@ -120,6 +121,42 @@ namespace University_advisor
                 mainList.Add(lvi);
             }
             DisplayItems();
+        }
+
+        private void OnSortIndexChange(object sender, EventArgs e)
+        {
+            var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
+            IEnumerable<Subject> _query = new List<Subject>();
+            subjectListView.Items.Clear();
+
+            int index = sortComboBox.SelectedIndex;
+            switch (index)
+            {
+                case (int)SortValuesEnum.Name:
+                    _query = subjectsList.OrderByDescending(i => i.Name);
+                    break;
+                case (int)SortValuesEnum.Rating:
+                    _query = subjectsList.OrderByDescending(i => i.Rating);
+                    break;
+                default:
+                    _query = subjectsList;
+                    break;
+            }
+
+            mainList.Clear();
+
+            foreach (var subject in _query)
+            {
+                var row = new string[] { subject.Name, subject.Rating.ToString("0.##") };
+                var lvi = new ListViewItem(row);
+                lvi.Tag = subject;
+                mainList.Add(lvi);
+            }
+
+            foreach (ListViewItem item in mainList)
+            {
+                subjectListView.Items.Add(item);
+            }
         }
     }
 }
