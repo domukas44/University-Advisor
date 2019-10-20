@@ -25,7 +25,7 @@ namespace University_advisor.Controllers
             this.author = author;
             this.comment = comment;
             this.rating = rating;
-            Review r = Serializer.deserialize();
+            Review r = Deserializer<Review>.deserializeLine(@"..\..\Resources\LastReview.txt");
             if (r == null)
             {
                 id = 0;
@@ -34,20 +34,13 @@ namespace University_advisor.Controllers
             {
                 id = r.id + 1;
             }
-            //subject.addReview(this);
         }
 
         public static List<Review> getReviewList(Subject subject)
         {
             var allReviews = new List<Review>();
             var filteredReviews = new List<Review>();
-            using (StreamReader sr = new StreamReader(@"..\..\Resources\Reviews.txt"))
-            {
-                while (!sr.EndOfStream)
-                {
-                    allReviews.Add(JsonConvert.DeserializeObject<Review>(sr.ReadLine()));
-                }
-            }
+            allReviews = Deserializer<Review>.deserializeFile(@"..\..\Resources\Reviews.txt");
             var query = from Review r in allReviews
                         where r.subject.id == subject.id
                         select r;
