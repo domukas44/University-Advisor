@@ -1,17 +1,17 @@
 ﻿using Newtonsoft.Json;
 
-namespace University_advisor
+namespace University_advisor.Controllers
 {
     public class Subject
     {
         //changes by Dominykas
         int RatingsCount = 0;
         double TotalRatings = 0;
-        public int id { get; set; }
+        public int Id { get; set; }
         private static int idNr = 0;
         public string Name { get; set; }
 
-        [JsonIgnore]     // review serialization shouldn't include the subject's total rating 
+        [JsonIgnore]     // review serialization shouldn't include the subject's total Rating 
         public double Rating { get; set; }
 
        /* [JsonIgnore]
@@ -22,12 +22,12 @@ namespace University_advisor
 
         }
 
-        public Subject(string name, double rating, int count)
+        public Subject(string name, double Rating, int count)
         {
-            id = idNr++;
+            Id = idNr++;
             Name = name;
-            Rating = rating;
-            TotalRatings = rating * count;
+            Rating = Rating;
+            TotalRatings = Rating * count;
             RatingsCount = count;
             //reviewList = new List<Review>();
         }

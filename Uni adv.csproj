@@ -88,16 +88,19 @@
     <Compile Include="Controllers\Subjects.cs" />
     <Compile Include="Controllers\SubjectEnum.cs" />
     <Compile Include="Controllers\Subject.cs" />
-    <Compile Include="Controllers\Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\ConfirmationBox.resx">
       <DependentUpon>ConfirmationBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SubjectCard.resx">
       <DependentUpon>SubjectCard.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

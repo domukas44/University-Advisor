@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using University_advisor.Controllers;
 
 namespace University_advisor
 {
@@ -45,12 +46,12 @@ namespace University_advisor
 
         private void Load_MenuToolStripMenuItem()
         {
-            int id = 0;
+            int Id = 0;
             foreach (String items in GetMenuItemsList())
             {
                 ToolStripMenuItem item = new ToolStripMenuItem(items);
-                item.Tag = id;
-                id++;
+                item.Tag = Id;
+                Id++;
                 pasirenkamiejiDalykaiToolStripMenuItem.DropDownItems.Add(item);
 
                 item.Click += new EventHandler(Item_click);

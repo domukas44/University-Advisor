@@ -8,7 +8,7 @@ namespace University_advisor
     public partial class SubjectCard : Form
     {
         private Subject subject;
-        private Menu menu;
+        private readonly Menu menu;
         public SubjectCard(Menu menu)
         {
             InitializeComponent();
@@ -22,9 +22,9 @@ namespace University_advisor
             label3.Text = subject.Rating.ToString("0.##") + "/10";
             foreach (Review r in Review.getReviewList(subject))
             {
-                label4.Text += r.comment;
+                label4.Text += r.Comment;
                 label4.Text += " ";
-                label4.Text += r.rating.ToString();
+                label4.Text += r.Rating.ToString();
                 label4.Text += "\n";
             }
             
@@ -42,7 +42,7 @@ namespace University_advisor
                 MessageBox.Show("Būtina pasirinkti įvertinimą.");
             }
 
-            // if rating was chosen - checks if a comment was added
+            // if rating was chosen - checks if a Comment was added
             else
             {
                 if (richTextBox1.Text != "")
@@ -62,7 +62,7 @@ namespace University_advisor
         public void confirmReview()
         {
             Visible = false;
-            Serializer.serialize(new Review(subject, "author1", richTextBox1.Text, Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder author value
+            Serializer.serialize(new Review(subject, "author1", richTextBox1.Text, Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
             label3.Text = subject.Rating.ToString("0.##") + "/10";
             UpdateData(subject.Rating, subject.Name);

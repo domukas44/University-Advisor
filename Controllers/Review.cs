@@ -8,36 +8,36 @@ namespace University_advisor.Controllers
     public class Review
     {
         // fields are public so that serialization is possible
-        public Subject subject { get; set; }
-        public string author { get; set; }
-        public string comment { get; set; }
-        public int rating { get; set; }
-        public int id { get; set; }
+        public Subject Subject { get; set; }
+        public string Author { get; set; }
+        public string Comment { get; set; }
+        public int Rating { get; set; }
+        public int Id { get; set; }
 
         public Review()
         {
 
         }
             
-        public Review(Subject subject, string author, string comment, int rating)
+        public Review(Subject Subject, string Author, string Comment, int Rating)
         {
-            this.subject = subject;
-            this.author = author;
-            this.comment = comment;
-            this.rating = rating;
+            this.Subject = Subject;
+            this.Author = Author;
+            this.Comment = Comment;
+            this.Rating = Rating;
             Review r = Serializer.deserialize();
             if (r == null)
             {
-                id = 0;
+                Id = 0;
             }
             else
             {
-                id = r.id + 1;
+                Id = r.Id + 1;
             }
-            //subject.addReview(this);
+            //Subject.addReview(this);
         }
 
-        public static List<Review> getReviewList(Subject subject)
+        public static List<Review> getReviewList(Subject Subject)
         {
             var allReviews = new List<Review>();
             var filteredReviews = new List<Review>();
@@ -49,7 +49,7 @@ namespace University_advisor.Controllers
                 }
             }
             var query = from Review r in allReviews
-                        where r.subject.id == subject.id
+                        where r.Subject.Id == Subject.Id
                         select r;
             foreach (Review r in query)
             {
