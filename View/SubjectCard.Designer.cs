@@ -36,6 +36,8 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -53,14 +55,14 @@
             this.ratingLbl.AutoSize = true;
             this.ratingLbl.Location = new System.Drawing.Point(16, 78);
             this.ratingLbl.Name = "ratingLbl";
-            this.ratingLbl.Size = new System.Drawing.Size(41, 13);
+            this.ratingLbl.Size = new System.Drawing.Size(60, 13);
             this.ratingLbl.TabIndex = 1;
-            this.ratingLbl.Text = "Rating:";
+            this.ratingLbl.Text = "Įvertinimas:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 78);
+            this.label3.Location = new System.Drawing.Point(79, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 2;
@@ -123,11 +125,31 @@
             this.comboBox1.Size = new System.Drawing.Size(57, 21);
             this.comboBox1.TabIndex = 7;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 141);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 118);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Atsiliepimai:";
+            this.label5.Click += new System.EventHandler(this.Label5_Click);
+            // 
             // SubjectCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(452, 528);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.saveButton);
@@ -138,6 +160,7 @@
             this.Controls.Add(this.label1);
             this.Name = "SubjectCard";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.SubjectCard_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +176,7 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

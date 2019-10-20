@@ -1,33 +1,47 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using University_advisor.Controllers;
 
 namespace University_advisor
 {
     public class Subject
     {
-        public int id { get; }
+        //changes by Dominykas
+        int RatingsCount = 0;
+        double TotalRatings = 0;
+        public int id { get; set; }
         private static int idNr = 0;
         public string Name { get; set; }
-           
-        [JsonIgnore]     // kad prie kiekvieno review neįrašytų bendro dalyko reitingo
+
+        [JsonIgnore]     // review serialization shouldn't include the subject's total rating 
         public double Rating { get; set; }
 
-        // private laukus serializer ignoruoja
-        private List<Review> reviewList { get; }
+       /* [JsonIgnore]
+        public List<Review> reviewList { get; }*/
 
-        public Subject(string name, double rating)
+        public Subject()
+        {
+
+        }
+
+        public Subject(string name, double rating, int count)
         {
             id = idNr++;
             Name = name;
             Rating = rating;
-            reviewList = new List<Review>();
+            TotalRatings = rating * count;
+            RatingsCount = count;
+            //reviewList = new List<Review>();
         }
 
-        public void addReview(Review review)
+        public void AddRating(int NewRating)
+        {
+            RatingsCount++;
+            TotalRatings += NewRating;
+            Rating = TotalRatings / RatingsCount;
+        }
+
+       /* public void addReview(Review review)
         {
             reviewList.Add(review);
-        }
+        }*/
     }
 }

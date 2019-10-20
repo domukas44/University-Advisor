@@ -8,16 +8,26 @@ namespace University_advisor
     public partial class SubjectCard : Form
     {
         private Subject subject;
-        public SubjectCard()
+        private Menu menu;
+        public SubjectCard(Menu menu)
         {
             InitializeComponent();
+            this.menu = menu;
         }
 
         public void ShowInformation(Subject subject)
         {
             this.subject = subject;
             label1.Text = subject.Name;
-            label3.Text = subject.Rating.ToString("0.##") + "/5.00";
+            label3.Text = subject.Rating.ToString("0.##") + "/10";
+            foreach (Review r in Review.getReviewList(subject))
+            {
+                label4.Text += r.comment;
+                label4.Text += " ";
+                label4.Text += r.rating.ToString();
+                label4.Text += "\n";
+            }
+            
             Text = subject.Name;
             Update();
         }
@@ -26,13 +36,13 @@ namespace University_advisor
         {
             Object o = comboBox1.SelectedItem;
 
-            // jei nepasirinko įvertinimo, neleidžia išsaugoti
+            // if user hasn't chosen a rating - not allowed
             if (o == null)
             {
                 MessageBox.Show("Būtina pasirinkti įvertinimą.");
             }
 
-            // jei pasirinko, tai tikrina, ar pakomentavo
+            // if rating was chosen - checks if a comment was added
             else
             {
                 if (richTextBox1.Text != "")
@@ -40,7 +50,7 @@ namespace University_advisor
                     confirmReview();
                 }
 
-                // jei nepakomentavo, tai paprašo patvirtinti, ar tikrai taip norėjo
+                // if no comment found - asks to confirm the decision
                 else
                 {
                     ConfirmationBox confirmationBox = new ConfirmationBox(this);
@@ -53,7 +63,41 @@ namespace University_advisor
         {
             Visible = false;
             Serializer.serialize(new Review(subject, "author1", richTextBox1.Text, Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder author value
+            subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
+            label3.Text = subject.Rating.ToString("0.##") + "/10";
+            UpdateData(subject.Rating, subject.Name);
+            menu.UpdateRatings();
             MessageBox.Show("Atsiliepimas sėkmingai išsaugotas.");
+        }
+
+        private void SubjectCard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateData(double NewRating, string name)
+        {
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\TestData.txt");
+      
+                for(int i=0; i< lines.Length; i++)
+                {
+                    string[] linesSplit = lines[i].Split('\t');
+                    if(linesSplit[0] == name)
+                    {
+                        linesSplit[1] = NewRating.ToString("0.##");
+                        int temp = Convert.ToInt32(linesSplit[2]);
+                        temp++;
+                        linesSplit[2] = (temp).ToString();
+                        lines[i] = linesSplit[0] + "\t" + linesSplit[1] + "\t" + linesSplit[2];
+                        break;
+                    }
+                }
+            System.IO.File.WriteAllLines(@"..\..\Resources\TestData.txt", lines);
         }
     }
 }
