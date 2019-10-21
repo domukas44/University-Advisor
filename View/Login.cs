@@ -6,6 +6,7 @@ namespace University_advisor.View
 {
     public partial class Login : Form
     {
+        RegularUser currentUser;
         public Login()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace University_advisor.View
         {
             try
             {
-                RegularUser user = new RegularUser(textBox1.Text, textBox2.Text);
+                currentUser = new RegularUser(textBox1.Text, textBox2.Text);
                 this.Hide();
                 var mainForm = new Menu();
                 mainForm.Closed += (s, args) => this.Close();
