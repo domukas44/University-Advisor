@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using University_advisor.Controllers;
@@ -18,11 +19,11 @@ namespace University_advisor.View
             {
                 try
                 {
-                    RegularUser user = new RegularUser(textBox1.Text, textBox2.Text, textBox3.Text);
+                    Menu menu = new Menu();
+                    menu.currentUser = new RegularUser(textBox1.Text, textBox2.Text, textBox3.Text);
                     this.Hide();
-                    var mainForm = new Menu();
-                    mainForm.Closed += (s, args) => this.Close();
-                    mainForm.Show();
+                    menu.Closed += (s, args) => this.Close();
+                    menu.Show();
 
                 }catch (Exception err)
                 {

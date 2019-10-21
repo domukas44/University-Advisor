@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using University_advisor.Controllers;
 
@@ -6,7 +7,6 @@ namespace University_advisor.View
 {
     public partial class Login : Form
     {
-        RegularUser currentUser;
         public Login()
         {
             InitializeComponent();
@@ -29,11 +29,11 @@ namespace University_advisor.View
         {
             try
             {
-                currentUser = new RegularUser(textBox1.Text, textBox2.Text);
+                Menu menu = new Menu();
+                menu.currentUser = new RegularUser(textBox1.Text, textBox2.Text);
                 this.Hide();
-                var mainForm = new Menu();
-                mainForm.Closed += (s, args) => this.Close();
-                mainForm.Show();
+                menu.Closed += (s, args) => this.Close();
+                menu.Show();
 
             }
             catch(Exception err)

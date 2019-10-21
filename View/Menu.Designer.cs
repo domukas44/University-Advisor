@@ -34,6 +34,7 @@
             this.subjectListView = new System.Windows.Forms.ListView();
             this.ListName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ListRating = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             this.pasirenkamiejiDalykaiToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(404, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(595, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,7 +71,7 @@
             this.subjectListView.HideSelection = false;
             this.subjectListView.Location = new System.Drawing.Point(12, 42);
             this.subjectListView.Name = "subjectListView";
-            this.subjectListView.Size = new System.Drawing.Size(364, 383);
+            this.subjectListView.Size = new System.Drawing.Size(571, 383);
             this.subjectListView.TabIndex = 3;
             this.subjectListView.UseCompatibleStateImageBehavior = false;
             this.subjectListView.View = System.Windows.Forms.View.Details;
@@ -86,11 +87,21 @@
             this.ListRating.Text = "Įvertinimas";
             this.ListRating.Width = 62;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(406, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Prisijungimo vardas: ";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 450);
+            this.ClientSize = new System.Drawing.Size(595, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.subjectListView);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
@@ -113,5 +124,6 @@
         private System.Windows.Forms.ListView subjectListView;
         private System.Windows.Forms.ColumnHeader ListName;
         private System.Windows.Forms.ColumnHeader ListRating;
+        private System.Windows.Forms.Label label1;
     }
 }
