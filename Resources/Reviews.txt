@@ -4,3 +4,7 @@
 {"subject":{"id":2,"Name":"Verslo vadyba"},"author":"author1","comment":"","rating":6,"id":3}
 {"subject":{"id":2,"Name":"Verslo vadyba"},"author":"author1","comment":"","rating":1,"id":4}
 {"subject":{"id":2,"Name":"Verslo vadyba"},"author":"author1","comment":"","rating":7,"id":5}
+{"subject":{"id":0,"Name":"Bioinformatika"},"author":"author1","comment":"q","rating":2,"id":6}
+{"subject":{"id":0,"Name":"Bioinformatika"},"author":"author1","comment":"qwqw","rating":1,"id":7}
+{"subject":{"id":1,"Name":"Buhalterine apskaita"},"author":"author1","comment":"s","rating":4,"id":8}
+{"subject":{"id":0,"Name":"Bioinformatika"},"author":"author1","comment":"ss","rating":4,"id":9}

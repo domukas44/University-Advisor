@@ -64,10 +64,11 @@ namespace University_advisor
             Visible = false;
             Serializer.serialize(new Review(subject, "author1", richTextBox1.Text, Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder author value
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
-            label3.Text = subject.Rating.ToString("0.##") + "/10";
+            double NewRating = subject.Rating;
+            label3.Text = NewRating.FormatForRating();
             UpdateData(subject.Rating, subject.Name);
             menu.UpdateRatings();
-            MessageBox.Show("Atsiliepimas sėkmingai išsaugotas.");
+            //MessageBox.Show("Atsiliepimas sėkmingai išsaugotas.");
         }
 
         private void SubjectCard_Load(object sender, EventArgs e)
