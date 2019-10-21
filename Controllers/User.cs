@@ -9,7 +9,7 @@ using University_advisor.Controllers;
 
 namespace University_advisor.Controllers
 {
-    public class User : IAccount
+    public class User
     {
         public string name { get; set; }
 
@@ -80,7 +80,6 @@ namespace University_advisor.Controllers
                     users.Add(JsonConvert.DeserializeObject<User>(sr.ReadLine()));
                 }
             }
-
             return users;
         }
 
@@ -95,8 +94,5 @@ namespace University_advisor.Controllers
                 sw.WriteLine();
             }
         }
-
-
-
     }
 }

@@ -18,7 +18,7 @@ namespace University_advisor.View
             {
                 try
                 {
-                    User user = new User(textBox1.Text, textBox2.Text, textBox3.Text);
+                    RegularUser user = new RegularUser(textBox1.Text, textBox2.Text, textBox3.Text);
                     this.Hide();
                     var mainForm = new Menu();
                     mainForm.Closed += (s, args) => this.Close();
