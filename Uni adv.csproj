@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Deserializer.cs" />
     <Compile Include="Controller\Serializer.cs" />
     <Compile Include="Entity\Review.cs" />
     <Compile Include="View\ConfirmationBox.cs">

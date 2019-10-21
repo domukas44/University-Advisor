@@ -1,1 +1,1 @@
-{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"lol","Rating":5,"Id":7}
+{"subject":{"id":2,"Name":"Verslo vadyba"},"author":"author1","comment":"","rating":2,"id":3}
