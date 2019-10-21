@@ -2,8 +2,9 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using University_advisor.Controller;
 
-namespace University_advisor.Controller
+namespace University_advisor.Entity
 {
     public class Review
     {
@@ -25,7 +26,7 @@ namespace University_advisor.Controller
             this.Author = Author;
             this.Comment = Comment;
             this.Rating = Rating;
-            Review r = Serializer.deserialize();
+            Review r = Deserializer<Review>.deserializeLine(@"..\..\Resources\LastReview.txt");
             if (r == null)
             {
                 Id = 0;
@@ -34,20 +35,13 @@ namespace University_advisor.Controller
             {
                 Id = r.Id + 1;
             }
-            //Subject.addReview(this);
         }
 
         public static List<Review> getReviewList(Subject Subject)
         {
             var allReviews = new List<Review>();
             var filteredReviews = new List<Review>();
-            using (StreamReader sr = new StreamReader(@"..\..\Resources\Reviews.txt"))
-            {
-                while (!sr.EndOfStream)
-                {
-                    allReviews.Add(JsonConvert.DeserializeObject<Review>(sr.ReadLine()));
-                }
-            }
+            allReviews = Deserializer<Review>.deserializeFile(@"..\..\Resources\Reviews.txt");
             var query = from Review r in allReviews
                         where r.Subject.Id == Subject.Id
                         select r;

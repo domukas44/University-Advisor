@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using University_advisor.Controller;
+using University_advisor.Entity;
 using University_advisor.View;
 
 namespace University_advisor
@@ -62,7 +64,7 @@ namespace University_advisor
         public void confirmReview()
         {
             Visible = false;
-            Serializer.serialize(new Review(Subject: subject, Author: "author1", Comment: richTextBox1.Text = "Vartotojas atsisakė pakomentuoti veritnimą", Rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named and optional argument usage
+            Serializer.serializeReview(new Review(Subject: subject, Author: "author1", Comment: richTextBox1.Text = "Vartotojas atsisakė pakomentuoti veritnimą", Rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named and optional argument usage
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
             label3.Text = subject.Rating.ToString("0.##") + "/10";
             UpdateData(subject.Rating, subject.Name);
@@ -83,20 +85,19 @@ namespace University_advisor
         private void UpdateData(double NewRating, string name)
         {
             string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\TestData.txt");
-      
-                for(int i=0; i< lines.Length; i++)
+            for(int i=0; i< lines.Length; i++)
+            {
+                string[] linesSplit = lines[i].Split('\t');
+                if(linesSplit[0] == name)
                 {
-                    string[] linesSplit = lines[i].Split('\t');
-                    if(linesSplit[0] == name)
-                    {
-                        linesSplit[1] = NewRating.ToString("0.##");
-                        int temp = Convert.ToInt32(linesSplit[2]);
-                        temp++;
-                        linesSplit[2] = (temp).ToString();
-                        lines[i] = linesSplit[0] + "\t" + linesSplit[1] + "\t" + linesSplit[2];
-                        break;
-                    }
+                    linesSplit[1] = NewRating.ToString("0.##");
+                    int temp = Convert.ToInt32(linesSplit[2]);
+                    temp++;
+                    linesSplit[2] = (temp).ToString();
+                    lines[i] = linesSplit[0] + "\t" + linesSplit[1] + "\t" + linesSplit[2];
+                    break;
                 }
+            }
             System.IO.File.WriteAllLines(@"..\..\Resources\TestData.txt", lines);
         }
 

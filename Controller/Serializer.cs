@@ -1,12 +1,13 @@
 using Newtonsoft.Json;
 using System.IO;
+using University_advisor.Entity;
 
 namespace University_advisor.Controller
 {
     public static class Serializer
     {
         static JsonSerializer serializer = new JsonSerializer();
-        public static void serialize(Review review)
+        public static void serializeReview(Review review)
         {
             serializer.NullValueHandling = NullValueHandling.Ignore;
             using (StreamWriter sw = new StreamWriter(@"..\..\Resources\Reviews.txt", true))       // true means append to file
@@ -17,14 +18,6 @@ namespace University_advisor.Controller
                 serializer.Serialize(writer, review);
                 sw.WriteLine();
                 serializer.Serialize(writer2, review);
-            }
-        }
-
-        public static Review deserialize()
-        {
-            using (StreamReader sr = new StreamReader(@"..\..\Resources\LastReview.txt"))
-            {
-                return JsonConvert.DeserializeObject<Review>(sr.ReadToEnd());
             }
         }
     }
