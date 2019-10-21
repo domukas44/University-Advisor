@@ -3,6 +3,7 @@
 namespace University_advisor.Controller
 {
     public class Subject
+    { 
         int RatingsCount = 0;
         double TotalRatings = 0;
         public int Id { get; set; }

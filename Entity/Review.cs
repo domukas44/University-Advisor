@@ -2,8 +2,9 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using University_advisor.Controller;
 
-namespace University_advisor.Controller
+namespace University_advisor.Entity
 {
     public class Review
     {

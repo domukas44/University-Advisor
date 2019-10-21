@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System.IO;
+using University_advisor.Entity;
 
 namespace University_advisor.Controller
 {
