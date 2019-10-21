@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using University_advisor.View;
 
 namespace University_advisor
 {
@@ -13,7 +14,7 @@ namespace University_advisor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Menu());
+            Application.Run(new Login());
         }
     }
 }

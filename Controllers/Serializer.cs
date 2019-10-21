@@ -20,11 +20,30 @@ namespace University_advisor.Controllers
             }
         }
 
+        public static void serialize(User user)
+        {
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+            using (StreamWriter sw = new StreamWriter(@"..\..\Resources\User.txt", true))       // true means append to file
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, user);
+                sw.WriteLine();
+            }
+        }
+
         public static Review deserialize()
         {
             using (StreamReader sr = new StreamReader(@"..\..\Resources\LastReview.txt"))
             {
                 return JsonConvert.DeserializeObject<Review>(sr.ReadToEnd());
+            }
+        }
+
+        public static User deserializeUser()
+        {
+            using (StreamReader sr = new StreamReader(@"..\..\Resources\User.txt"))
+            {
+                return JsonConvert.DeserializeObject<User>(sr.ReadToEnd());
             }
         }
     }
