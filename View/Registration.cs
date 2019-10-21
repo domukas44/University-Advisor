@@ -24,9 +24,8 @@ namespace University_advisor.View
                     mainForm.Closed += (s, args) => this.Close();
                     mainForm.Show();
 
-                }catch (ArgumentException err)
+                }catch (Exception err)
                 {
-                    Console.WriteLine(err);
                     label7.Visible = true;
                     label4.Visible = false;
                 }
@@ -56,6 +55,14 @@ namespace University_advisor.View
             Match match = Regex.Match(password, pattern);
             if (match.Success) return true;
             else return false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var loginForm = new Login();
+            loginForm.Closed += (s, args) => this.Close();
+            loginForm.Show();
         }
     }
 }
