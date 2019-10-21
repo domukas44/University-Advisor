@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Controller\Deserializer.cs" />
     <Compile Include="Controller\Serializer.cs" />
+    <Compile Include="Data\Enum\SortValuesEnum.cs" />
     <Compile Include="Entity\Review.cs" />
     <Compile Include="View\ConfirmationBox.cs">
       <SubType>Form</SubType>
