@@ -20,7 +20,7 @@ namespace University_advisor.Entity
 
         }
             
-        public Review(Subject Subject, string Author, string Comment, int Rating)
+        public Review(Subject Subject, string Author, int Rating, string Comment = "Vartotojas atsisake pakomentuoti veritnima") // Optional argument usage
         {
             this.Subject = Subject;
             this.Author = Author;

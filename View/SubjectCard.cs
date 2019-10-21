@@ -64,7 +64,7 @@ namespace University_advisor
         public void confirmReview()
         {
             Visible = false;
-            Serializer.serializeReview(new Review(Subject: subject, Author: "author1", Comment: richTextBox1.Text = "Vartotojas atsisakė pakomentuoti veritnimą", Rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named and optional argument usage
+            Serializer.serializeReview(new Review(Subject: subject, Author: "author1", Comment: richTextBox1.Text, Rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named argument usage
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
             label3.Text = subject.Rating.ToString("0.##") + "/10";
             UpdateData(subject.Rating, subject.Name);
