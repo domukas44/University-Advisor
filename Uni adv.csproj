@@ -66,9 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Controllers\RegularUser.cs" />
     <Compile Include="FormatDouble.cs" />
     <Compile Include="Controllers\Admin.cs" />
-    <Compile Include="Controllers\IAccount.cs" />
     <Compile Include="Controllers\Serializer.cs" />
     <Compile Include="Controllers\Review.cs" />
     <Compile Include="Controllers\User.cs" />
