@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace University_advisor
+namespace University_advisor.Controller
 {
     public class SubjectEnum : IEnumerator<Subject>
     {

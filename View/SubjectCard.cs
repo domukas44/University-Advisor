@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using University_advisor.Controllers;
+using University_advisor.Controller;
 using University_advisor.View;
 
 namespace University_advisor
@@ -9,7 +9,7 @@ namespace University_advisor
     public partial class SubjectCard : Form
     {
         private Subject subject;
-        private Menu menu;
+        private readonly Menu menu;
         public SubjectCard(Menu menu)
         {
             InitializeComponent();
@@ -23,9 +23,9 @@ namespace University_advisor
             label3.Text = subject.Rating.ToString("0.##") + "/10";
             foreach (Review r in Review.getReviewList(subject))
             {
-                label4.Text += r.comment;
+                label4.Text += r.Comment;
                 label4.Text += " ";
-                label4.Text += r.rating.ToString();
+                label4.Text += r.Rating.ToString();
                 label4.Text += "\n";
             }
             
@@ -43,7 +43,7 @@ namespace University_advisor
                 MessageBox.Show("Būtina pasirinkti įvertinimą.");
             }
 
-            // if rating was chosen - checks if a comment was added
+            // if rating was chosen - checks if a Comment was added
             else
             {
                 if (richTextBox1.Text != "")

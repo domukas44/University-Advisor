@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using System.IO;
 
-namespace University_advisor.Controllers
+namespace University_advisor.Controller
 {
     public static class Serializer
     {
