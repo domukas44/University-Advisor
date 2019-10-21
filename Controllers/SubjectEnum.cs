@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using University_advisor.Entity;
 
-namespace University_advisor.Controller
+namespace University_advisor.Controllers
 {
     public class SubjectEnum : IEnumerator<Subject>
     {

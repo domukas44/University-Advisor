@@ -1,0 +1,51 @@
+using Newtonsoft.Json;
+using System.IO;
+using University_advisor.Entity;
+
+namespace University_advisor.Controllers
+{
+    public static class Serializer
+    {
+        static JsonSerializer serializer = new JsonSerializer();
+        public static void serialize(Review review)
+        {
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+            using (StreamWriter sw = new StreamWriter(@"..\..\Resources\Reviews.txt", true))       // true means append to file
+            using (StreamWriter sw2 = new StreamWriter(@"..\..\Resources\LastReview.txt"))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            using (JsonWriter writer2 = new JsonTextWriter(sw2))
+            {
+                serializer.Serialize(writer, review);
+                sw.WriteLine();
+                serializer.Serialize(writer2, review);
+            }
+        }
+
+        public static void serialize(User user)
+        {
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+            using (StreamWriter sw = new StreamWriter(@"..\..\Resources\User.txt", true))       // true means append to file
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, user);
+                sw.WriteLine();
+            }
+        }
+
+        public static Review deserialize()
+        {
+            using (StreamReader sr = new StreamReader(@"..\..\Resources\LastReview.txt"))
+            {
+                return JsonConvert.DeserializeObject<Review>(sr.ReadToEnd());
+            }
+        }
+
+        public static User deserializeUser()
+        {
+            using (StreamReader sr = new StreamReader(@"..\..\Resources\User.txt"))
+            {
+                return JsonConvert.DeserializeObject<User>(sr.ReadToEnd());
+            }
+        }
+    }
+}

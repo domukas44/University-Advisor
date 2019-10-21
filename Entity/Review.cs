@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using University_advisor.Controller;
+using University_advisor.Controllers;
 
 namespace University_advisor.Entity
 {

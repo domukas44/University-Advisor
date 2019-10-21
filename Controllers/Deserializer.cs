@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace University_advisor.Controller
+namespace University_advisor.Controllers
 {
     public class Deserializer<T>
     {

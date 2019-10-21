@@ -2,14 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using University_advisor.Controllers;
 using System.Windows.Forms;
-using University_advisor.Controller;
 using University_advisor.Data.Enum;
+using University_advisor.Entity;
 
 namespace University_advisor
 {
     public partial class Menu : Form
     {
+        public RegularUser currentUser { get; set; }
         enum AllSubjects //should be something else as subjects are not constant
         {
             Bioinformatika = 0,
@@ -27,6 +29,8 @@ namespace University_advisor
 
         private void Menu_Load(object sender, EventArgs e)
         {
+            label3.Text += currentUser.email;
+
             subjects = new Subjects();
             mainList = new List<ListViewItem>();
             var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace University_advisor.Controller
+namespace University_advisor.Entity
 {
     public class Subject
     { 
