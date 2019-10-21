@@ -38,6 +38,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -91,7 +92,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(272, 266);
+            this.button1.Location = new System.Drawing.Point(272, 299);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
@@ -132,11 +133,23 @@
             this.label6.Text = "turėti bent vieną raidę, skaičių ir specialųjį simbolį";
             this.label6.Visible = false;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(66, 137);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(161, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Toks el.paštas jau užregistruotas";
+            this.label7.Visible = false;
+            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 450);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -166,5 +179,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

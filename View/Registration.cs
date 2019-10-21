@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using University_advisor.Controllers;
 
 namespace University_advisor.View
 {
@@ -15,12 +16,27 @@ namespace University_advisor.View
         {
             if (emailValidation() && passwordValidation())
             {
-                registerAccount();
+                try
+                {
+                    User user = new User(textBox1.Text, textBox2.Text, textBox3.Text);
+                    this.Hide();
+                    var mainForm = new Menu();
+                    mainForm.Closed += (s, args) => this.Close();
+                    mainForm.Show();
+
+                }catch (ArgumentException err)
+                {
+                    Console.WriteLine(err);
+                    label7.Visible = true;
+                    label4.Visible = false;
+                }
             }
             else
             {
                 if (!passwordValidation()) { label5.Visible = true; label6.Visible = true; }
+                else { label5.Visible = false; label6.Visible = false; }
                 if (!emailValidation()) label4.Visible = true;
+                else label4.Visible = false; 
             }
         }
 
@@ -40,11 +56,6 @@ namespace University_advisor.View
             Match match = Regex.Match(password, pattern);
             if (match.Success) return true;
             else return false;
-        }
-
-        private void registerAccount()
-        {
-
         }
     }
 }
