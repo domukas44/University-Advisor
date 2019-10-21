@@ -21,7 +21,7 @@ namespace University_advisor
         {
             this.subject = subject;
             label1.Text = subject.Name;
-            label3.Text = subject.Rating.ToString("0.##") + "/10";
+            label3.Text = subject.Rating.FormatForRating();
             foreach (Review r in Review.getReviewList(subject))
             {
                 label4.Text += r.Comment;

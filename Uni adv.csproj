@@ -73,7 +73,9 @@
     <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\Review.cs" />
     <Compile Include="Entity\Subject.cs" />
+    <Compile Include="FormatDouble.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="RandC.cs" />
     <Compile Include="View\ConfirmationBox.cs">
       <SubType>Form</SubType>
     </Compile>

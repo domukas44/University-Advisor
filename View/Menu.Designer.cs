@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.ReviewsBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +100,7 @@
             "Dalyko pavadinimas (Z - A)",
             "Įvertinimas (max - min)"});
             this.sortComboBox.Location = new System.Drawing.Point(251, 36);
-            this.sortComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sortComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.sortComboBox.Name = "sortComboBox";
             this.sortComboBox.Size = new System.Drawing.Size(125, 21);
             this.sortComboBox.TabIndex = 4;
@@ -133,12 +134,25 @@
             this.label3.Size = new System.Drawing.Size(103, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Prisijungimo vardas: ";
+            this.label3.Click += new System.EventHandler(this.Label3_Click);
+            // 
+            // ReviewsBtn
+            // 
+            this.ReviewsBtn.Enabled = false;
+            this.ReviewsBtn.Location = new System.Drawing.Point(301, 454);
+            this.ReviewsBtn.Name = "ReviewsBtn";
+            this.ReviewsBtn.Size = new System.Drawing.Size(75, 23);
+            this.ReviewsBtn.TabIndex = 7;
+            this.ReviewsBtn.Text = "My reviews";
+            this.ReviewsBtn.UseVisualStyleBackColor = true;
+            this.ReviewsBtn.Click += new System.EventHandler(this.ReviewsBtn_Click);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 450);
+            this.ClientSize = new System.Drawing.Size(693, 514);
+            this.Controls.Add(this.ReviewsBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.sortComboBox);
@@ -168,5 +182,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button ReviewsBtn;
     }
 }
