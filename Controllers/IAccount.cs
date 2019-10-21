@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace University_advisor.Controllers
 {
-    interface IAccount
+    public interface IAccount
     {
         string name { get; set; }
         string email { get; set; }
         string password { get; set; }
-        bool checkIfExists(string name, string email, string password);
+        bool checkIfExists();
+        bool checkIfExists(IAccount user);
+        void saveAccountToFile();
     }
 }
