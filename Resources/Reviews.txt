@@ -4,3 +4,4 @@
 {"subject":{"id":2,"Name":"Verslo vadyba"},"author":"author1","comment":"","rating":6,"id":3}
 {"subject":{"id":2,"Name":"Verslo vadyba"},"author":"author1","comment":"","rating":1,"id":4}
 {"subject":{"id":2,"Name":"Verslo vadyba"},"author":"author1","comment":"","rating":7,"id":5}
+{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"Vartotojas atsisakė pakomentuoti veritnimą","Rating":9,"Id":6}

@@ -62,7 +62,7 @@ namespace University_advisor
         public void confirmReview()
         {
             Visible = false;
-            Serializer.serialize(new Review(subject, "author1", richTextBox1.Text, Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value
+            Serializer.serialize(new Review(Subject: subject, Author: "author1", Comment: richTextBox1.Text = "Vartotojas atsisakė pakomentuoti veritnimą", Rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named and optional argument usage
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
             label3.Text = subject.Rating.ToString("0.##") + "/10";
             UpdateData(subject.Rating, subject.Name);
@@ -98,6 +98,11 @@ namespace University_advisor
                     }
                 }
             System.IO.File.WriteAllLines(@"..\..\Resources\TestData.txt", lines);
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
