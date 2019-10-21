@@ -65,31 +65,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Controllers\RegularUser.cs" />
-    <Compile Include="FormatDouble.cs" />
-    <Compile Include="Controllers\Admin.cs" />
     <Compile Include="Controllers\Serializer.cs" />
     <Compile Include="Controllers\Review.cs" />
-    <Compile Include="Controllers\User.cs" />
-    <Compile Include="RandC.cs" />
     <Compile Include="View\ConfirmationBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\ConfirmationBox.Designer.cs">
       <DependentUpon>ConfirmationBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Registration.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Registration.Designer.cs">
-      <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SubjectCard.cs">
       <SubType>Form</SubType>
@@ -110,12 +92,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\ConfirmationBox.resx">
       <DependentUpon>ConfirmationBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Registration.resx">
-      <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SubjectCard.resx">
       <DependentUpon>SubjectCard.cs</DependentUpon>
@@ -158,11 +134,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Identity.Client">
-      <Version>4.5.1</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

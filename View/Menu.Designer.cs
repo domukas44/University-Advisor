@@ -34,6 +34,7 @@
             this.subjectListView = new System.Windows.Forms.ListView();
             this.ListName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ListRating = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.MyReviews = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,11 +87,22 @@
             this.ListRating.Text = "Įvertinimas";
             this.ListRating.Width = 62;
             // 
+            // MyReviews
+            // 
+            this.MyReviews.Location = new System.Drawing.Point(112, 452);
+            this.MyReviews.Name = "MyReviews";
+            this.MyReviews.Size = new System.Drawing.Size(161, 23);
+            this.MyReviews.TabIndex = 4;
+            this.MyReviews.Text = "My reviews";
+            this.MyReviews.UseVisualStyleBackColor = true;
+            this.MyReviews.Click += new System.EventHandler(this.MyReviews_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 450);
+            this.ClientSize = new System.Drawing.Size(404, 542);
+            this.Controls.Add(this.MyReviews);
             this.Controls.Add(this.subjectListView);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
@@ -113,5 +125,6 @@
         private System.Windows.Forms.ListView subjectListView;
         private System.Windows.Forms.ColumnHeader ListName;
         private System.Windows.Forms.ColumnHeader ListRating;
+        private System.Windows.Forms.Button MyReviews;
     }
 }

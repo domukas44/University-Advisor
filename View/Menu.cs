@@ -14,6 +14,7 @@ namespace University_advisor
             Buhalterine_apskaita = 1,
             Verslo_vadyba = 2
         }
+        private List<RandC> RandcList;
 
         private List<ListViewItem> mainList;
         Subjects subjects;
@@ -119,6 +120,35 @@ namespace University_advisor
                 mainList.Add(lvi);
             }
             DisplayItems();
+        }
+
+        private void MyReviews_Click(object sender, EventArgs e)
+        {
+
+            RandcList = new List<RandC>();
+            string CurrUser = "user";
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\Reviews.txt");
+
+            foreach (string line in lines)
+            {
+             string[] linesSplit = line.Split(',');
+                string tmp1 = linesSplit[2];
+                tmp1 = tmp1.Substring(10);
+               
+                tmp1 = tmp1.Remove(tmp1.Length - 1);
+                string tmp2 = linesSplit[3];
+                tmp2 = tmp2.Substring(11);
+                tmp2 = tmp2.Remove(tmp2.Length - 1);
+                System.Windows.Forms.MessageBox.Show( tmp1 + "                  " + tmp2);
+                //Console.WriteLine("Substring: {0}", tmp1 + " " + tmp2);
+                RandcList.Add(new RandC(tmp1,tmp2));
+            }
+            /*foreach (string line in lines)
+            {
+                string[] linesSplit = line.Split('\t');
+                subjectList.Add(new Subject(linesSplit[0], Convert.ToDouble(linesSplit[1]), Convert.ToInt32(linesSplit[2])));
+            }*/
+
         }
     }
 }

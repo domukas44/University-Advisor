@@ -65,14 +65,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Class1.cs" />
-    <Compile Include="Controllers\RegularUser.cs" />
     <Compile Include="FormatDouble.cs" />
+=======
     <Compile Include="Controllers\Admin.cs" />
+    <Compile Include="Controllers\IAccount.cs" />
+>>>>>>> origin/RegistrationLogin
     <Compile Include="Controllers\Serializer.cs" />
     <Compile Include="Controllers\Review.cs" />
     <Compile Include="Controllers\User.cs" />
-    <Compile Include="RandC.cs" />
     <Compile Include="View\ConfirmationBox.cs">
       <SubType>Form</SubType>
     </Compile>
