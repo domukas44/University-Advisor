@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using University_advisor.Controllers;
+using University_advisor.Entity;
 
 namespace University_advisor.View
 {
@@ -25,7 +26,8 @@ namespace University_advisor.View
                     menu.Closed += (s, args) => this.Close();
                     menu.Show();
 
-                }catch (Exception err)
+                }
+                catch (Exception err)
                 {
                     label7.Visible = true;
                     label4.Visible = false;

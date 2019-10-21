@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using University_advisor.Controllers;
 
-
-namespace University_advisor.Controllers
+namespace University_advisor.Entity
 {
     class Admin : User
     {
@@ -26,7 +26,7 @@ namespace University_advisor.Controllers
         public void deleteReview(Subject subject)
         {
             List<Review> reviews = Review.getReviewList(subject);
-            if ((reviews.Find(x => x.subject.id == subject.id)) != null)
+            if ((reviews.Find(x => x.Subject.Id == subject.Id)) != null)
             {
                 var path = @"..\..\Resources\Reviews.txt";
                 var oldLines = System.IO.File.ReadAllLines(path);

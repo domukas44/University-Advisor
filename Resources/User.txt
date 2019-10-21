@@ -5,3 +5,4 @@
 {"name":"hehhe","email":"hehehe@hehe.lt","password":"hahaha123???"}
 {"name":"asdasd","email":"asdas@takas.lt","password":"Kasciabus1?"}
 {"name":"asddd","email":"asdas@takas1.lt","password":"Kasciabus1?"}
+{"name":"registrai","email":"regi@strai.lt","password":"registra1?"}

@@ -6,8 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using University_advisor.Controllers;
+using University_advisor.Entity;
 
-namespace University_advisor.Controllers
+namespace University_advisor.Entity
 {
     public class User
     {

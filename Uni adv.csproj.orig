@@ -65,15 +65,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\Deserializer.cs" />
-    <Compile Include="Entity\RegularUser.cs" />
-    <Compile Include="Entity\Admin.cs" />
+<<<<<<< HEAD
+    <Compile Include="Controllers\RegularUser.cs" />
+    <Compile Include="Controllers\Admin.cs" />
     <Compile Include="Controllers\Serializer.cs" />
+    <Compile Include="Controllers\Review.cs" />
+    <Compile Include="Controllers\User.cs" />
+=======
+    <Compile Include="Controller\Deserializer.cs" />
+    <Compile Include="Controller\Serializer.cs" />
     <Compile Include="Data\Enum\SortValuesEnum.cs" />
-    <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\Review.cs" />
-    <Compile Include="Entity\Subject.cs" />
-    <Compile Include="Program.cs" />
+>>>>>>> origin/master
     <Compile Include="View\ConfirmationBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,8 +107,10 @@
     <Compile Include="View\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\Subjects.cs" />
-    <Compile Include="Controllers\SubjectEnum.cs" />
+    <Compile Include="Controller\Subjects.cs" />
+    <Compile Include="Controller\SubjectEnum.cs" />
+    <Compile Include="Entity\Subject.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\ConfirmationBox.resx">
       <DependentUpon>ConfirmationBox.cs</DependentUpon>

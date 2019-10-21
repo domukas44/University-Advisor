@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using University_advisor.Controllers;
 using System.Windows.Forms;
+using University_advisor.Data.Enum;
+using University_advisor.Entity;
 
 namespace University_advisor
 {
@@ -27,7 +29,7 @@ namespace University_advisor
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            label1.Text += currentUser.email;
+            label3.Text += currentUser.email;
 
             subjects = new Subjects();
             mainList = new List<ListViewItem>();
@@ -49,12 +51,12 @@ namespace University_advisor
 
         private void Load_MenuToolStripMenuItem()
         {
-            int id = 0;
+            int Id = 0;
             foreach (String items in GetMenuItemsList())
             {
                 ToolStripMenuItem item = new ToolStripMenuItem(items);
-                item.Tag = id;
-                id++;
+                item.Tag = Id;
+                Id++;
                 pasirenkamiejiDalykaiToolStripMenuItem.DropDownItems.Add(item);
 
                 item.Click += new EventHandler(Item_click);
@@ -123,6 +125,47 @@ namespace University_advisor
                 mainList.Add(lvi);
             }
             DisplayItems();
+        }
+
+        private void OnSortIndexChange(object sender, EventArgs e)
+        {
+            var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
+            IEnumerable<Subject> _query = new List<Subject>();
+            subjectListView.Items.Clear();
+
+            int index = sortComboBox.SelectedIndex;
+            switch (index)
+            {
+                case (int)SortValuesEnum.Name:
+                    _query = subjectsList.OrderByDescending(i => i.Name);
+                    break;
+                case (int)SortValuesEnum.Rating:
+                    _query = subjectsList.OrderByDescending(i => i.Rating);
+                    break;
+                default:
+                    _query = subjectsList;
+                    break;
+            }
+
+            mainList.Clear();
+
+            foreach (var subject in _query)
+            {
+                var row = new string[] { subject.Name, subject.Rating.ToString("0.##") };
+                var lvi = new ListViewItem(row);
+                lvi.Tag = subject;
+                mainList.Add(lvi);
+            }
+
+            foreach (ListViewItem item in mainList)
+            {
+                subjectListView.Items.Add(item);
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            label1.Text = "Rikiavimas: ";
         }
     }
 }

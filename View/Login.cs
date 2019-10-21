@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using University_advisor.Controllers;
+using University_advisor.Entity;
 
 namespace University_advisor.View
 {
