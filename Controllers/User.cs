@@ -26,13 +26,24 @@ namespace University_advisor.Controllers
             if (!checkIfExists())
                 saveAccountToFile();
             else
-                throw new ArgumentException("This email is already registered.");
+                throw new Exception();
         }
 
         public User(string email, string password)
         {
             this.email = email;
             this.password = password;
+            if (checkIfExists())
+            {
+                if (matchEmailAndPassword())
+                {
+                }
+                else throw new Exception();
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
 
         public User()
@@ -49,13 +60,14 @@ namespace University_advisor.Controllers
                 return false;
         }
 
-        public bool checkIfExists(IAccount user)
+        public bool matchEmailAndPassword()
         {
             List<User> users = getUserList();
-            if ((users.Find(x => x.email == user.email)) != null)
-                return true;
-            else
-                return false;
+            var query = from User u in users
+                        where u.email == this.email && u.password == this.password
+                        select u;
+            if (query != null) return true;
+            else return false;
         }
 
         public List<User> getUserList()

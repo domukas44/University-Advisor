@@ -12,7 +12,7 @@ namespace University_advisor.Controllers
         string email { get; set; }
         string password { get; set; }
         bool checkIfExists();
-        bool checkIfExists(IAccount user);
+        bool matchEmailAndPassword();
         void saveAccountToFile();
     }
 }
