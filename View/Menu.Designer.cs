@@ -35,6 +35,8 @@
             this.ListName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ListRating = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.sortComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,15 +48,15 @@
             this.pasirenkamiejiDalykaiToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(585, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(585, 36);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // pasirenkamiejiDalykaiToolStripMenuItem
             // 
             this.pasirenkamiejiDalykaiToolStripMenuItem.Name = "pasirenkamiejiDalykaiToolStripMenuItem";
-            this.pasirenkamiejiDalykaiToolStripMenuItem.Size = new System.Drawing.Size(198, 29);
-            this.pasirenkamiejiDalykaiToolStripMenuItem.Text = "Pasirenkamieji dalykai";
+            this.pasirenkamiejiDalykaiToolStripMenuItem.Size = new System.Drawing.Size(182, 32);
+            this.pasirenkamiejiDalykaiToolStripMenuItem.Text = "Išsamiau apie dalyką";
             // 
             // textBox1
             // 
@@ -103,11 +105,31 @@
             this.sortComboBox.TabIndex = 4;
             this.sortComboBox.SelectedIndexChanged += new System.EventHandler(this.OnSortIndexChange);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(277, 59);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Rikiavimas: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(296, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 20);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Paieška: ";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 692);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.sortComboBox);
             this.Controls.Add(this.subjectListView);
             this.Controls.Add(this.textBox1);
@@ -133,5 +155,7 @@
         private System.Windows.Forms.ColumnHeader ListRating;
         private System.Windows.Forms.ComboBox sortComboBox;
         private System.Windows.Forms.ToolStripMenuItem pasirenkamiejiDalykaiToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -158,5 +158,10 @@ namespace University_advisor
                 subjectListView.Items.Add(item);
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            label1.Text = "Rikiavimas: ";
+        }
     }
 }
