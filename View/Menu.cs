@@ -11,13 +11,46 @@ namespace University_advisor
 {
     public partial class Menu : Form
     {
-        public RegularUser currentUser { get; set; }
-        enum AllSubjects //should be something else as subjects are not constant
+        public struct Subs
         {
-            Bioinformatika = 0,
-            Buhalterine_apskaita = 1,
-            Verslo_vadyba = 2
+            Subject Subject;
+            string Type; // BUS/Pasirenkamasis
+
+            public Subs(Subject subject, string type)
+            {
+                Subject = subject;
+                Type = type;
+            }
         }
+
+        class Collection<Subjects>
+        {
+            private Subjects[] arr = new Subjects[100];
+
+            public Subjects this[int i]
+            {
+                get { return arr[i]; }
+                set { arr[i] = value; }
+            }
+        }
+
+        class Program
+        {
+            static void Subjects()
+            {
+                var subjectCollection = new Collection<string>();
+                subjectCollection[0] = "Bioinformatika";
+                subjectCollection[1] = "Buhalterinė apskaita";
+                subjectCollection[2] = "Verslo vadyba";
+                Console.WriteLine(subjectCollection[0]);
+
+                Subject sub1 = new Subject(subjectCollection[0], "Pasirenkamasis");
+                Subject sub2 = new Subject(subjectCollection[1], "BUS");
+                Subject sub3 = new Subject(subjectCollection[2], "BUS");
+            }
+        }
+
+        public RegularUser currentUser { get; set; }
 
         private List<ListViewItem> mainList;
         private List<RandC> RandcList;

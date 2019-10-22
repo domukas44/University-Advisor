@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace University_advisor.Entity
 {
@@ -8,6 +9,9 @@ namespace University_advisor.Entity
         double TotalRatings = 0;
         public int Id { get; set; }
         private static int idNr = 0;
+        private string v1;
+        private string v2;
+
         public string Name { get; set; }
 
         [JsonIgnore]     // review serialization shouldn't include the subject's total rating
@@ -27,11 +31,22 @@ namespace University_advisor.Entity
             RatingsCount = count;
         }
 
+        public Subject(string v1, string v2)
+        {
+            this.v1 = v1;
+            this.v2 = v2;
+        }
+
         public void AddRating(int NewRating)
         {
             RatingsCount++;
             TotalRatings += NewRating;
             Rating = TotalRatings / RatingsCount;
+        }
+
+        public static implicit operator Subject(string v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
