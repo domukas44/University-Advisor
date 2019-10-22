@@ -50,6 +50,8 @@ namespace University_advisor
             }
         }
 
+        public RegularUser currentUser { get; set; }
+
         private List<ListViewItem> mainList;
         private List<RandC> RandcList;
         Subjects subjects;
