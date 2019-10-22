@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using University_advisor.Controllers;
 using System.Windows.Forms;
-using University_advisor.Controller;
 using University_advisor.Data.Enum;
+using University_advisor.Entity;
 
 namespace University_advisor
 {
@@ -50,6 +51,7 @@ namespace University_advisor
         }
 
         private List<ListViewItem> mainList;
+        private List<RandC> RandcList;
         Subjects subjects;
 
         public Menu()
@@ -59,6 +61,8 @@ namespace University_advisor
 
         private void Menu_Load(object sender, EventArgs e)
         {
+            label3.Text += currentUser.email;
+
             subjects = new Subjects();
             mainList = new List<ListViewItem>();
             var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
@@ -194,6 +198,59 @@ namespace University_advisor
         private void label1_Click(object sender, EventArgs e)
         {
             label1.Text = "Rikiavimas: ";
+        }
+
+        private void ReviewsBtn_Click(object sender, EventArgs e)
+        {
+            /*RandcList = new List<RandC>();
+            string CurrUser = "user";
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\Reviews.txt");
+
+            foreach (string line in lines)
+            {
+                string[] linesSplit = line.Split(',');
+                string tmp1 = linesSplit[2];
+                tmp1 = tmp1.Substring(10);
+
+                tmp1 = tmp1.Remove(tmp1.Length - 1);
+                string tmp2 = linesSplit[3];
+                tmp2 = tmp2.Substring(11);
+                tmp2 = tmp2.Remove(tmp2.Length - 1);
+                System.Windows.Forms.MessageBox.Show(tmp1 + "   " + tmp2);
+                //Console.WriteLine("Substring: {0}", tmp1 + " " + tmp2);
+                RandcList.Add(new RandC(tmp1, tmp2));
+            }
+
+            //CurrUser = currentUser.email;
+            List<RegularUser> Users = new List<RegularUser> {currentUser };
+            //System.Windows.Forms.MessageBox.Show(CurrUser);
+
+            var query =
+                Users.GroupJoin(RandcList,
+           RegularUser => RegularUser,
+           RandC => RandC.email,
+           (RegularUser, result) => new
+           {
+               UserName = RegularUser.email,
+               Reviews = result.Select(RandC => RandC.email)
+
+           }) ;
+      
+
+            // Enumerate results.
+            foreach (var result in query)
+            {
+                Console.WriteLine("{0} bought...", result.Name);
+                foreach (var item in result.Collection)
+                {
+                    Console.WriteLine(item.Product);
+                }
+            }*/
+        }
+
+        private void Label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

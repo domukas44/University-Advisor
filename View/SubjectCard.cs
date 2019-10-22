@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using University_advisor.Controller;
+using University_advisor.Controllers;
 using University_advisor.Entity;
 using University_advisor.View;
 
@@ -21,7 +21,7 @@ namespace University_advisor
         {
             this.subject = subject;
             label1.Text = subject.Name;
-            label3.Text = subject.Rating.ToString("0.##") + "/10";
+            label3.Text = subject.Rating.FormatForRating();
             foreach (Review r in Review.getReviewList(subject))
             {
                 label4.Text += r.Comment;
@@ -64,7 +64,7 @@ namespace University_advisor
         public void confirmReview()
         {
             Visible = false;
-            Serializer.serializeReview(new Review(Subject: subject, Author: "author1", Comment: richTextBox1.Text, Rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named argument usage
+            Serializer.serialize(new Review(Subject: subject, Author: "author1", Comment: richTextBox1.Text, Rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named argument usage
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
             label3.Text = subject.Rating.ToString("0.##") + "/10";
             UpdateData(subject.Rating, subject.Name);

@@ -1,1 +1,1 @@
-{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"Nesirinkit","Rating":5,"Id":9}
+{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"turetu but admin","Rating":3,"Id":12}
