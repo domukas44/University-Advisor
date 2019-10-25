@@ -5,13 +5,13 @@ using University_advisor.Entity;
 
 namespace University_advisor.Controllers
 {
-    public class SubjectEnum : IEnumerator<Subject>
+    public class SubjectEnumerator : IEnumerator<Subject>
     {
         public List<Subject> subjects;
 
         int position = -1;
 
-        public SubjectEnum(List<Subject> subjects)
+        public SubjectEnumerator(List<Subject> subjects)
         {
            this.subjects = subjects;
         }

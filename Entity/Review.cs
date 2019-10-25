@@ -1,6 +1,4 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using University_advisor.Controllers;
 
@@ -20,7 +18,7 @@ namespace University_advisor.Entity
 
         }
             
-        public Review(Subject Subject, string Author, int Rating, string Comment = "Vartotojas atsisake pakomentuoti veritnima") // Optional argument usage
+        public Review(Subject Subject, string Author, int Rating, string Comment = "[Vartotojas atsisak? pakomentuoti vertinim?]") // Optional argument usage
         {
             this.Subject = Subject;
             this.Author = Author;

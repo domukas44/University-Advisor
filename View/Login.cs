@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
-using University_advisor.Controllers;
 using University_advisor.Entity;
 
 namespace University_advisor.View
@@ -20,7 +18,7 @@ namespace University_advisor.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             var registrationForm = new Registration();
             registrationForm.Closed += (s, args) => this.Close();
             registrationForm.Show();

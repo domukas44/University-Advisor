@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using University_advisor.Controllers;
 using University_advisor.Entity;
 
 namespace University_advisor.View
@@ -35,8 +33,8 @@ namespace University_advisor.View
             }
             else
             {
-                if (!passwordValidation()) { label5.Visible = true; label6.Visible = true; }
-                else { label5.Visible = false; label6.Visible = false; }
+                if (!passwordValidation()) { label8.Visible = true; }
+                else { label8.Visible = false; }
                 if (!emailValidation()) label4.Visible = true;
                 else label4.Visible = false; 
             }
@@ -47,8 +45,7 @@ namespace University_advisor.View
             string email = textBox2.Text;
             string pattern = @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
             Match match = Regex.Match(email, pattern);
-            if (match.Success) return true;
-            else return false;
+            return match.Success;
         }
 
         private bool passwordValidation()
@@ -56,8 +53,7 @@ namespace University_advisor.View
             string password = textBox3.Text;
             string pattern = @"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$";
             Match match = Regex.Match(password, pattern);
-            if (match.Success) return true;
-            else return false;
+            return match.Success;
         }
 
         private void button2_Click(object sender, EventArgs e)
