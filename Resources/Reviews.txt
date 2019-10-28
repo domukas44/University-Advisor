@@ -1,15 +1,5 @@
-﻿{"subject":{"id":0,"Name":"Bioinformatika"},"author":"author1","comment":"","rating":10,"id":0}
-{"subject":{"id":0,"Name":"Bioinformatika"},"author":"author1","comment":"","rating":1,"id":1}
-{"subject":{"id":2,"Name":"Verslo vadyba"},"author":"author1","comment":"","rating":5,"id":2}
-{"subject":{"id":2,"Name":"Verslo vadyba"},"author":"author1","comment":"","rating":2,"id":3}
-{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"Vartotojas atsisakė pakomentuoti veritnimą","Rating":5,"Id":4}
-{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"Neįdomus dalykas, piktas dėstytojas","Rating":2,"Id":7}
-{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"Vartotojas atsisake pakomentuoti veritnima","Rating":3,"Id":8}
-{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"Nesirinkit","Rating":5,"Id":9}
-{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"asa","Rating":4,"Id":10}
-{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"asas","Rating":2,"Id":11}
-{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"turetu but admin","Rating":3,"Id":12}
-{"Subject":{"Id":1,"Name":"Buhalterine apskaita"},"Author":"author1","Comment":"","Rating":5,"Id":13}
-{"Subject":{"Id":1,"Name":"Buhalterine apskaita"},"Author":"author1","Comment":"asd","Rating":2,"Id":14}
-{"Subject":{"Id":2,"Name":"Verslo vadyba"},"Author":"author1","Comment":"","Rating":10,"Id":15}
-{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"","Rating":10,"Id":16}
+﻿{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"Visai nieko","Rating":8,"Id":0}
+{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"Nu taip vidutiniskai","Rating":6,"Id":1}
+{"Subject":{"Id":1,"Name":"Buhalterine apskaita"},"Author":"author1","Comment":"","Rating":5,"Id":2}
+{"Subject":{"Id":2,"Name":"Verslo vadyba"},"Author":"author1","Comment":"","Rating":10,"Id":3}
+{"Subject":{"Id":2,"Name":"Verslo vadyba"},"Author":"author1","Comment":"","Rating":1,"Id":4}
