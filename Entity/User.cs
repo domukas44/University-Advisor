@@ -3,19 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using University_advisor.Controllers;
-using University_advisor.Entity;
 
 namespace University_advisor.Entity
 {
     public class User
     {
         public string name { get; set; }
-
         public string email { get; set; }
-
         public string password { get; set; }
 
         public User(string name, string email, string password)
@@ -55,10 +49,7 @@ namespace University_advisor.Entity
         public bool checkIfExists()
         {
             List<User> users = getUserList();
-            if ((users.Find(x => x.email == this.email)) != null)
-                return true;
-            else
-                return false;
+            return (users.Find(x => x.email == this.email)) != null;
         }
 
         public bool matchEmailAndPassword()
@@ -67,8 +58,7 @@ namespace University_advisor.Entity
             var query = from User u in users
                         where u.email == this.email && u.password == this.password
                         select u;
-            if (query != null) return true;
-            else return false;
+            return query != null;
         }
 
         public List<User> getUserList()

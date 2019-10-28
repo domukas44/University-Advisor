@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using University_advisor.Controllers;
 using University_advisor.Entity;
@@ -44,7 +43,7 @@ namespace University_advisor
                 MessageBox.Show("Būtina pasirinkti įvertinimą.");
             }
 
-            // if rating was chosen - checks if a Comment was added
+            // if rating was chosen - checks if a comment was added
             else
             {
                 if (richTextBox1.Text != "")
@@ -70,16 +69,6 @@ namespace University_advisor
             UpdateData(subject.Rating, subject.Name);
             menu.UpdateRatings();
             MessageBox.Show("Atsiliepimas sėkmingai išsaugotas.");
-        }
-
-        private void SubjectCard_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label5_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void UpdateData(double NewRating, string name)

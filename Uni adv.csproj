@@ -107,7 +107,7 @@
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Subjects.cs" />
-    <Compile Include="Controllers\SubjectEnum.cs" />
+    <Compile Include="Controllers\SubjectEnumerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\ConfirmationBox.resx">
       <DependentUpon>ConfirmationBox.cs</DependentUpon>

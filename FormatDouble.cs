@@ -1,5 +1,4 @@
-﻿
-namespace University_advisor
+﻿namespace University_advisor
 {
     public static class FormatDouble
     {

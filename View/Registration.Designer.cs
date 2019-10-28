@@ -40,6 +40,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -115,30 +116,28 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(64, 200);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(203, 13);
+            this.label5.Size = new System.Drawing.Size(220, 13);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Slaptažodis turi būti ilgesnis nei 8 simboliai";
-            this.label5.Visible = false;
+            this.label5.Text = "Slaptažodis turi būti ilgesnis nei 8 simboliai bei";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(66, 213);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(236, 13);
             this.label6.TabIndex = 9;
             this.label6.Text = "turėti bent vieną raidę, skaičių ir specialųjį simbolį";
-            this.label6.Visible = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(66, 137);
+            this.label7.Location = new System.Drawing.Point(64, 137);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(161, 13);
             this.label7.TabIndex = 10;
@@ -155,11 +154,23 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(64, 243);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(166, 13);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Slaptažodis neatitinka reikalavimų";
+            this.label8.Visible = false;
+            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 450);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -193,5 +204,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label8;
     }
 }

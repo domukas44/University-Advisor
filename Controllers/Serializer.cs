@@ -31,21 +31,5 @@ namespace University_advisor.Controllers
                 sw.WriteLine();
             }
         }
-
-        public static Review deserialize()
-        {
-            using (StreamReader sr = new StreamReader(@"..\..\Resources\LastReview.txt"))
-            {
-                return JsonConvert.DeserializeObject<Review>(sr.ReadToEnd());
-            }
-        }
-
-        public static User deserializeUser()
-        {
-            using (StreamReader sr = new StreamReader(@"..\..\Resources\User.txt"))
-            {
-                return JsonConvert.DeserializeObject<User>(sr.ReadToEnd());
-            }
-        }
     }
 }

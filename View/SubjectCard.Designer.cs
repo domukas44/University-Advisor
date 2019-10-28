@@ -152,7 +152,6 @@
             this.label5.Size = new System.Drawing.Size(92, 20);
             this.label5.TabIndex = 9;
             this.label5.Text = "Atsiliepimai:";
-            this.label5.Click += new System.EventHandler(this.Label5_Click);
             // 
             // SubjectCard
             // 
@@ -172,7 +171,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "SubjectCard";
             this.Text = "Form2";
-            this.Load += new System.EventHandler(this.SubjectCard_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

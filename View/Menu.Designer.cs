@@ -39,6 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.ReviewsBtn = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +76,7 @@
             this.ListRating});
             this.subjectListView.GridLines = true;
             this.subjectListView.HideSelection = false;
-            this.subjectListView.Location = new System.Drawing.Point(12, 70);
+            this.subjectListView.Location = new System.Drawing.Point(12, 76);
             this.subjectListView.Name = "subjectListView";
             this.subjectListView.Size = new System.Drawing.Size(669, 355);
             this.subjectListView.TabIndex = 3;
@@ -95,6 +96,7 @@
             // 
             // sortComboBox
             // 
+            this.sortComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sortComboBox.FormattingEnabled = true;
             this.sortComboBox.Items.AddRange(new object[] {
             "Dalyko pavadinimas (Z - A)",
@@ -102,7 +104,7 @@
             this.sortComboBox.Location = new System.Drawing.Point(251, 36);
             this.sortComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.sortComboBox.Name = "sortComboBox";
-            this.sortComboBox.Size = new System.Drawing.Size(125, 21);
+            this.sortComboBox.Size = new System.Drawing.Size(156, 21);
             this.sortComboBox.TabIndex = 4;
             this.sortComboBox.SelectedIndexChanged += new System.EventHandler(this.OnSortIndexChange);
             // 
@@ -118,7 +120,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(197, 6);
+            this.label2.BackColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(195, 7);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
@@ -147,11 +150,21 @@
             this.ReviewsBtn.UseVisualStyleBackColor = true;
             this.ReviewsBtn.Click += new System.EventHandler(this.ReviewsBtn_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(195, 39);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Rikiuoti:";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 514);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.ReviewsBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -183,5 +196,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button ReviewsBtn;
+        private System.Windows.Forms.Label label4;
     }
 }
