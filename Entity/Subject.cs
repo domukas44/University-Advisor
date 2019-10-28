@@ -7,6 +7,7 @@ namespace University_advisor.Entity
     { 
         int RatingsCount = 0;
         double TotalRatings = 0;
+        int TotalRatingsInt = 0;
         public int Id { get; set; }
         private static int idNr = 0;
         private string v1;
@@ -28,6 +29,8 @@ namespace University_advisor.Entity
             Name = name;
             this.Rating = Rating;
             TotalRatings = Rating * count;
+            if ((TotalRatings == 10) || (TotalRatings == 0))
+                TotalRatingsInt = (int)TotalRatings;
             RatingsCount = count;
         }
 
