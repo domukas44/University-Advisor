@@ -18,8 +18,8 @@ namespace University_advisor.Entity
             this.email = email;
             this.password = password;
 
-            if (!checkIfExists())
-                saveAccountToFile();
+            if (!CheckIfExists())
+                SaveAccountToFile();
             else
                 throw new Exception();
         }
@@ -28,9 +28,9 @@ namespace University_advisor.Entity
         {
             this.email = email;
             this.password = password;
-            if (checkIfExists())
+            if (CheckIfExists())
             {
-                if (matchEmailAndPassword())
+                if (MatchEmailAndPassword())
                 {
                 }
                 else throw new Exception();
@@ -46,22 +46,22 @@ namespace University_advisor.Entity
 
         }
 
-        public bool checkIfExists()
+        public bool CheckIfExists()
         {
-            List<User> users = getUserList();
+            List<User> users = GetUserList();
             return (users.Find(x => x.email == this.email)) != null;
         }
 
-        public bool matchEmailAndPassword()
+        public bool MatchEmailAndPassword()
         {
-            List<User> users = getUserList();
+            List<User> users = GetUserList();
             var query = from User u in users
                         where u.email == this.email && u.password == this.password
                         select u;
             return query != null;
         }
 
-        public List<User> getUserList()
+        public List<User> GetUserList()
         {
             var users = new List<User>();
             using (StreamReader sr = new StreamReader(@"..\..\Resources\User.txt"))
@@ -74,7 +74,7 @@ namespace University_advisor.Entity
             return users;
         }
 
-        public void saveAccountToFile() 
+        public void SaveAccountToFile() 
         {
             JsonSerializer serializer = new JsonSerializer();
             serializer.NullValueHandling = NullValueHandling.Ignore;

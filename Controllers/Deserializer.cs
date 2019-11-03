@@ -6,7 +6,7 @@ namespace University_advisor.Controllers
 {
     public class Deserializer<T>
     {
-        public static T deserializeLine(string fileName)
+        public static T DeserializeLine(string fileName)
         {
             using (StreamReader sr = new StreamReader(fileName))
             {
@@ -14,7 +14,7 @@ namespace University_advisor.Controllers
             }
         }
 
-        public static List<T> deserializeFile(string fileName)
+        public static List<T> DeserializeFile(string fileName)
         {
             using (StreamReader sr = new StreamReader(fileName))
             {

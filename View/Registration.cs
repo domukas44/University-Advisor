@@ -14,7 +14,7 @@ namespace University_advisor.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (emailValidation() && passwordValidation())
+            if (EmailValidation() && PasswordValidation())
             {
                 try
                 {
@@ -33,14 +33,14 @@ namespace University_advisor.View
             }
             else
             {
-                if (!passwordValidation()) { label8.Visible = true; }
+                if (!PasswordValidation()) { label8.Visible = true; }
                 else { label8.Visible = false; }
-                if (!emailValidation()) label4.Visible = true;
+                if (!EmailValidation()) label4.Visible = true;
                 else label4.Visible = false; 
             }
         }
 
-        private bool emailValidation()
+        private bool EmailValidation()
         {
             string email = textBox2.Text;
             string pattern = @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
@@ -48,7 +48,7 @@ namespace University_advisor.View
             return match.Success;
         }
 
-        private bool passwordValidation()
+        private bool PasswordValidation()
         {
             string password = textBox3.Text;
             string pattern = @"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$";
@@ -58,7 +58,7 @@ namespace University_advisor.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             var loginForm = new Login();
             loginForm.Closed += (s, args) => this.Close();
             loginForm.Show();

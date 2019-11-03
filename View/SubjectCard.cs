@@ -21,7 +21,7 @@ namespace University_advisor
             this.subject = subject;
             label1.Text = subject.Name;
             label3.Text = subject.Rating.FormatForRating();
-            foreach (Review r in Review.getReviewList(subject))
+            foreach (Review r in Review.GetReviewList(subject))
             {
                 label4.Text += r.Comment;
                 label4.Text += " ";
@@ -48,7 +48,7 @@ namespace University_advisor
             {
                 if (richTextBox1.Text != "")
                 {
-                    confirmReview();
+                    ConfirmReview();
                 }
 
                 // if no comment found - asks to confirm the decision
@@ -60,10 +60,10 @@ namespace University_advisor
             }
         }
 
-        public void confirmReview()
+        public void ConfirmReview()
         {
             Visible = false;
-            Serializer.serialize(new Review(Subject: subject, Author: "author1", Comment: richTextBox1.Text, Rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named argument usage
+            Serializer.Serialize(new Review(subject: subject, author: menu.ReturnCurrentUserEmail(), comment: richTextBox1.Text, rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named argument usage
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
             label3.Text = subject.Rating.ToString("0.##") + "/10";
             UpdateData(subject.Rating, subject.Name);
@@ -73,7 +73,7 @@ namespace University_advisor
 
         private void UpdateData(double NewRating, string name)
         {
-            string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\TestData.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\Data.txt");
             for(int i=0; i< lines.Length; i++)
             {
                 string[] linesSplit = lines[i].Split('\t');
@@ -87,12 +87,7 @@ namespace University_advisor
                     break;
                 }
             }
-            System.IO.File.WriteAllLines(@"..\..\Resources\TestData.txt", lines);
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            System.IO.File.WriteAllLines(@"..\..\Resources\Data.txt", lines);
         }
     }
 }

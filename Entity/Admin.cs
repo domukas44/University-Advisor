@@ -5,9 +5,9 @@ namespace University_advisor.Entity
 {
     class Admin : User
     {
-        public void deleteUser(string email)
+        public void DeleteUser(string email)
         {
-            List<User> users = getUserList();
+            List<User> users = GetUserList();
             if((users.Find(x => x.email == email)) != null)
             {
                 var path = @"..\..\Resources\User.txt";
@@ -22,9 +22,9 @@ namespace University_advisor.Entity
             }
         }
 
-        public void deleteReview(Subject subject)
+        public void DeleteReview(Subject subject)
         {
-            List<Review> reviews = Review.getReviewList(subject);
+            List<Review> reviews = Review.GetReviewList(subject);
             if ((reviews.Find(x => x.Subject.Id == subject.Id)) != null)
             {
                 var path = @"..\..\Resources\Reviews.txt";
