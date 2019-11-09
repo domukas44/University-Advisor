@@ -18,20 +18,20 @@ namespace University_advisor.Entity
 
         }
             
-        public Review(Subject subject, string author, int rating, string comment = "[Vartotojas atsisak? pakomentuoti vertinim?]") // Optional argument usage
+        public Review(Subject subject, string author, int rating, string comment = "[Vartotojas atsisake pakomentuoti vertinima]") // Optional argument usage
         {
             Subject = subject;
             Author = author;
             Comment = comment;
             Rating = rating;
-            Review r = Deserializer<Review>.DeserializeLine(@"..\..\Resources\LastReview.txt");
-            if (r == null)
+            var lastReview = new ReviewWS.ReviewWebService().GetLastReview();
+            if (lastReview == null)
             {
                 Id = 0;
             }
             else
             {
-                Id = r.Id + 1;
+                Id = lastReview.Id + 1;
             }
         }
 
@@ -39,7 +39,7 @@ namespace University_advisor.Entity
         {
             var allReviews = new List<Review>();
             var filteredReviews = new List<Review>();
-            allReviews = Deserializer<Review>.DeserializeFile(@"..\..\Resources\Reviews.txt");
+            allReviews = Deserializer<Review>.DeserializeFile(@"C:\Resources\Reviews.txt");
             var query = from Review r in allReviews
                         where r.Subject.Id == Subject.Id
                         select r;

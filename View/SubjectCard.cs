@@ -63,31 +63,11 @@ namespace University_advisor
         public void ConfirmReview()
         {
             Visible = false;
-            Serializer.Serialize(new Review(subject: subject, author: menu.ReturnCurrentUserEmail(), comment: richTextBox1.Text, rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named argument usage
+            Serializer.Serialize(new Review(subject: subject, author: menu.ReturnCurrentUserEmail(), comment: richTextBox1.Text, rating: Int32.Parse((string)comboBox1.SelectedItem)));        // named argument usage
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
-            label3.Text = subject.Rating.ToString("0.##") + "/10";
-            UpdateData(subject.Rating, subject.Name);
+            label3.Text = subject.Rating.FormatForRating();
             menu.UpdateRatings();
             MessageBox.Show("Atsiliepimas sėkmingai išsaugotas.");
-        }
-
-        private void UpdateData(double NewRating, string name)
-        {
-            string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\Data.txt");
-            for(int i=0; i< lines.Length; i++)
-            {
-                string[] linesSplit = lines[i].Split('\t');
-                if(linesSplit[0] == name)
-                {
-                    linesSplit[1] = NewRating.ToString("0.##");
-                    int temp = Convert.ToInt32(linesSplit[2]);
-                    temp++;
-                    linesSplit[2] = (temp).ToString();
-                    lines[i] = linesSplit[0] + "\t" + linesSplit[1] + "\t" + linesSplit[2];
-                    break;
-                }
-            }
-            System.IO.File.WriteAllLines(@"..\..\Resources\Data.txt", lines);
         }
     }
 }

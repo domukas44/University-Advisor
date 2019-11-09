@@ -7,4 +7,4 @@
 {"name":"asddd","email":"asdas@takas1.lt","password":"Kasciabus1?"}
 {"name":"registrai","email":"regi@strai.lt","password":"registra1?"}
 {"name":"registrai","email":"admin","password":"admin"}
-{"name":"test","email":"te@st.lt","password":"testtest!1"}
+{"name":"test","email":"a@a.a","password":"aaaaaa!1"}

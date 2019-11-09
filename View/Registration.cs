@@ -14,7 +14,9 @@ namespace University_advisor.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (EmailValidation() && PasswordValidation())
+            UserWS.UserWebService client = new UserWS.UserWebService();
+
+            if (client.EmailValidation(textBox2.Text) && client.PasswordValidation(textBox3.Text))
             {
                 try
                 {
@@ -33,27 +35,11 @@ namespace University_advisor.View
             }
             else
             {
-                if (!PasswordValidation()) { label8.Visible = true; }
+                if (!client.PasswordValidation(textBox3.Text)) { label8.Visible = true; }
                 else { label8.Visible = false; }
-                if (!EmailValidation()) label4.Visible = true;
+                if (!client.EmailValidation(textBox2.Text)) label4.Visible = true;
                 else label4.Visible = false; 
             }
-        }
-
-        private bool EmailValidation()
-        {
-            string email = textBox2.Text;
-            string pattern = @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
-            Match match = Regex.Match(email, pattern);
-            return match.Success;
-        }
-
-        private bool PasswordValidation()
-        {
-            string password = textBox3.Text;
-            string pattern = @"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$";
-            Match match = Regex.Match(password, pattern);
-            return match.Success;
         }
 
         private void button2_Click(object sender, EventArgs e)

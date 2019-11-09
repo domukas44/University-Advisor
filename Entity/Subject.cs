@@ -1,13 +1,12 @@
 ﻿using System;
 using Newtonsoft.Json;
+using University_advisor.SubjectWS;
 
 namespace University_advisor.Entity
 {
+    [Serializable]
     public class Subject
     { 
-        int RatingsCount = 0;
-        double TotalRatings = 0;
-        int TotalRatingsInt = 0;
         public int Id { get; set; }
         private static int idNr = 0;
         private string v1;
@@ -28,10 +27,6 @@ namespace University_advisor.Entity
             Id = idNr++;
             Name = name;
             this.Rating = Rating;
-            TotalRatings = Rating * count;
-            if ((TotalRatings == 10) || (TotalRatings == 0))
-                TotalRatingsInt = (int)TotalRatings;
-            RatingsCount = count;
         }
 
         public Subject(string v1, string v2)
@@ -40,16 +35,29 @@ namespace University_advisor.Entity
             this.v2 = v2;
         }
 
-        public void AddRating(int NewRating)
+        public void AddRating(int newRating)
         {
-            RatingsCount++;
-            TotalRatings += NewRating;
-            Rating = TotalRatings / RatingsCount;
+            Rating = new SubjectWebService().AddRating(newRating, this.Name);       // adds the rating, updates data and returns the new calculated rating
+        }
+
+        public static void ResetIdNr()
+        {
+            idNr = 0;
         }
 
         public static implicit operator Subject(string v)
         {
             throw new NotImplementedException();
+        }
+
+        public static Subject ConvertToMySubject(SubjectWS.Subject s)
+        {
+            return new Subject() { Id = s.Id, Name = s.Name, Rating = s.Rating };
+        }
+
+        public University_advisor.SubjectWS.Subject ConvertToWSSubject(Subject s)
+        {
+            return new University_advisor.SubjectWS.Subject() { Id = s.Id, Name = s.Name, Rating = s.Rating};
         }
     }
 }
