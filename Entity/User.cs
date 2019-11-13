@@ -64,7 +64,7 @@ namespace University_advisor.Entity
         public List<User> GetUserList()
         {
             var users = new List<User>();
-            using (StreamReader sr = new StreamReader(@"C:\Resources\User.txt"))
+            using (StreamReader sr = new StreamReader(@"..\..\Resources\User.txt"))
             {
                 while (!sr.EndOfStream)
                 {
@@ -78,7 +78,7 @@ namespace University_advisor.Entity
         {
             JsonSerializer serializer = new JsonSerializer();
             serializer.NullValueHandling = NullValueHandling.Ignore;
-            using (StreamWriter sw = new StreamWriter(@"C:\Resources\User.txt", true))       // true means append to file
+            using (StreamWriter sw = new StreamWriter(@"..\..\Resources\User.txt", true))       // true means append to file
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 serializer.Serialize(writer, this);

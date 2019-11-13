@@ -10,8 +10,8 @@ namespace University_advisor.Controllers
         public static void Serialize(Review review)
         {
             serializer.NullValueHandling = NullValueHandling.Ignore;
-            using (StreamWriter sw = new StreamWriter(@"C:\Resources\Reviews.txt", true))       // true means append to file
-            using (StreamWriter sw2 = new StreamWriter(@"C:\Resources\LastReview.txt"))
+            using (StreamWriter sw = new StreamWriter(@"..\..\Resources\Reviews.txt", true))       // true means append to file
+            using (StreamWriter sw2 = new StreamWriter(@"..\..\Resources\LastReview.txt"))
             using (JsonWriter writer = new JsonTextWriter(sw))
             using (JsonWriter writer2 = new JsonTextWriter(sw2))
             {
@@ -24,7 +24,7 @@ namespace University_advisor.Controllers
         public static void Serialize(User user)
         {
             serializer.NullValueHandling = NullValueHandling.Ignore;
-            using (StreamWriter sw = new StreamWriter(@"C:\Resources\User.txt", true))       // true means append to file
+            using (StreamWriter sw = new StreamWriter(@"..\..\Resources\User.txt", true))       // true means append to file
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 serializer.Serialize(writer, user);

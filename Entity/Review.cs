@@ -39,7 +39,7 @@ namespace University_advisor.Entity
         {
             var allReviews = new List<Review>();
             var filteredReviews = new List<Review>();
-            allReviews = Deserializer<Review>.DeserializeFile(@"C:\Resources\Reviews.txt");
+            allReviews = Deserializer<Review>.DeserializeFile(@"..\..\Resources\Reviews.txt");
             var query = from Review r in allReviews
                         where r.Subject.Id == Subject.Id
                         select r;

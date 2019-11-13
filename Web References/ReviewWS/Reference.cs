@@ -195,47 +195,11 @@ namespace University_advisor.ReviewWS {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class Subject {
         
-        private int ratingsCountField;
-        
-        private double totalRatingsField;
-        
-        private int totalRatingsIntField;
-        
         private int idField;
         
         private string nameField;
         
         private double ratingField;
-        
-        /// <remarks/>
-        public int RatingsCount {
-            get {
-                return this.ratingsCountField;
-            }
-            set {
-                this.ratingsCountField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double TotalRatings {
-            get {
-                return this.totalRatingsField;
-            }
-            set {
-                this.totalRatingsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int TotalRatingsInt {
-            get {
-                return this.totalRatingsIntField;
-            }
-            set {
-                this.totalRatingsIntField = value;
-            }
-        }
         
         /// <remarks/>
         public int Id {

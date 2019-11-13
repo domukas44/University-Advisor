@@ -209,7 +209,7 @@ namespace University_advisor
 
         private void ReviewsBtn_Click(object sender, EventArgs e)
         {
-            var allReviews = Deserializer<Review>.DeserializeFile(@"C:\Resources\Reviews.txt");
+            var allReviews = Deserializer<Review>.DeserializeFile(@"..\..\Resources\Reviews.txt");
             List<string> users = new List<string>
             {
                 currentUser.email

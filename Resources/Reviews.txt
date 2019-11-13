@@ -1,12 +1,5 @@
-﻿{"Subject":{"Id":1,"Name":"Informatikos teisė"},"Author":"a@a.a","Comment":"","Rating":2,"Id":0}
-{"Subject":{"Id":1,"Name":"Informatikos teisė"},"Author":"a@a.a","Comment":"","Rating":1,"Id":1}
+﻿{"Subject":{"Id":0,"Name":"Buhalterinė apskaita"},"Author":"a@a.a","Comment":"","Rating":10,"Id":0}
+{"Subject":{"Id":0,"Name":"Buhalterinė apskaita"},"Author":"a@a.a","Comment":"","Rating":9,"Id":1}
 {"Subject":{"Id":1,"Name":"Informatikos teisė"},"Author":"a@a.a","Comment":"","Rating":3,"Id":2}
-{"Subject":{"Id":1,"Name":"Informatikos teisė"},"Author":"a@a.a","Comment":"","Rating":5,"Id":3}
-{"Subject":{"Id":1,"Name":"Informatikos teisė"},"Author":"a@a.a","Comment":"","Rating":1,"Id":4}
-{"Subject":{"Id":1,"Name":"Informatikos teisė"},"Author":"a@a.a","Comment":"","Rating":6,"Id":5}
-{"Subject":{"Id":1,"Name":"Informatikos teisė"},"Author":"a@a.a","Comment":"","Rating":7,"Id":6}
-{"Subject":{"Id":1,"Name":"Informatikos teisė"},"Author":"a@a.a","Comment":"","Rating":5,"Id":7}
-{"Subject":{"Id":0,"Name":"Buhalterinė apskaita"},"Author":"a@a.a","Comment":"","Rating":8,"Id":0}
-{"Subject":{"Id":0,"Name":"Buhalterinė apskaita"},"Author":"a@a.a","Comment":"","Rating":9,"Id":0}
-{"Subject":{"Id":0,"Name":"Buhalterinė apskaita"},"Author":"a@a.a","Comment":"","Rating":1,"Id":0}
-{"Subject":{"Id":0,"Name":"Buhalterinė apskaita"},"Author":"a@a.a","Comment":"","Rating":6,"Id":0}
+{"Subject":{"Id":1,"Name":"Informatikos teisė"},"Author":"a@a.a","Comment":"","Rating":6,"Id":3}
+{"Subject":{"Id":1,"Name":"Informatikos teisė"},"Author":"a@a.a","Comment":"","Rating":7,"Id":4}

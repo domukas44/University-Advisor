@@ -10,7 +10,7 @@ namespace University_advisor.Entity
             List<User> users = GetUserList();
             if((users.Find(x => x.email == email)) != null)
             {
-                var path = @"C:\Resources\User.txt";
+                var path = @"..\Resources\User.txt";
                 var oldLines = System.IO.File.ReadAllLines(path);
                 var newLines = oldLines.Select(line => new {
                     Line = line,
@@ -27,7 +27,7 @@ namespace University_advisor.Entity
             List<Review> reviews = Review.GetReviewList(subject);
             if ((reviews.Find(x => x.Subject.Id == subject.Id)) != null)
             {
-                var path = @"C:\Resources\Reviews.txt";
+                var path = @"..:\Resources\Reviews.txt";
                 var oldLines = System.IO.File.ReadAllLines(path);
                 var newLines = oldLines.Select(line => new {
                     Line = line,
