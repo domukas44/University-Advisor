@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System;
 using System.IO;
 using University_advisor.Entity;
 
@@ -15,9 +16,10 @@ namespace University_advisor.Controllers
             using (JsonWriter writer = new JsonTextWriter(sw))
             using (JsonWriter writer2 = new JsonTextWriter(sw2))
             {
-                serializer.Serialize(writer, review);
+                Action<JsonWriter, Review> ser = serializer.Serialize;      // delegate?
+                ser(writer, review);
                 sw.WriteLine();
-                serializer.Serialize(writer2, review);
+                ser(writer2, review);
             }
         }
 

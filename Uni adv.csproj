@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Converter.cs" />
     <Compile Include="Controllers\Deserializer.cs" />
     <Compile Include="Entity\RegularUser.cs" />
     <Compile Include="Entity\Admin.cs" />
@@ -188,6 +189,9 @@
     <None Include="Web References\UserWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\UserWS\User.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\UserWS\UserWebService.wsdl" />
   </ItemGroup>

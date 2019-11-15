@@ -22,11 +22,11 @@ namespace University_advisor.Entity
 
         }
 
-        public Subject(string name, double Rating, int count)
+        public Subject(string name, double rating)
         {
             Id = idNr++;
             Name = name;
-            this.Rating = Rating;
+            Rating = rating;
         }
 
         public Subject(string v1, string v2)
@@ -48,16 +48,6 @@ namespace University_advisor.Entity
         public static implicit operator Subject(string v)
         {
             throw new NotImplementedException();
-        }
-
-        public static Subject ConvertToMySubject(SubjectWS.Subject s)
-        {
-            return new Subject() { Id = s.Id, Name = s.Name, Rating = s.Rating };
-        }
-
-        public University_advisor.SubjectWS.Subject ConvertToWSSubject(Subject s)
-        {
-            return new University_advisor.SubjectWS.Subject() { Id = s.Id, Name = s.Name, Rating = s.Rating};
         }
     }
 }

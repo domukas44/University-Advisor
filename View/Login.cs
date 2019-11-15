@@ -20,7 +20,7 @@ namespace University_advisor.View
         {
             Hide();
             var registrationForm = new Registration();
-            registrationForm.Closed += (s, args) => this.Close();
+            registrationForm.Closed += (s, args) => this.Close();       // standard event + lambda
             registrationForm.Show();
         }
 
@@ -31,7 +31,7 @@ namespace University_advisor.View
                 Menu menu = new Menu();
                 menu.currentUser = new RegularUser(textBox1.Text, textBox2.Text);
                 this.Hide();
-                menu.Closed += (s, args) => this.Close();
+                menu.Closed += (s, args) => this.Close();           // standard event + lambda
                 menu.Show();
 
             }

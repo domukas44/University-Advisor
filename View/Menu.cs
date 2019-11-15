@@ -63,7 +63,7 @@ namespace University_advisor
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            label3.Text += currentUser.email;
+            label3.Text += currentUser.Email;
 
             subjects = new Subjects();
             mainList = new List<ListViewItem>();
@@ -107,7 +107,10 @@ namespace University_advisor
             var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
 
             ToolStripMenuItem item = sender as ToolStripMenuItem;
-            SubjectCard subjectCardForm = new SubjectCard(this);
+            SubjectCard subjectCardForm = new SubjectCard(this, delegate (double d)         // delegate + anonymous method
+                                                                {
+                                                                    return d.ToString("0.##") + "/10";
+                                                                });
 
             subjectCardForm.ShowInformation(subjectsList[Convert.ToInt32(item.Tag)]);
 
@@ -171,7 +174,7 @@ namespace University_advisor
             switch (index)
             {
                 case (int)SortValuesEnum.Name:
-                    _query = subjectsList.OrderByDescending(i => i.Name);
+                    _query = subjectsList.OrderBy(i => i.Name);
                     break;
                 case (int)SortValuesEnum.Rating:
                     _query = subjectsList.OrderByDescending(i => i.Rating);
@@ -204,16 +207,13 @@ namespace University_advisor
 
         public string ReturnCurrentUserEmail()
         {
-            return currentUser.email;
+            return currentUser.Email;
         }
 
         private void ReviewsBtn_Click(object sender, EventArgs e)
         {
             var allReviews = Deserializer<Review>.DeserializeFile(@"..\..\Resources\Reviews.txt");
-            List<string> users = new List<string>
-            {
-                currentUser.email
-            };
+            List<string> users = new List<string>{currentUser.Email};
 
             var query =
                 users.GroupJoin(allReviews,
@@ -232,7 +232,7 @@ namespace University_advisor
                                     });
 
             MyReviews myReviewsForm = new MyReviews();
-            myReviewsForm.usernameLabel.Text = currentUser.email;
+            myReviewsForm.usernameLabel.Text = currentUser.Email;
 
             // Enumerate results.
             foreach (var person in query)

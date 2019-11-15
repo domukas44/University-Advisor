@@ -30,6 +30,28 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetUserList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserListResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="EmailValidationSoapIn">
@@ -44,6 +66,12 @@
   <wsdl:message name="PasswordValidationSoapOut">
     <wsdl:part name="parameters" element="tns:PasswordValidationResponse" />
   </wsdl:message>
+  <wsdl:message name="GetUserListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserList" />
+  </wsdl:message>
+  <wsdl:message name="GetUserListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserListResponse" />
+  </wsdl:message>
   <wsdl:portType name="UserWebServiceSoap">
     <wsdl:operation name="EmailValidation">
       <wsdl:input message="tns:EmailValidationSoapIn" />
@@ -52,6 +80,10 @@
     <wsdl:operation name="PasswordValidation">
       <wsdl:input message="tns:PasswordValidationSoapIn" />
       <wsdl:output message="tns:PasswordValidationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList">
+      <wsdl:input message="tns:GetUserListSoapIn" />
+      <wsdl:output message="tns:GetUserListSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="UserWebServiceSoap" type="tns:UserWebServiceSoap">
@@ -74,6 +106,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUserList">
+      <soap:operation soapAction="http://tempuri.org/GetUserList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="UserWebServiceSoap12" type="tns:UserWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -88,6 +129,15 @@
     </wsdl:operation>
     <wsdl:operation name="PasswordValidation">
       <soap12:operation soapAction="http://tempuri.org/PasswordValidation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList">
+      <soap12:operation soapAction="http://tempuri.org/GetUserList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

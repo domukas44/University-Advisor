@@ -3,20 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using University_advisor.Controllers;
 
 namespace University_advisor.Entity
 {
     public class User
     {
-        public string name { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
 
         public User(string name, string email, string password)
         {
-            this.name = name;
-            this.email = email;
-            this.password = password;
+            Name = name;
+            Email = email;
+            Password = password;
 
             if (!CheckIfExists())
                 SaveAccountToFile();
@@ -26,8 +27,8 @@ namespace University_advisor.Entity
 
         public User(string email, string password)
         {
-            this.email = email;
-            this.password = password;
+            Email = email;
+            Password = password;
             if (CheckIfExists())
             {
                 if (MatchEmailAndPassword())
@@ -49,32 +50,24 @@ namespace University_advisor.Entity
         public bool CheckIfExists()
         {
             List<User> users = GetUserList();
-            return (users.Find(x => x.email == this.email)) != null;
+            return (users.Find(x => x.Email == this.Email)) != null;
         }
 
         public bool MatchEmailAndPassword()
         {
             List<User> users = GetUserList();
             var query = from User u in users
-                        where u.email == this.email && u.password == this.password
+                        where u.Email == this.Email && u.Password == this.Password
                         select u;
             return query != null;
         }
 
         public List<User> GetUserList()
         {
-            var users = new List<User>();
-            using (StreamReader sr = new StreamReader(@"..\..\Resources\User.txt"))
-            {
-                while (!sr.EndOfStream)
-                {
-                    users.Add(JsonConvert.DeserializeObject<User>(sr.ReadLine()));
-                }
-            }
-            return users;
+            return Converter.ConvertUserWSArrayToUserList(new UserWS.UserWebService().GetUserList());
         }
 
-        public void SaveAccountToFile() 
+        public void SaveAccountToFile()
         {
             JsonSerializer serializer = new JsonSerializer();
             serializer.NullValueHandling = NullValueHandling.Ignore;
