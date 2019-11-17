@@ -1,4 +1,4 @@
-Buhalterinė apskaita	4,33	3
+Buhalterinė apskaita	326.5	4
 Informatikos teisė	0	0
 Vadybos pagrindai	0	0
 Elektronikos fizikiniai pagrindai	0	0

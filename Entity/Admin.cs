@@ -25,7 +25,7 @@ namespace University_advisor.Entity
 
         public void DeleteReview(Subject subject)
         {
-            List<Review> reviews = Review.GetReviewList(subject.Id);
+            List<Review> reviews = subject.Reviews.Value;
             
             if ((reviews.Find(x => x.Subject.Id == subject.Id)) != null)
             {

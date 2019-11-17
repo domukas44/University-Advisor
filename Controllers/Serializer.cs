@@ -18,6 +18,7 @@ namespace University_advisor.Controllers
                 serializer.Serialize(writer, review);
                 sw.WriteLine();
                 serializer.Serialize(writer2, review);
+
             }
         }
 

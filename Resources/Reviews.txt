@@ -8,3 +8,4 @@
 {"Subject":{"Id":46,"Name":"UML ir MDA įvadas"},"Author":"te@st.lt","Comment":"nžn","Rating":4,"Id":11}
 {"Subject":{"Id":45,"Name":"Programavimas OS UNIX"},"Author":"te@st.lt","Comment":"neblogai","Rating":8,"Id":12}
 {"Subject":{"Id":23,"Name":"Transliavimo metodai"},"Author":"regi@strai.lt","Comment":"yes!","Rating":1,"Id":13}
+{"Subject":{"Reviews":{"IsValueCreated":true,"Value":[{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"Visai nieko","Rating":8,"Id":0},{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"Nu taip vidutiniskai","Rating":6,"Id":1},{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"","Rating":10,"Id":5},{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"Patiko","Rating":9,"Id":6}]},"Id":0,"Name":"Buhalterinė apskaita"},"Author":"regi@strai.lt","Comment":"fghfghfh","Rating":7,"Id":0}
