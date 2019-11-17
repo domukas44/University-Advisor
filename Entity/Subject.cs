@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace University_advisor.Entity
@@ -47,9 +48,7 @@ namespace University_advisor.Entity
             Rating = TotalRatings / RatingsCount;
         }
 
-        public static implicit operator Subject(string v)
-        {
-            throw new NotImplementedException();
-        }
+        //lazy loading
+        public Lazy<List<Review>> Reviews => new Lazy<List<Review>>(() => Review.GetReviewList(this.Id));
     }
 }

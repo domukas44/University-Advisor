@@ -35,13 +35,13 @@ namespace University_advisor.Entity
             }
         }
 
-        public static List<Review> GetReviewList(Subject Subject)
+        public static List<Review> GetReviewList(int Id)
         {
             var allReviews = new List<Review>();
             var filteredReviews = new List<Review>();
             allReviews = Deserializer<Review>.DeserializeFile(@"..\..\Resources\Reviews.txt");
             var query = from Review r in allReviews
-                        where r.Subject.Id == Subject.Id
+                        where r.Subject.Id == Id
                         select r;
             foreach (Review r in query)
             {

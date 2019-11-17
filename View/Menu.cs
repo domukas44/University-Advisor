@@ -63,7 +63,7 @@ namespace University_advisor
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            label3.Text += currentUser.email;
+            label3.Text += currentUser.Email;
 
             subjects = new Subjects();
             mainList = new List<ListViewItem>();
@@ -204,7 +204,7 @@ namespace University_advisor
 
         public string ReturnCurrentUserEmail()
         {
-            return currentUser.email;
+            return currentUser.Email;
         }
 
         private void ReviewsBtn_Click(object sender, EventArgs e)
@@ -212,7 +212,7 @@ namespace University_advisor
             var allReviews = Deserializer<Review>.DeserializeFile(@"..\..\Resources\Reviews.txt");
             List<string> users = new List<string>
             {
-                currentUser.email
+                currentUser.Email
             };
 
             var query =
@@ -232,7 +232,7 @@ namespace University_advisor
                                     });
 
             MyReviews myReviewsForm = new MyReviews();
-            myReviewsForm.usernameLabel.Text = currentUser.email;
+            myReviewsForm.usernameLabel.Text = currentUser.Email;
 
             // Enumerate results.
             foreach (var person in query)

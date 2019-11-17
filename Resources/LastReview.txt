@@ -1,1 +1,0 @@
-{"Subject":{"Id":45,"Name":"Programavimas OS UNIX"},"Author":"te@st.lt","Comment":"neblogai","Rating":8,"Id":12}

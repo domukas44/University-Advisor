@@ -7,3 +7,4 @@
 {"Subject":{"Id":1,"Name":"Buhalterinė apskaita"},"Author":"te@st.lt","Comment":"aaa","Rating":6,"Id":10}
 {"Subject":{"Id":46,"Name":"UML ir MDA įvadas"},"Author":"te@st.lt","Comment":"nžn","Rating":4,"Id":11}
 {"Subject":{"Id":45,"Name":"Programavimas OS UNIX"},"Author":"te@st.lt","Comment":"neblogai","Rating":8,"Id":12}
+{"Subject":{"Id":23,"Name":"Transliavimo metodai"},"Author":"regi@strai.lt","Comment":"yes!","Rating":1,"Id":13}

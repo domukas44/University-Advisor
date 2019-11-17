@@ -21,7 +21,7 @@ Loginis programavimas	0	0
 Oracle PL/SQL programavimas	0	0
 Programavimas Windows API	0	0
 Taikomųjų programų kūrimas mobiliesiems įrenginiams ir autonominėms sistemoms	0	0
-Transliavimo metodai	0	0
+Transliavimo metodai	1	1
 Žinių vaizdavimas	0	0
 Diferencialinės lygtys	0	0
 Kodavimo teorija	0	0
