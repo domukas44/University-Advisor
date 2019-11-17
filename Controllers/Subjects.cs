@@ -17,7 +17,7 @@ namespace University_advisor.Controllers
         private void PopulateData()
         {
             subjectList = new List<Subject>();
-            string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\TestData.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\Data.txt");
 
             foreach (string line in lines)
             {

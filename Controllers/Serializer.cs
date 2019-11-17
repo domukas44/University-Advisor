@@ -7,7 +7,7 @@ namespace University_advisor.Controllers
     public static class Serializer
     {
         static JsonSerializer serializer = new JsonSerializer();
-        public static void serialize(Review review)
+        public static void Serialize(Review review)
         {
             serializer.NullValueHandling = NullValueHandling.Ignore;
             using (StreamWriter sw = new StreamWriter(@"..\..\Resources\Reviews.txt", true))       // true means append to file
@@ -21,7 +21,7 @@ namespace University_advisor.Controllers
             }
         }
 
-        public static void serialize(User user)
+        public static void Serialize(User user)
         {
             serializer.NullValueHandling = NullValueHandling.Ignore;
             using (StreamWriter sw = new StreamWriter(@"..\..\Resources\User.txt", true))       // true means append to file

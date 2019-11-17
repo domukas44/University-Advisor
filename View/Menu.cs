@@ -6,6 +6,7 @@ using University_advisor.Controllers;
 using System.Windows.Forms;
 using University_advisor.Data.Enum;
 using University_advisor.Entity;
+using University_advisor.View;
 
 namespace University_advisor
 {
@@ -53,7 +54,6 @@ namespace University_advisor
         public RegularUser currentUser { get; set; }
 
         private List<ListViewItem> mainList;
-        private List<RandC> RandcList;
         Subjects subjects;
 
         public Menu()
@@ -99,10 +99,10 @@ namespace University_advisor
 
         private void Item_click(Object sender, EventArgs e)
         {
-            openCard(sender);           
+            OpenCard(sender);           
         }
 
-        private void openCard(Object sender)
+        private void OpenCard(Object sender)
         {
             var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
 
@@ -202,57 +202,47 @@ namespace University_advisor
             label1.Text = "Rikiavimas: ";
         }
 
-        private void ReviewsBtn_Click(object sender, EventArgs e)
+        public string ReturnCurrentUserEmail()
         {
-            /*RandcList = new List<RandC>();
-            string CurrUser = "user";
-            string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\Reviews.txt");
-
-            foreach (string line in lines)
-            {
-                string[] linesSplit = line.Split(',');
-                string tmp1 = linesSplit[2];
-                tmp1 = tmp1.Substring(10);
-
-                tmp1 = tmp1.Remove(tmp1.Length - 1);
-                string tmp2 = linesSplit[3];
-                tmp2 = tmp2.Substring(11);
-                tmp2 = tmp2.Remove(tmp2.Length - 1);
-                System.Windows.Forms.MessageBox.Show(tmp1 + "   " + tmp2);
-                //Console.WriteLine("Substring: {0}", tmp1 + " " + tmp2);
-                RandcList.Add(new RandC(tmp1, tmp2));
-            }
-
-            //CurrUser = currentUser.email;
-            List<RegularUser> Users = new List<RegularUser> {currentUser };
-            //System.Windows.Forms.MessageBox.Show(CurrUser);
-
-            var query =
-                Users.GroupJoin(RandcList,
-           RegularUser => RegularUser,
-           RandC => RandC.email,
-           (RegularUser, result) => new
-           {
-               UserName = RegularUser.email,
-               Reviews = result.Select(RandC => RandC.email)
-
-           }) ;
-      
-
-            // Enumerate results.
-            foreach (var result in query)
-            {
-                Console.WriteLine("{0} bought...", result.Name);
-                foreach (var item in result.Collection)
-                {
-                    Console.WriteLine(item.Product);
-                }
-            }*/
+            return currentUser.email;
         }
 
-        private void Label3_Click(object sender, EventArgs e)
+        private void ReviewsBtn_Click(object sender, EventArgs e)
         {
+            var allReviews = Deserializer<Review>.DeserializeFile(@"..\..\Resources\Reviews.txt");
+            List<string> users = new List<string>
+            {
+                currentUser.email
+            };
 
+            var query =
+                users.GroupJoin(allReviews,
+                                user => user,
+                                review => review.Author,
+                                (user, reviewCollection) => new
+                                {
+                                    UserName = user,
+                                    Reviews = reviewCollection.Select(review =>
+                                        new
+                                        {
+                                            subject = review.Subject.Name,
+                                            comment = review.Comment,
+                                            rating = review.Rating
+                                        })
+                                    });
+
+            MyReviews myReviewsForm = new MyReviews();
+            myReviewsForm.usernameLabel.Text = currentUser.email;
+
+            // Enumerate results.
+            foreach (var person in query)
+            {
+                foreach (var item in person.Reviews)
+                {
+                    myReviewsForm.reviewListView.Items.Add(new ListViewItem(new string[] { item.subject, item.comment, item.rating.ToString() }));
+                }
+            }
+            myReviewsForm.Show();
         }
     }
 }

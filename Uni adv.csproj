@@ -75,12 +75,17 @@
     <Compile Include="Entity\Subject.cs" />
     <Compile Include="FormatDouble.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="RandC.cs" />
     <Compile Include="View\ConfirmationBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\ConfirmationBox.Designer.cs">
       <DependentUpon>ConfirmationBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MyReviews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MyReviews.Designer.cs">
+      <DependentUpon>MyReviews.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
@@ -112,6 +117,9 @@
     <EmbeddedResource Include="View\ConfirmationBox.resx">
       <DependentUpon>ConfirmationBox.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MyReviews.resx">
+      <DependentUpon>MyReviews.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
