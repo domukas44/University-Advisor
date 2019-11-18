@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Web;
+using System.Web.Hosting;
 using System.Web.Services;
+using University_advisor.Entity;
 
 namespace WebService
 {
@@ -31,6 +30,12 @@ namespace WebService
             string pattern = @"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$";
             Match match = Regex.Match(password, pattern);
             return match.Success;
+        }
+
+        [WebMethod]
+        public List<User> GetUserList()
+        {
+            return Deserializer<User>.DeserializeFile(HostingEnvironment.ApplicationPhysicalPath + @"..\Resources\User.txt");
         }
     }
 }

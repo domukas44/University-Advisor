@@ -52,5 +52,38 @@ namespace University_advisor.Properties {
                 return ((string)(this["University_advisor_ReviewWS_ReviewWebService"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RememberEmail {
+            get {
+                return ((bool)(this["RememberEmail"]));
+            }
+            set {
+                this["RememberEmail"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int Sort {
+            get {
+                return ((int)(this["Sort"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Email {
+            get {
+                return ((string)(this["Email"]));
+            }
+            set {
+                this["Email"] = value;
+            }
+        }
     }
 }

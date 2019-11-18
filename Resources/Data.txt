@@ -1,5 +1,5 @@
-Buhalterinė apskaita	0	0
-Informatikos teisė	2,03	7
+Buhalterinė apskaita	6,33	9
+Informatikos teisė	5,33	3
 Vadybos pagrindai	0	0
 Elektronikos fizikiniai pagrindai	0	0
 Fizika informatikams	0	0

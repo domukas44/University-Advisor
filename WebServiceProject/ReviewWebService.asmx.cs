@@ -1,9 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
+﻿using System.Web.Hosting;
 using System.Web.Services;
 using University_advisor.Entity;
 
@@ -23,7 +18,7 @@ namespace WebService
         [WebMethod]
         public Review GetLastReview()
         {
-            return Deserializer<Review>.DeserializeLine(@"C:\Resources\LastReview.txt");
+            return Deserializer<Review>.DeserializeLine(HostingEnvironment.ApplicationPhysicalPath + @"..\Resources\LastReview.txt");
         }
     }
 }

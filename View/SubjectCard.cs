@@ -10,17 +10,20 @@ namespace University_advisor
     {
         private Subject subject;
         private readonly Menu menu;
-        public SubjectCard(Menu menu)
+        private Func<double, string> formatRatingDel;
+
+        public SubjectCard(Menu menu, Func<double, string> ratingFormatter)
         {
             InitializeComponent();
             this.menu = menu;
+            formatRatingDel = ratingFormatter;
         }
 
         public void ShowInformation(Subject subject)
         {
             this.subject = subject;
             label1.Text = subject.Name;
-            label3.Text = subject.Rating.FormatForRating();
+            label3.Text = formatRatingDel(subject.Rating);
             foreach (Review r in Review.GetReviewList(subject))
             {
                 label4.Text += r.Comment;
@@ -65,7 +68,7 @@ namespace University_advisor
             Visible = false;
             Serializer.Serialize(new Review(subject: subject, author: menu.ReturnCurrentUserEmail(), comment: richTextBox1.Text, rating: Int32.Parse((string)comboBox1.SelectedItem)));        // named argument usage
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
-            label3.Text = subject.Rating.FormatForRating();
+            label3.Text = formatRatingDel(subject.Rating);
             menu.UpdateRatings();
             MessageBox.Show("Atsiliepimas sėkmingai išsaugotas.");
         }

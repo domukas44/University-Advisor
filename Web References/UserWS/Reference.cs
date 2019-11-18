@@ -33,6 +33,8 @@ namespace University_advisor.UserWS {
         
         private System.Threading.SendOrPostCallback PasswordValidationOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetUserListOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +78,9 @@ namespace University_advisor.UserWS {
         
         /// <remarks/>
         public event PasswordValidationCompletedEventHandler PasswordValidationCompleted;
+        
+        /// <remarks/>
+        public event GetUserListCompletedEventHandler GetUserListCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/EmailValidation", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -136,6 +141,33 @@ namespace University_advisor.UserWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetUserList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public User[] GetUserList() {
+            object[] results = this.Invoke("GetUserList", new object[0]);
+            return ((User[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetUserListAsync() {
+            this.GetUserListAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetUserListAsync(object userState) {
+            if ((this.GetUserListOperationCompleted == null)) {
+                this.GetUserListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUserListOperationCompleted);
+            }
+            this.InvokeAsync("GetUserList", new object[0], this.GetUserListOperationCompleted, userState);
+        }
+        
+        private void OnGetUserListOperationCompleted(object arg) {
+            if ((this.GetUserListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetUserListCompleted(this, new GetUserListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -151,6 +183,51 @@ namespace University_advisor.UserWS {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class User {
+        
+        private string nameField;
+        
+        private string emailField;
+        
+        private string passwordField;
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                this.passwordField = value;
+            }
         }
     }
     
@@ -202,6 +279,32 @@ namespace University_advisor.UserWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void GetUserListCompletedEventHandler(object sender, GetUserListCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetUserListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetUserListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public User[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((User[])(this.results[0]));
             }
         }
     }

@@ -19,7 +19,7 @@ namespace University_advisor.Controllers
             subjectList = new List<Subject>();
             foreach (var s in client.ReadData())
             {
-                subjectList.Add(Subject.ConvertToMySubject(s));
+                subjectList.Add(Converter.ConvertToMySubject(s));
             }
         }
 
