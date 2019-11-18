@@ -18,12 +18,10 @@ namespace University_advisor
             this.menu = menu;
         }
 
-        public delegate void RatingValidateHandler(object sender, EventArgs e);
-        public event RatingValidateHandler OnRatingValidate;
-
         public void ShowInformation(Subject subject)
         {
             this.subject = subject;
+            subject.UpdateList();
             label1.Text = subject.Name;
             label3.Text = subject.Rating.FormatForRating();
             
@@ -54,7 +52,6 @@ namespace University_advisor
             {
                 if (richTextBox1.Text != "")
                 {
-                    RatingValidate();
                     ConfirmReview();
                 }
 
@@ -70,16 +67,24 @@ namespace University_advisor
         public void ConfirmReview()
         {
             Visible = false;
-            Serializer.Serialize(new Review(subject: subject, author: menu.ReturnCurrentUserEmail(), comment: richTextBox1.Text, rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named argument usage
+
+            var review = new Review(subject: subject, author: menu.ReturnCurrentUserEmail(),
+                comment: richTextBox1.Text, rating: Int32.Parse((string)comboBox1.SelectedItem));
+
+            Serializer.Serialize(review); 
+
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
             label3.Text = subject.Rating.ToString("0.##") + "/10";
-            UpdateData(subject.Rating, subject.Name);
+            double rating = subject.Rating;
+            UpdateData(ref rating, subject.Name);
             menu.UpdateRatings();
+
             MessageBox.Show("Atsiliepimas sėkmingai išsaugotas.");
         }
 
-        private void UpdateData(double NewRating, string name)
+        private void UpdateData<T>(ref T rating, string name)
         {
+            double NewRating = Convert.ToDouble(rating);
             string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\Data.txt");
             for(int i=0; i< lines.Length; i++)
             {
@@ -95,15 +100,6 @@ namespace University_advisor
                 }
             }
             System.IO.File.WriteAllLines(@"..\..\Resources\Data.txt", lines);
-        }
-
-        private void RatingValidate()
-        {
-            //check if someone is listening 
-            if (OnRatingValidate == null) return;
-
-            EventArgs args = new EventArgs();
-            OnRatingValidate(this, args);
         }
     }
 }

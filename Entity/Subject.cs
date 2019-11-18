@@ -20,7 +20,9 @@ namespace University_advisor.Entity
         [JsonIgnore]     // review serialization shouldn't include the subject's total rating
         public double Rating { get; set; }
         //lazy loading
-        public readonly Lazy<List<Review>> Reviews;
+        [JsonIgnore]
+        public Lazy<List<Review>> Reviews;
+
         public Subject()
         {
 
@@ -64,6 +66,11 @@ namespace University_advisor.Entity
                 filteredReviews.Add(r);
             }
             return filteredReviews;
+        }
+
+        public void UpdateList()
+        {
+            Reviews = new Lazy<List<Review>>(GetReviewList);
         }
     }
 }
