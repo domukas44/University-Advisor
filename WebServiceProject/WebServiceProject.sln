@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29230.47
+VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uni adv", "Uni adv.csproj", "{240F25D1-5778-4849-8D7C-382DD5766408}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "WebServiceProject\WebService.csproj", "{13B53697-A515-46FB-B562-07353B23EC7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebApp", "TestWebApp.csproj", "{13B53697-A515-46FB-B562-07353B23EC7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{240F25D1-5778-4849-8D7C-382DD5766408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{240F25D1-5778-4849-8D7C-382DD5766408}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{240F25D1-5778-4849-8D7C-382DD5766408}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{240F25D1-5778-4849-8D7C-382DD5766408}.Release|Any CPU.Build.0 = Release|Any CPU
 		{13B53697-A515-46FB-B562-07353B23EC7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{13B53697-A515-46FB-B562-07353B23EC7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13B53697-A515-46FB-B562-07353B23EC7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -26,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {1C4D7E25-05C8-4A0F-8DDA-782395D32EDB}
+		SolutionGuid = {1E2DD4DF-DA49-470D-B2F7-FA78F8FECC79}
 	EndGlobalSection
 EndGlobal

@@ -25,14 +25,18 @@ namespace University_advisor.View
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            rememberCheckBox.Checked = Properties.Settings.Default.RememberEmail;
+            if (rememberCheckBox.Checked)
+            {
+                textBox1.Text = Properties.Settings.Default.Email;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Hide();
             var registrationForm = new Registration();
-            registrationForm.Closed += (s, args) => this.Close();
+            registrationForm.Closed += (s, args) => this.Close();       // standard event + lambda
             registrationForm.Show();
         }
 
@@ -40,6 +44,11 @@ namespace University_advisor.View
         {
             try
             {
+                if (rememberCheckBox.Checked)       // remember email for next time if user checked the box
+                {
+                    Properties.Settings.Default.Email = textBox1.Text;
+                    Properties.Settings.Default.Save();
+                }
                 Menu menu = new Menu(this);
 
                 RegularUser currentUser = new RegularUser(textBox1.Text, textBox2.Text);
@@ -58,9 +67,10 @@ namespace University_advisor.View
             }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void rememberCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.RememberEmail = rememberCheckBox.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }

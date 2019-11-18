@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using University_advisor.Controllers;
+using University_advisor.SubjectWS;
 
 namespace University_advisor.Entity
 {
+    [Serializable]
     public class Subject
     { 
-        int RatingsCount = 0;
-        double TotalRatings = 0;
-        int TotalRatingsInt = 0;
         private static int idNr = 0;
         private string v1;
         private string v2;
 
         public int Id { get; set; }
         public string Name { get; set; }
+
         [JsonIgnore]     // review serialization shouldn't include the subject's total rating
         public double Rating { get; set; }
+
         //lazy loading
         [JsonIgnore]
         public Lazy<List<Review>> Reviews;
@@ -28,15 +29,11 @@ namespace University_advisor.Entity
 
         }
 
-        public Subject(string name, double Rating, int count)
+        public Subject(string name, double rating)
         {
             Id = idNr++;
             Name = name;
-            this.Rating = Rating;
-            TotalRatings = Rating * count;
-            if ((TotalRatings == 10) || (TotalRatings == 0))
-                TotalRatingsInt = (int)TotalRatings;
-            RatingsCount = count;
+            Rating = rating;
             Reviews = new Lazy<List<Review>>(GetReviewList);
         }
 
@@ -46,11 +43,14 @@ namespace University_advisor.Entity
             this.v2 = v2;
         }
 
-        public void AddRating(int NewRating)
+        public void AddRating(int newRating)
         {
-            RatingsCount++;
-            TotalRatings += NewRating;
-            Rating = TotalRatings / RatingsCount;  
+            Rating = new SubjectWebService().AddRating(newRating, this.Name);       // adds the rating, updates data and returns the new calculated rating
+        }
+
+        public static void ResetIdNr()
+        {
+            idNr = 0;
         }
 
         public List<Review> GetReviewList()

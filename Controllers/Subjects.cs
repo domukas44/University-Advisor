@@ -17,16 +17,16 @@ namespace University_advisor.Controllers
 
         private void PopulateData()
         {
+            SubjectWS.SubjectWebService client = new SubjectWS.SubjectWebService();
             LogWriter lw = new LogWriter();
             subjectList = new List<Subject>();
             try
             {
                 string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\Data.txt");
 
-                foreach (string line in lines)
+                foreach (var s in client.ReadData())
                 {
-                     string[] linesSplit = line.Split('\t');
-                     subjectList.Add(new Subject(linesSplit[0], Convert.ToDouble(linesSplit[1]), Convert.ToInt32(linesSplit[2])));  
+                     subjectList.Add(Converter.ConvertToMySubject(s));
                 }
             }
             catch (DirectoryNotFoundException ex)

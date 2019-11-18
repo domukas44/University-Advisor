@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using University_advisor.Controllers;
 
 namespace University_advisor.Entity
 {
@@ -14,9 +15,9 @@ namespace University_advisor.Entity
 
         public User(string name, string email, string password)
         {
-            this.Name = name;
-            this.Email = email;
-            this.Password = password;
+            Name = name;
+            Email = email;
+            Password = password;
 
             if (!CheckIfExists())
                 SaveAccountToFile();
@@ -26,8 +27,8 @@ namespace University_advisor.Entity
 
         public User(string email, string password)
         {
-            this.Email = email;
-            this.Password = password;
+            Email = email;
+            Password = password;
             if (CheckIfExists())
             {
                 if (MatchEmailAndPassword())
@@ -63,18 +64,10 @@ namespace University_advisor.Entity
 
         public List<User> GetUserList()
         {
-            var users = new List<User>();
-            using (StreamReader sr = new StreamReader(@"..\..\Resources\User.txt"))
-            {
-                while (!sr.EndOfStream)
-                {
-                    users.Add(JsonConvert.DeserializeObject<User>(sr.ReadLine()));
-                }
-            }
-            return users;
+            return Converter.ConvertUserWSArrayToUserList(new UserWS.UserWebService().GetUserList());
         }
 
-        public void SaveAccountToFile() 
+        public void SaveAccountToFile()
         {
             JsonSerializer serializer = new JsonSerializer
             {

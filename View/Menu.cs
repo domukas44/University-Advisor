@@ -48,6 +48,8 @@ namespace University_advisor
             }
 
             DisplayItems();
+
+            SortSubjects(Properties.Settings.Default.Sort);
         }
 
         private void Load_MenuToolStripMenuItem()
@@ -74,7 +76,10 @@ namespace University_advisor
             var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
 
             ToolStripMenuItem item = sender as ToolStripMenuItem;
-            SubjectCard subjectCardForm = new SubjectCard(this);
+            SubjectCard subjectCardForm = new SubjectCard(this, delegate (double d)         // delegate + anonymous method
+                                                                {
+                                                                    return d.ToString("0.##") + "/10";
+                                                                });
 
             subjectCardForm.ShowInformation(subjectsList[Convert.ToInt32(item.Tag)]);
 
@@ -130,15 +135,18 @@ namespace University_advisor
 
         private void OnSortIndexChange(object sender, EventArgs e)
         {
+            SortSubjects(sortComboBox.SelectedIndex);
+        }
+
+        private void SortSubjects(int index)
+        {
             var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
             IEnumerable<Subject> _query = new List<Subject>();
             subjectListView.Items.Clear();
-
-            int index = sortComboBox.SelectedIndex;
             switch (index)
             {
                 case (int)SortValuesEnum.Name:
-                    _query = subjectsList.OrderByDescending(i => i.Name);
+                    _query = subjectsList.OrderBy(i => i.Name);
                     break;
                 case (int)SortValuesEnum.Rating:
                     _query = subjectsList.OrderByDescending(i => i.Rating);

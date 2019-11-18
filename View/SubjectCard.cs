@@ -12,10 +12,13 @@ namespace University_advisor
     {
         private Subject subject;
         private readonly Menu menu;
-        public SubjectCard(Menu menu)
+        private Func<double, string> formatRatingDel;
+
+        public SubjectCard(Menu menu, Func<double, string> ratingFormatter)
         {
             InitializeComponent();
             this.menu = menu;
+            formatRatingDel = ratingFormatter;
         }
 
         public void ShowInformation(Subject subject)
@@ -23,7 +26,7 @@ namespace University_advisor
             this.subject = subject;
             subject.UpdateList();
             label1.Text = subject.Name;
-            label3.Text = subject.Rating.FormatForRating();
+            label3.Text = formatRatingDel(subject.Rating);
             
             foreach (Review r in subject.Reviews.Value)
             {
@@ -74,7 +77,7 @@ namespace University_advisor
             Serializer.Serialize(review); 
 
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
-            label3.Text = subject.Rating.ToString("0.##") + "/10";
+            label3.Text = formatRatingDel(subject.Rating);
             double rating = subject.Rating;
             UpdateData(ref rating, subject.Name);
             menu.UpdateRatings();

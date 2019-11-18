@@ -1,10 +1,10 @@
-Buhalterinė apskaita	326.5	4
-Informatikos teisė	0	0
+Buhalterinė apskaita	6,4	11
+Informatikos teisė	5,33	3
 Vadybos pagrindai	0	0
 Elektronikos fizikiniai pagrindai	0	0
 Fizika informatikams	0	0
-Bioinformatika	8,25	4
-Blokų grandinių technologijos	0	0
+Bioinformatika	0	0
+Blokų grandinių technologijos	10	2
 Dirbtinis intelektas	0	0
 Elektroninės komercijos technologijų pagrindai	0	0
 Finansinis intelektas	0	0
@@ -21,7 +21,7 @@ Loginis programavimas	0	0
 Oracle PL/SQL programavimas	0	0
 Programavimas Windows API	0	0
 Taikomųjų programų kūrimas mobiliesiems įrenginiams ir autonominėms sistemoms	0	0
-Transliavimo metodai	1	1
+Transliavimo metodai	0	0
 Žinių vaizdavimas	0	0
 Diferencialinės lygtys	0	0
 Kodavimo teorija	0	0
@@ -43,5 +43,5 @@ Matematinis modeliavimas	0	0
 Chaoso teorija ir fraktalai	0	0
 Grafų teorija	0	0
 Informacijos teorija	0	0
-Programavimas OS UNIX	8	1
-UML ir MDA įvadas	4	1
+Programavimas OS UNIX	0	0
+UML ir MDA įvadas	0	0
