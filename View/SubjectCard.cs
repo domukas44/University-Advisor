@@ -76,7 +76,7 @@ namespace University_advisor
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
             label3.Text = subject.Rating.ToString("0.##") + "/10";
             double rating = subject.Rating;
-            UpdateData(ref rating, subject.Name)
+            UpdateData(ref rating, subject.Name);
             menu.UpdateRatings();
 
             MessageBox.Show("Atsiliepimas sėkmingai išsaugotas.");
