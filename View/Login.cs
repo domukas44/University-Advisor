@@ -40,5 +40,10 @@ namespace University_advisor.View
                 label3.Visible = true;
             }
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

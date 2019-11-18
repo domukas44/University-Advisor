@@ -3,3 +3,4 @@
 {"Subject":{"Id":1,"Name":"Buhalterine apskaita"},"Author":"author1","Comment":"","Rating":5,"Id":2}
 {"Subject":{"Id":2,"Name":"Verslo vadyba"},"Author":"author1","Comment":"","Rating":10,"Id":3}
 {"Subject":{"Id":2,"Name":"Verslo vadyba"},"Author":"author1","Comment":"","Rating":1,"Id":4}
+{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"","Rating":3,"Id":5}
