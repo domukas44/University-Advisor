@@ -11,5 +11,14 @@
     <Setting Name="University_advisor_ReviewWS_ReviewWebService" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://localhost:44389/ReviewWebService.asmx</Value>
     </Setting>
+    <Setting Name="RememberEmail" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Sort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Email" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

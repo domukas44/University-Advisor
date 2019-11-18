@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
+using University_advisor.Controllers;
 using University_advisor.SubjectWS;
 
 namespace University_advisor.Entity
@@ -17,6 +20,9 @@ namespace University_advisor.Entity
         [JsonIgnore]     // review serialization shouldn't include the subject's total rating
         public double Rating { get; set; }
 
+        //lazy loading
+        [JsonIgnore]
+        public readonly Lazy<List<Review>> Reviews;
         public Subject()
         {
 
@@ -45,9 +51,19 @@ namespace University_advisor.Entity
             idNr = 0;
         }
 
-        public static implicit operator Subject(string v)
+        public List<Review> GetReviewList()
         {
-            throw new NotImplementedException();
+            var allReviews = new List<Review>();
+            var filteredReviews = new List<Review>();
+            allReviews = Deserializer<Review>.DeserializeFile(@"..\..\Resources\Reviews.txt");
+            var query = from Review r in allReviews
+                        where r.Subject.Id == Id
+                        select r;
+            foreach (Review r in query)
+            {
+                filteredReviews.Add(r);
+            }
+            return filteredReviews;
         }
     }
 }

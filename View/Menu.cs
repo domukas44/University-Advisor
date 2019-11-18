@@ -81,6 +81,8 @@ namespace University_advisor
             }
 
             DisplayItems();
+
+            SortSubjects(Properties.Settings.Default.Sort);
         }
 
         private void Load_MenuToolStripMenuItem()
@@ -166,11 +168,14 @@ namespace University_advisor
 
         private void OnSortIndexChange(object sender, EventArgs e)
         {
+            SortSubjects(sortComboBox.SelectedIndex);
+        }
+
+        private void SortSubjects(int index)
+        {
             var subjectsList = ((IEnumerable)subjects).Cast<Subject>().ToList();
             IEnumerable<Subject> _query = new List<Subject>();
             subjectListView.Items.Clear();
-
-            int index = sortComboBox.SelectedIndex;
             switch (index)
             {
                 case (int)SortValuesEnum.Name:
