@@ -87,6 +87,7 @@ namespace University_advisor
                     linesSplit[2] = (temp).ToString();
                     lines[i] = linesSplit[0] + "\t" + linesSplit[1] + "\t" + linesSplit[2];
                     break;
+
                 }
             }
             System.IO.File.WriteAllLines(@"..\..\Resources\TestData.txt", lines);
