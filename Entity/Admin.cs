@@ -8,7 +8,7 @@ namespace University_advisor.Entity
         public void DeleteUser(string email)
         {
             List<User> users = GetUserList();
-            if((users.Find(x => x.email == email)) != null)
+            if((users.Find(x => x.Email == email)) != null)
             {
                 var path = @"..\..\Resources\User.txt";
                 var oldLines = System.IO.File.ReadAllLines(path);
