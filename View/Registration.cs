@@ -2,11 +2,22 @@
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using University_advisor.Entity;
+using University_advisor.Controllers;
 
 namespace University_advisor.View
 {
     public partial class Registration : Form
     {
+        public delegate void EventHandler<LoginEventArgs>(object sender, LoginEventArgs e);
+        public event EventHandler<LoginEventArgs> RaiseLoginEvent;
+        protected virtual void OnRaiseLoginEvent(LoginEventArgs e)
+        {
+            EventHandler<LoginEventArgs> handler = RaiseLoginEvent;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
         public Registration()
         {
             InitializeComponent();
@@ -18,8 +29,13 @@ namespace University_advisor.View
             {
                 try
                 {
-                    Menu menu = new Menu();
-                    menu.currentUser = new RegularUser(textBox1.Text, textBox2.Text, textBox3.Text);
+                    Menu menu = new Menu(this);
+
+                    RegularUser currentUser = new RegularUser(textBox1.Text, textBox2.Text, textBox3.Text);
+
+                    LoginEventArgs logArgs = new LoginEventArgs(currentUser);
+                    OnRaiseLoginEvent(logArgs);
+
                     this.Hide();
                     menu.Closed += (s, args) => this.Close();
                     menu.Show();

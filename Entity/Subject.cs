@@ -48,7 +48,7 @@ namespace University_advisor.Entity
         {
             RatingsCount++;
             TotalRatings += NewRating;
-            Rating = TotalRatings / RatingsCount;
+            Rating = TotalRatings / RatingsCount;  
         }
 
         public List<Review> GetReviewList()

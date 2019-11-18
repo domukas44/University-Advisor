@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Management;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using University_advisor.Controllers;
@@ -16,6 +17,9 @@ namespace University_advisor
             InitializeComponent();
             this.menu = menu;
         }
+
+        public delegate void RatingValidateHandler(object sender, EventArgs e);
+        public event RatingValidateHandler OnRatingValidate;
 
         public void ShowInformation(Subject subject)
         {
@@ -50,6 +54,7 @@ namespace University_advisor
             {
                 if (richTextBox1.Text != "")
                 {
+                    RatingValidate();
                     ConfirmReview();
                 }
 
@@ -90,6 +95,15 @@ namespace University_advisor
                 }
             }
             System.IO.File.WriteAllLines(@"..\..\Resources\Data.txt", lines);
+        }
+
+        private void RatingValidate()
+        {
+            //check if someone is listening 
+            if (OnRatingValidate == null) return;
+
+            EventArgs args = new EventArgs();
+            OnRatingValidate(this, args);
         }
     }
 }
