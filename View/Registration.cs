@@ -2,11 +2,22 @@
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using University_advisor.Entity;
+using University_advisor.Controllers;
 
 namespace University_advisor.View
 {
     public partial class Registration : Form
     {
+        public delegate void EventHandler<LoginEventArgs>(object sender, LoginEventArgs e);
+        public event EventHandler<LoginEventArgs> RaiseLoginEvent;
+        protected virtual void OnRaiseLoginEvent(LoginEventArgs e)
+        {
+            EventHandler<LoginEventArgs> handler = RaiseLoginEvent;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
         public Registration()
         {
             InitializeComponent();
@@ -14,12 +25,17 @@ namespace University_advisor.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (emailValidation() && passwordValidation())
+            if (EmailValidation() && PasswordValidation())
             {
                 try
                 {
-                    Menu menu = new Menu();
-                    menu.currentUser = new RegularUser(textBox1.Text, textBox2.Text, textBox3.Text);
+                    Menu menu = new Menu(this);
+
+                    RegularUser currentUser = new RegularUser(textBox1.Text, textBox2.Text, textBox3.Text);
+
+                    LoginEventArgs logArgs = new LoginEventArgs(currentUser);
+                    OnRaiseLoginEvent(logArgs);
+
                     this.Hide();
                     menu.Closed += (s, args) => this.Close();
                     menu.Show();
@@ -33,14 +49,14 @@ namespace University_advisor.View
             }
             else
             {
-                if (!passwordValidation()) { label8.Visible = true; }
+                if (!PasswordValidation()) { label8.Visible = true; }
                 else { label8.Visible = false; }
-                if (!emailValidation()) label4.Visible = true;
+                if (!EmailValidation()) label4.Visible = true;
                 else label4.Visible = false; 
             }
         }
 
-        private bool emailValidation()
+        private bool EmailValidation()
         {
             string email = textBox2.Text;
             string pattern = @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
@@ -48,7 +64,7 @@ namespace University_advisor.View
             return match.Success;
         }
 
-        private bool passwordValidation()
+        private bool PasswordValidation()
         {
             string password = textBox3.Text;
             string pattern = @"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$";
@@ -58,7 +74,7 @@ namespace University_advisor.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             var loginForm = new Login();
             loginForm.Closed += (s, args) => this.Close();
             loginForm.Show();

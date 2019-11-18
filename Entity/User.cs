@@ -8,29 +8,29 @@ namespace University_advisor.Entity
 {
     public class User
     {
-        public string name { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
 
         public User(string name, string email, string password)
         {
-            this.name = name;
-            this.email = email;
-            this.password = password;
+            this.Name = name;
+            this.Email = email;
+            this.Password = password;
 
-            if (!checkIfExists())
-                saveAccountToFile();
+            if (!CheckIfExists())
+                SaveAccountToFile();
             else
                 throw new Exception();
         }
 
         public User(string email, string password)
         {
-            this.email = email;
-            this.password = password;
-            if (checkIfExists())
+            this.Email = email;
+            this.Password = password;
+            if (CheckIfExists())
             {
-                if (matchEmailAndPassword())
+                if (MatchEmailAndPassword())
                 {
                 }
                 else throw new Exception();
@@ -46,22 +46,22 @@ namespace University_advisor.Entity
 
         }
 
-        public bool checkIfExists()
+        public bool CheckIfExists()
         {
-            List<User> users = getUserList();
-            return (users.Find(x => x.email == this.email)) != null;
+            List<User> users = GetUserList();
+            return (users.Find(x => x.Email == this.Email)) != null;
         }
 
-        public bool matchEmailAndPassword()
+        public bool MatchEmailAndPassword()
         {
-            List<User> users = getUserList();
+            List<User> users = GetUserList();
             var query = from User u in users
-                        where u.email == this.email && u.password == this.password
+                        where u.Email == this.Email && u.Password == this.Password
                         select u;
             return query != null;
         }
 
-        public List<User> getUserList()
+        public List<User> GetUserList()
         {
             var users = new List<User>();
             using (StreamReader sr = new StreamReader(@"..\..\Resources\User.txt"))
@@ -74,10 +74,12 @@ namespace University_advisor.Entity
             return users;
         }
 
-        public void saveAccountToFile() 
+        public void SaveAccountToFile() 
         {
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.NullValueHandling = NullValueHandling.Ignore;
+            JsonSerializer serializer = new JsonSerializer
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            };
             using (StreamWriter sw = new StreamWriter(@"..\..\Resources\User.txt", true))       // true means append to file
             using (JsonWriter writer = new JsonTextWriter(sw))
             {

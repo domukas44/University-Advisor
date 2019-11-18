@@ -21,7 +21,7 @@ namespace University_advisor.View
         private void ButtonYes_Click(object sender, EventArgs e)
         {
             Visible = false;
-            subjectCard.confirmReview();
+            subjectCard.ConfirmReview();
         }
     }
 }

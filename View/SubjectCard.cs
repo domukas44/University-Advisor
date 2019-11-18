@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Management;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using University_advisor.Controllers;
 using University_advisor.Entity;
@@ -16,12 +18,16 @@ namespace University_advisor
             this.menu = menu;
         }
 
+        public delegate void RatingValidateHandler(object sender, EventArgs e);
+        public event RatingValidateHandler OnRatingValidate;
+
         public void ShowInformation(Subject subject)
         {
             this.subject = subject;
             label1.Text = subject.Name;
             label3.Text = subject.Rating.FormatForRating();
-            foreach (Review r in Review.getReviewList(subject))
+            
+            foreach (Review r in subject.Reviews.Value)
             {
                 label4.Text += r.Comment;
                 label4.Text += " ";
@@ -48,7 +54,8 @@ namespace University_advisor
             {
                 if (richTextBox1.Text != "")
                 {
-                    confirmReview();
+                    RatingValidate();
+                    ConfirmReview();
                 }
 
                 // if no comment found - asks to confirm the decision
@@ -60,10 +67,10 @@ namespace University_advisor
             }
         }
 
-        public void confirmReview()
+        public void ConfirmReview()
         {
             Visible = false;
-            Serializer.serialize(new Review(Subject: subject, Author: "author1", Comment: richTextBox1.Text, Rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named argument usage
+            Serializer.Serialize(new Review(subject: subject, author: menu.ReturnCurrentUserEmail(), comment: richTextBox1.Text, rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named argument usage
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
             label3.Text = subject.Rating.ToString("0.##") + "/10";
             double rating = subject.Rating;
@@ -75,7 +82,7 @@ namespace University_advisor
         private void UpdateData<T>(ref T rating, string name)
         {
             double NewRating = Convert.ToDouble(rating);
-            string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\TestData.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\Data.txt");
             for(int i=0; i< lines.Length; i++)
             {
                 string[] linesSplit = lines[i].Split('\t');
@@ -87,15 +94,18 @@ namespace University_advisor
                     linesSplit[2] = (temp).ToString();
                     lines[i] = linesSplit[0] + "\t" + linesSplit[1] + "\t" + linesSplit[2];
                     break;
-
                 }
             }
-            System.IO.File.WriteAllLines(@"..\..\Resources\TestData.txt", lines);
+            System.IO.File.WriteAllLines(@"..\..\Resources\Data.txt", lines);
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void RatingValidate()
         {
+            //check if someone is listening 
+            if (OnRatingValidate == null) return;
 
+            EventArgs args = new EventArgs();
+            OnRatingValidate(this, args);
         }
     }
 }

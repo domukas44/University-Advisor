@@ -44,59 +44,58 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 46);
+            this.label1.Location = new System.Drawing.Point(16, 37);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 55);
+            this.label1.Size = new System.Drawing.Size(126, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             // 
             // ratingLbl
             // 
             this.ratingLbl.AutoSize = true;
-            this.ratingLbl.Location = new System.Drawing.Point(24, 120);
+            this.ratingLbl.Location = new System.Drawing.Point(21, 96);
             this.ratingLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ratingLbl.Name = "ratingLbl";
-            this.ratingLbl.Size = new System.Drawing.Size(89, 20);
+            this.ratingLbl.Size = new System.Drawing.Size(79, 17);
             this.ratingLbl.TabIndex = 1;
             this.ratingLbl.Text = "Įvertinimas:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(118, 120);
+            this.label3.Location = new System.Drawing.Point(105, 96);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 20);
+            this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "label3";
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(28, 542);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.richTextBox1.Location = new System.Drawing.Point(25, 434);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(450, 196);
+            this.richTextBox1.Size = new System.Drawing.Size(400, 158);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // reviewText
             // 
             this.reviewText.AutoSize = true;
-            this.reviewText.Location = new System.Drawing.Point(24, 502);
+            this.reviewText.Location = new System.Drawing.Point(21, 402);
             this.reviewText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.reviewText.Name = "reviewText";
-            this.reviewText.Size = new System.Drawing.Size(147, 20);
+            this.reviewText.Size = new System.Drawing.Size(133, 17);
             this.reviewText.TabIndex = 4;
             this.reviewText.Text = "Parašyti atsiliepimą:";
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(525, 758);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.saveButton.Location = new System.Drawing.Point(467, 606);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(112, 35);
+            this.saveButton.Size = new System.Drawing.Size(100, 28);
             this.saveButton.TabIndex = 5;
             this.saveButton.Text = "Išsaugoti";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -106,10 +105,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label2.Location = new System.Drawing.Point(504, 589);
+            this.label2.Location = new System.Drawing.Point(448, 471);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 29);
+            this.label2.Size = new System.Drawing.Size(111, 25);
             this.label2.TabIndex = 6;
             this.label2.Text = "Įvertinimas:";
             // 
@@ -128,36 +127,36 @@
             "8",
             "9",
             "10"});
-            this.comboBox1.Location = new System.Drawing.Point(525, 642);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBox1.Location = new System.Drawing.Point(467, 514);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(84, 28);
+            this.comboBox1.Size = new System.Drawing.Size(75, 24);
             this.comboBox1.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 217);
+            this.label4.Location = new System.Drawing.Point(21, 174);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 20);
+            this.label4.Size = new System.Drawing.Size(0, 17);
             this.label4.TabIndex = 8;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 182);
+            this.label5.Location = new System.Drawing.Point(21, 146);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 20);
+            this.label5.Size = new System.Drawing.Size(82, 17);
             this.label5.TabIndex = 9;
             this.label5.Text = "Atsiliepimai:";
             // 
             // SubjectCard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(678, 812);
+            this.ClientSize = new System.Drawing.Size(603, 650);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBox1);
@@ -168,9 +167,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ratingLbl);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SubjectCard";
-            this.Text = "Form2";
             this.ResumeLayout(false);
             this.PerformLayout();
 

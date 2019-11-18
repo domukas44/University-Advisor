@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace University_advisor.Entity
 {
     class Admin : User
     {
-        public void deleteUser(string email)
+        public void DeleteUser(string email)
         {
-            List<User> users = getUserList();
-            if((users.Find(x => x.email == email)) != null)
+            List<User> users = GetUserList();
+            if((users.Find(x => x.Email == email)) != null)
             {
                 var path = @"..\..\Resources\User.txt";
                 var oldLines = System.IO.File.ReadAllLines(path);
@@ -22,9 +23,10 @@ namespace University_advisor.Entity
             }
         }
 
-        public void deleteReview(Subject subject)
+        public void DeleteReview(Subject subject)
         {
-            List<Review> reviews = Review.getReviewList(subject);
+            List<Review> reviews = subject.Reviews.Value;
+            
             if ((reviews.Find(x => x.Subject.Id == subject.Id)) != null)
             {
                 var path = @"..\..\Resources\Reviews.txt";

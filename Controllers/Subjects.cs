@@ -8,7 +8,6 @@ namespace University_advisor.Controllers
 {
     public class Subjects : IEnumerable
     {
-
         private List<Subject> subjectList;
 
         public Subjects()
@@ -18,13 +17,11 @@ namespace University_advisor.Controllers
 
         private void PopulateData()
         {
-
-
             LogWriter lw = new LogWriter();
             subjectList = new List<Subject>();
             try
             {
-                string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\TestData.txt");
+                string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\Data.txt");
 
                 foreach (string line in lines)
                 {
@@ -47,7 +44,6 @@ namespace University_advisor.Controllers
                 lw.logMessage(ex.Message);
                 Console.WriteLine(ex.Message);
             }
-
         }
 
         public IEnumerator GetEnumerator()
