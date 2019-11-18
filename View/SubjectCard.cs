@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Management;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using University_advisor.Controllers;
 using University_advisor.Entity;
@@ -25,7 +26,8 @@ namespace University_advisor
             this.subject = subject;
             label1.Text = subject.Name;
             label3.Text = subject.Rating.FormatForRating();
-            foreach (Review r in Review.GetReviewList(subject))
+            
+            foreach (Review r in subject.Reviews.Value)
             {
                 label4.Text += r.Comment;
                 label4.Text += " ";

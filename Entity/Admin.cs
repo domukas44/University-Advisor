@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace University_advisor.Entity
@@ -24,7 +25,8 @@ namespace University_advisor.Entity
 
         public void DeleteReview(Subject subject)
         {
-            List<Review> reviews = Review.GetReviewList(subject);
+            List<Review> reviews = subject.Reviews.Value;
+            
             if ((reviews.Find(x => x.Subject.Id == subject.Id)) != null)
             {
                 var path = @"..\..\Resources\Reviews.txt";
