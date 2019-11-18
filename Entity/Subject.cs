@@ -10,19 +10,22 @@ namespace University_advisor.Entity
     [Serializable]
     public class Subject
     { 
-        public int Id { get; set; }
+        int RatingsCount = 0;
+        double TotalRatings = 0;
+        int TotalRatingsInt = 0;
         private static int idNr = 0;
         private string v1;
         private string v2;
 
+        public int Id { get; set; }
         public string Name { get; set; }
-
         [JsonIgnore]     // review serialization shouldn't include the subject's total rating
         public double Rating { get; set; }
 
         //lazy loading
         [JsonIgnore]
-        public readonly Lazy<List<Review>> Reviews;
+        public Lazy<List<Review>> Reviews;
+
         public Subject()
         {
 
@@ -32,7 +35,8 @@ namespace University_advisor.Entity
         {
             Id = idNr++;
             Name = name;
-            Rating = rating;
+            Rating = rating
+            Reviews = new Lazy<List<Review>>(GetReviewList);
         }
 
         public Subject(string v1, string v2)
@@ -64,6 +68,11 @@ namespace University_advisor.Entity
                 filteredReviews.Add(r);
             }
             return filteredReviews;
+        }
+
+        public void UpdateList()
+        {
+            Reviews = new Lazy<List<Review>>(GetReviewList);
         }
     }
 }

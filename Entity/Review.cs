@@ -34,20 +34,5 @@ namespace University_advisor.Entity
                 Id = lastReview.Id + 1;
             }
         }
-
-        public static List<Review> GetReviewList(Subject Subject)
-        {
-            var allReviews = new List<Review>();
-            var filteredReviews = new List<Review>();
-            allReviews = Deserializer<Review>.DeserializeFile(@"..\..\Resources\Reviews.txt");
-            var query = from Review r in allReviews
-                        where r.Subject.Id == Subject.Id
-                        select r;
-            foreach (Review r in query)
-            {
-                filteredReviews.Add(r);
-            }
-            return filteredReviews;
-        }
     }
 }

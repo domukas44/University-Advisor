@@ -1,11 +1,23 @@
 ﻿using System;
 using System.Windows.Forms;
 using University_advisor.Entity;
+using University_advisor.Controllers;
 
 namespace University_advisor.View
 {
     public partial class Login : Form
     {
+        public delegate void EventHandler<LoginEventArgs>(object sender, LoginEventArgs e);
+        public event EventHandler<LoginEventArgs> RaiseLoginEvent;
+        protected virtual void OnRaiseLoginEvent(LoginEventArgs e)
+        {
+            EventHandler<LoginEventArgs> handler = RaiseLoginEvent;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
         public Login()
         {
             InitializeComponent();
@@ -37,10 +49,15 @@ namespace University_advisor.View
                     Properties.Settings.Default.Email = textBox1.Text;
                     Properties.Settings.Default.Save();
                 }
-                Menu menu = new Menu();
-                menu.currentUser = new RegularUser(textBox1.Text, textBox2.Text);
+                Menu menu = new Menu(this);
+
+                RegularUser currentUser = new RegularUser(textBox1.Text, textBox2.Text);
+
+                LoginEventArgs logArgs = new LoginEventArgs(currentUser);
+                OnRaiseLoginEvent(logArgs);
+
                 this.Hide();
-                menu.Closed += (s, args) => this.Close();           // standard event + lambda
+                menu.Closed += (s, args) => this.Close();
                 menu.Show();
 
             }

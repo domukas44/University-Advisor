@@ -1,0 +1,10 @@
+
+Log Entry : 18:30:44 2019 m. lapkričio 18 d., pirmadienis
+  :
+  :Input string was not in a correct format.
+-------------------------------
+
+Log Entry : 19:18:03 2019 m. lapkričio 18 d., pirmadienis
+  :
+  :Input string was not in a correct format.
+-------------------------------

@@ -69,8 +69,10 @@ namespace University_advisor.Entity
 
         public void SaveAccountToFile()
         {
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.NullValueHandling = NullValueHandling.Ignore;
+            JsonSerializer serializer = new JsonSerializer
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            };
             using (StreamWriter sw = new StreamWriter(@"..\..\Resources\User.txt", true))       // true means append to file
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
