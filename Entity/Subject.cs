@@ -44,7 +44,7 @@ namespace University_advisor.Entity
         {
             RatingsCount++;
             TotalRatings += NewRating;
-            Rating = TotalRatings / RatingsCount;
+            Rating = TotalRatings / RatingsCount;  
         }
 
         public static implicit operator Subject(string v)

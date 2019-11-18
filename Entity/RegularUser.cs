@@ -7,7 +7,6 @@
         {
             
         }
-
         public RegularUser(string email, string password) : base(email, password)
         {
         }

@@ -8,15 +8,15 @@ namespace University_advisor.Entity
 {
     public class User
     {
-        public string name { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
 
         public User(string name, string email, string password)
         {
-            this.name = name;
-            this.email = email;
-            this.password = password;
+            this.Name = name;
+            this.Email = email;
+            this.Password = password;
 
             if (!CheckIfExists())
                 SaveAccountToFile();
@@ -26,8 +26,8 @@ namespace University_advisor.Entity
 
         public User(string email, string password)
         {
-            this.email = email;
-            this.password = password;
+            this.Email = email;
+            this.Password = password;
             if (CheckIfExists())
             {
                 if (MatchEmailAndPassword())
@@ -49,14 +49,14 @@ namespace University_advisor.Entity
         public bool CheckIfExists()
         {
             List<User> users = GetUserList();
-            return (users.Find(x => x.email == this.email)) != null;
+            return (users.Find(x => x.Email == this.Email)) != null;
         }
 
         public bool MatchEmailAndPassword()
         {
             List<User> users = GetUserList();
             var query = from User u in users
-                        where u.email == this.email && u.password == this.password
+                        where u.Email == this.Email && u.Password == this.Password
                         select u;
             return query != null;
         }
