@@ -35,17 +35,17 @@ namespace University_advisor.Controllers
             catch (DirectoryNotFoundException ex)
             {
                 lw.logMessage(ex.Message);
-              
+                Console.WriteLine(ex.Message);
             }
             catch (FileNotFoundException ex)
             {
                 lw.logMessage(ex.Message);
-                
+                Console.WriteLine(ex.Message);
             }
             catch (Exception ex)
             {
                 lw.logMessage(ex.Message);
-                
+                Console.WriteLine(ex.Message);
             }
 
         }
