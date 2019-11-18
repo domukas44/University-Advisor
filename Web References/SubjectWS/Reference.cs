@@ -162,11 +162,23 @@ namespace University_advisor.SubjectWS {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class Subject {
         
+        private LazyOfListOfReview reviewsField;
+        
         private int idField;
         
         private string nameField;
         
         private double ratingField;
+        
+        /// <remarks/>
+        public LazyOfListOfReview Reviews {
+            get {
+                return this.reviewsField;
+            }
+            set {
+                this.reviewsField = value;
+            }
+        }
         
         /// <remarks/>
         public int Id {
@@ -195,6 +207,96 @@ namespace University_advisor.SubjectWS {
             }
             set {
                 this.ratingField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LazyOfListOfReview {
+        
+        private Review[] valueField;
+        
+        /// <remarks/>
+        public Review[] Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Review {
+        
+        private Subject subjectField;
+        
+        private string authorField;
+        
+        private string commentField;
+        
+        private int ratingField;
+        
+        private int idField;
+        
+        /// <remarks/>
+        public Subject Subject {
+            get {
+                return this.subjectField;
+            }
+            set {
+                this.subjectField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Author {
+            get {
+                return this.authorField;
+            }
+            set {
+                this.authorField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Comment {
+            get {
+                return this.commentField;
+            }
+            set {
+                this.commentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Rating {
+            get {
+                return this.ratingField;
+            }
+            set {
+                this.ratingField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
             }
         }
     }

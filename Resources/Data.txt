@@ -1,10 +1,10 @@
-Buhalterinė apskaita	6,33	9
+Buhalterinė apskaita	6,4	11
 Informatikos teisė	5,33	3
 Vadybos pagrindai	0	0
 Elektronikos fizikiniai pagrindai	0	0
 Fizika informatikams	0	0
 Bioinformatika	0	0
-Blokų grandinių technologijos	0	0
+Blokų grandinių technologijos	10	2
 Dirbtinis intelektas	0	0
 Elektroninės komercijos technologijų pagrindai	0	0
 Finansinis intelektas	0	0

@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace University_advisor
 {
-    using System.IO;
-    using System.Reflection;
-
-
     public class LogWriter
     {
         private string m_exePath = string.Empty;
@@ -26,7 +19,7 @@ namespace University_advisor
             m_exePath = (@"..\..\Resources");
             try
             {
-                using (StreamWriter w = File.AppendText(m_exePath + "\\" + "log.txt"))
+                using (StreamWriter w = File.AppendText(m_exePath + @"\log.txt"))
                 {
                     Log(logMessage, w);
                 }

@@ -10,15 +10,13 @@ namespace University_advisor.Entity
     [Serializable]
     public class Subject
     { 
-        int RatingsCount = 0;
-        double TotalRatings = 0;
-        int TotalRatingsInt = 0;
         private static int idNr = 0;
         private string v1;
         private string v2;
 
         public int Id { get; set; }
         public string Name { get; set; }
+
         [JsonIgnore]     // review serialization shouldn't include the subject's total rating
         public double Rating { get; set; }
 

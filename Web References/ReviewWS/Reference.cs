@@ -195,11 +195,23 @@ namespace University_advisor.ReviewWS {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class Subject {
         
+        private LazyOfListOfReview reviewsField;
+        
         private int idField;
         
         private string nameField;
         
         private double ratingField;
+        
+        /// <remarks/>
+        public LazyOfListOfReview Reviews {
+            get {
+                return this.reviewsField;
+            }
+            set {
+                this.reviewsField = value;
+            }
+        }
         
         /// <remarks/>
         public int Id {
@@ -228,6 +240,27 @@ namespace University_advisor.ReviewWS {
             }
             set {
                 this.ratingField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LazyOfListOfReview {
+        
+        private Review[] valueField;
+        
+        /// <remarks/>
+        public Review[] Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
             }
         }
     }

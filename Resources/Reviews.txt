@@ -10,3 +10,5 @@
 {"Subject":{"Id":0,"Name":"Buhalterinė apskaita"},"Author":"a@a.a","Comment":"","Rating":1,"Id":9}
 {"Subject":{"Id":0,"Name":"Buhalterinė apskaita"},"Author":"a@a.a","Comment":"","Rating":1,"Id":10}
 {"Subject":{"Id":0,"Name":"Buhalterinė apskaita"},"Author":"a@a.a","Comment":"","Rating":10,"Id":11}
+{"Subject":{"Id":0,"Name":"Buhalterinė apskaita"},"Author":"a@a.a","Comment":"","Rating":7,"Id":12}
+{"Subject":{"Id":6,"Name":"Blokų grandinių technologijos"},"Author":"a@a.a","Comment":"","Rating":10,"Id":13}
