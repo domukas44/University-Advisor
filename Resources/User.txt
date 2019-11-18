@@ -12,3 +12,4 @@
 {"name":"asA!1","email":"asdasd@gmail.com","password":"asdasdasdasa!1"}
 {"name":"adsdasd","email":"asdaasdasdsd@gmail.com","password":"asdasasd!a1"}
 {"name":"asdasd","email":"asdasdassdsd@gmail.com","password":"sadasdasasd!a1sd"}
+{"name":"asdad","email":"asdasdasdad@gmail.com","password":"asdadd!1asd"}

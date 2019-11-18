@@ -66,13 +66,15 @@ namespace University_advisor
             Serializer.serialize(new Review(Subject: subject, Author: "author1", Comment: richTextBox1.Text, Rating: Int32.Parse((string)comboBox1.SelectedItem)));        // placeholder Author value ||| Named argument usage
             subject.AddRating(Int32.Parse((string)comboBox1.SelectedItem));
             label3.Text = subject.Rating.ToString("0.##") + "/10";
-            UpdateData(subject.Rating, subject.Name);
+            double rating = subject.Rating;
+            UpdateData(ref rating, subject.Name);
             menu.UpdateRatings();
             MessageBox.Show("Atsiliepimas sėkmingai išsaugotas.");
         }
 
-        private void UpdateData(double NewRating, string name)
+        private void UpdateData<T>(ref T rating, string name)
         {
+            double NewRating = Convert.ToDouble(rating);
             string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\TestData.txt");
             for(int i=0; i< lines.Length; i++)
             {

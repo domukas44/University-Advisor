@@ -4,3 +4,4 @@
 {"Subject":{"Id":2,"Name":"Verslo vadyba"},"Author":"author1","Comment":"","Rating":10,"Id":3}
 {"Subject":{"Id":2,"Name":"Verslo vadyba"},"Author":"author1","Comment":"","Rating":1,"Id":4}
 {"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"","Rating":3,"Id":5}
+{"Subject":{"Id":0,"Name":"Bioinformatika"},"Author":"author1","Comment":"","Rating":10,"Id":6}

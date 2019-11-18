@@ -74,7 +74,7 @@
     <Compile Include="Entity\Review.cs" />
     <Compile Include="Entity\Subject.cs" />
     <Compile Include="FormatDouble.cs" />
-    <Compile Include="LoginException.cs" />
+    <Compile Include="LogWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="RandC.cs" />
     <Compile Include="View\ConfirmationBox.cs">
