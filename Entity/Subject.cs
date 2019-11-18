@@ -35,7 +35,7 @@ namespace University_advisor.Entity
         {
             Id = idNr++;
             Name = name;
-            Rating = rating
+            Rating = rating;
             Reviews = new Lazy<List<Review>>(GetReviewList);
         }
 
