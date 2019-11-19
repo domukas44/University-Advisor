@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using University_advisor.Data;
 
 namespace University_advisor.Entity
 {
-    class Admin : User
+    class Admin : User, IUser
     {
         public void DeleteUser(string email)
         {
@@ -39,6 +39,11 @@ namespace University_advisor.Entity
                 .Select(lineInfo => lineInfo.Line);
                 System.IO.File.WriteAllLines(path, newLines);
             }
+        }
+
+        public string ReturnCurrentUserEmail()
+        {
+            return Email;
         }
     }
 }

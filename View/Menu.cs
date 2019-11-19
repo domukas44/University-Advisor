@@ -13,21 +13,23 @@ namespace University_advisor
 {
     public partial class Menu : Form
     {
-        public RegularUser currentUser { get; set; }
+        public IUser CurrentUser { get; set; }
 
         private List<ListViewItem> mainList;
         Subjects subjects;
 
-        public Menu(Login login) 
+        public Menu(Login login, IUser user) 
         {
             InitializeComponent();
             login.RaiseLoginEvent += HandleUpdateName;
+            CurrentUser = user;
         }
 
-        public Menu(Registration registration)
+        public Menu(Registration registration, IUser user)
         {
             InitializeComponent();
             registration.RaiseLoginEvent += HandleUpdateName;
+            CurrentUser = user;
         }
 
         private void Menu_Load(object sender, EventArgs e)
@@ -179,7 +181,7 @@ namespace University_advisor
 
         public string ReturnCurrentUserEmail()
         {
-            return currentUser.Email;
+            return CurrentUser.ReturnCurrentUserEmail();
         }
 
         private void ReviewsBtn_Click(object sender, EventArgs e)
@@ -187,7 +189,7 @@ namespace University_advisor
             var allReviews = Deserializer<Review>.DeserializeFile(@"..\..\Resources\Reviews.txt");
             List<string> users = new List<string>
             {
-                currentUser.Email
+                CurrentUser.ReturnCurrentUserEmail()
             };
 
             var query =
@@ -207,7 +209,7 @@ namespace University_advisor
                                     });
 
             MyReviews myReviewsForm = new MyReviews();
-            myReviewsForm.usernameLabel.Text = currentUser.Email;
+            myReviewsForm.usernameLabel.Text = CurrentUser.ReturnCurrentUserEmail();
 
             // Enumerate results.
             foreach (var person in query)
@@ -221,8 +223,8 @@ namespace University_advisor
         }
         private void HandleUpdateName(object sender, LoginEventArgs e)
         {
-            currentUser = e.User;
-            label3.Text += currentUser.Email;
+            CurrentUser = e.User;
+            label3.Text += CurrentUser.ReturnCurrentUserEmail();
         }
     }
 }

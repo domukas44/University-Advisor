@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using University_advisor.Controllers;
+using University_advisor.Data;
 
 namespace University_advisor.Entity
 {
-    public class User
+    public class User : IUser
     {
         public string Name { get; set; }
         public string Email { get; set; }
@@ -79,6 +80,11 @@ namespace University_advisor.Entity
                 serializer.Serialize(writer, this);
                 sw.WriteLine();
             }
+        }
+
+        public string ReturnCurrentUserEmail()
+        {
+            return Email;
         }
     }
 }

@@ -49,9 +49,9 @@ namespace University_advisor.View
                     Properties.Settings.Default.Email = textBox1.Text;
                     Properties.Settings.Default.Save();
                 }
-                Menu menu = new Menu(this);
 
                 RegularUser currentUser = new RegularUser(textBox1.Text, textBox2.Text);
+                Menu menu = new Menu(this, currentUser);
 
                 LoginEventArgs logArgs = new LoginEventArgs(currentUser);
                 OnRaiseLoginEvent(logArgs);

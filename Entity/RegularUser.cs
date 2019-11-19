@@ -1,6 +1,8 @@
-﻿namespace University_advisor.Entity
+﻿using University_advisor.Data;
+
+namespace University_advisor.Entity
 {
-    public class RegularUser : User
+    public class RegularUser : User, IUser
     {
 
         public RegularUser(string name, string email, string password) : base(name, email, password)
@@ -14,7 +16,10 @@
         {
 
         }
+        public string ReturnCurrentUserEmail()
+        {
+            return Email;
+        }
 
-        
     }
 }
