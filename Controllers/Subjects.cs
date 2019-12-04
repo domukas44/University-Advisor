@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using University_advisor.Entity;
 
 namespace University_advisor.Controllers
@@ -10,9 +11,12 @@ namespace University_advisor.Controllers
     {
         private List<Subject> subjectList;
 
+
         public Subjects()
         {
-            PopulateData();
+            Thread t = new Thread(new ThreadStart(PopulateData));
+            t.Start();
+            t.Join();
         }
 
         private void PopulateData()
@@ -22,8 +26,6 @@ namespace University_advisor.Controllers
             subjectList = new List<Subject>();
             try
             {
-                string[] lines = System.IO.File.ReadAllLines(@"..\..\Resources\Data.txt");
-
                 foreach (var s in client.ReadData())
                 {
                      subjectList.Add(Converter.ConvertToMySubject(s));

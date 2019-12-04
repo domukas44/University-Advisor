@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Management;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using University_advisor.Controllers;
 using University_advisor.Entity;

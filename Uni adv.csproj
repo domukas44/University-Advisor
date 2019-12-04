@@ -74,6 +74,7 @@
     <Compile Include="Controllers\Converter.cs" />
     <Compile Include="Controllers\Deserializer.cs" />
     <Compile Include="Controllers\LoginEventArgs.cs" />
+    <Compile Include="Data\IUser.cs" />
     <Compile Include="Data\Subs.cs" />
     <Compile Include="Entity\RegularUser.cs" />
     <Compile Include="Entity\Admin.cs" />

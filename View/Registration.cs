@@ -31,9 +31,9 @@ namespace University_advisor.View
             {
                 try
                 {
-                    Menu menu = new Menu(this);
 
                     RegularUser currentUser = new RegularUser(textBox1.Text, textBox2.Text, textBox3.Text);
+                    Menu menu = new Menu(this, currentUser);
 
                     LoginEventArgs logArgs = new LoginEventArgs(currentUser);
                     OnRaiseLoginEvent(logArgs);
