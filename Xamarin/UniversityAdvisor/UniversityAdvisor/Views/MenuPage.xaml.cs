@@ -31,6 +31,8 @@ namespace UniversityAdvisor.Views
             ListViewMenu.SelectedItem = menuItems[0];
             ListViewMenu.ItemSelected += async (sender, e) =>
             {
+
+                //var user = (User)BindingContext;
                 if (e.SelectedItem == null)
                     return;
 

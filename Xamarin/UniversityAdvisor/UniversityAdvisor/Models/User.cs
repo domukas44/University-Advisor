@@ -10,7 +10,6 @@ namespace UniversityAdvisor.Models
         [PrimaryKey, AutoIncrement]
         public int id { get; set; }
         public string Name { get; set; }
-        [PrimaryKey]
         public string Email { get; set; }
         public string Password { get; set; }
     }

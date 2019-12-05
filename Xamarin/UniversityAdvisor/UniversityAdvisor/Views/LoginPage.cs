@@ -24,18 +24,19 @@ namespace UniversityAdvisor.Views
             StackLayout stackLayout = new StackLayout();
 
             _emailEntry = new Entry();
-            _emailEntry.Keyboard = Keyboard.Text;
+            _emailEntry.Keyboard = Keyboard.Email;
             _emailEntry.Placeholder = "Email";
             stackLayout.Children.Add(_emailEntry);
 
             _passwordEntry = new Entry();
             _passwordEntry.Keyboard = Keyboard.Text;
+            _passwordEntry.IsPassword = true;
             _passwordEntry.Placeholder = "Password";
             stackLayout.Children.Add(_passwordEntry);
 
-            Button _loginButton = new Button();
+            _loginButton = new Button();
             _loginButton.Text = "Login";
-            _loginButton.Clicked += Button_Clicked;
+            _loginButton.Clicked += _loginButton_Clicked;
             stackLayout.Children.Add(_loginButton);
 
             _registerButton = new Button();
@@ -48,15 +49,24 @@ namespace UniversityAdvisor.Views
 
         private async void _registerButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RegisterPage
-            {
-                BindingContext = new RegisterPage()
-            });
+            await Navigation.PushAsync(new RegisterPage());
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void _loginButton_Clicked(object sender, EventArgs e)
         {
             var db = new SQLiteConnection(_dbPath);
+            var user = db.Table<User>().Where(u => u.Email == _emailEntry.Text && u.Password == _passwordEntry.Text).FirstOrDefault();
+            if (user != null)
+            {
+                await Navigation.PushAsync(new MenuPage
+                {
+                    BindingContext = user
+                });
+            }
+            else
+            {
+                await DisplayAlert("", "Wrong email and/or password.", "OK");
+            }
         }
     }
 }

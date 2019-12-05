@@ -30,12 +30,13 @@ namespace UniversityAdvisor.Views
             stackLayout.Children.Add(_nameEntry);
 
             _emailEntry = new Entry();
-            _emailEntry.Keyboard = Keyboard.Text;
+            _emailEntry.Keyboard = Keyboard.Email;
             _emailEntry.Placeholder = "Email Address";
             stackLayout.Children.Add(_emailEntry);
 
             _passwordEntry = new Entry();
             _passwordEntry.Keyboard = Keyboard.Text;
+            _passwordEntry.IsPassword = true;
             _passwordEntry.Placeholder = "Password";
             stackLayout.Children.Add(_passwordEntry);
 
@@ -53,13 +54,21 @@ namespace UniversityAdvisor.Views
             var db = new SQLiteConnection(_dbPath);
             db.CreateTable<User>();
 
-            User user = new User()
+            if (!db.Table<User>().Where(u => u.Email == _emailEntry.Text).Any())
             {
-                Name = _nameEntry.Text,
-                Email = _emailEntry.Text,
-                Password = _passwordEntry.Text
-            };
-            db.Insert(user);
+                User user = new User()
+                {
+                    Name = _nameEntry.Text,
+                    Email = _emailEntry.Text,
+                    Password = _passwordEntry.Text
+                };
+                db.Insert(user);
+                await DisplayAlert("", "Registration successful.", "OK");
+            }
+            else
+            {
+                await DisplayAlert("", "This email is already used.", "OK");
+            }
         }
     }
 }
