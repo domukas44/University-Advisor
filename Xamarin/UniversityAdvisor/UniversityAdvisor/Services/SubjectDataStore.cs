@@ -23,8 +23,8 @@ namespace UniversityAdvisor.Services
                 new Subject ("Informatikos teisė", 0),
                 new Subject ("Vadybos pagrindai", 0),
                 new Subject ("Elektronikos fizikiniai pagrindai", 0), 
-                new Subject ("Fizika informatikams", 0),
-                new Subject ("Bioinformatika", 0),
+                new Subject ("Fizika informatikams", 7.5),              // test data, reset to 0 later
+                new Subject ("Bioinformatika", 5.0),                    // test data, reset to 0 later
                 new Subject ("Blokų grandinių technologijos", 0),
                 new Subject ("Dirbtinis intelektas", 0),
                 new Subject ("Elektroninės komercijos technologijų pagrindai", 0),

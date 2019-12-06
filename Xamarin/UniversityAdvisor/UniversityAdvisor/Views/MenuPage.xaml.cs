@@ -35,8 +35,28 @@ namespace UniversityAdvisor.Views
             menuItems = new List<HomeMenuItem>();
             foreach (Subject s in subjects)
             {
-                menuItems.Add(new HomeMenuItem { Id = Convert.ToInt32(s.Id), Title = s.Name + ", " + s.Rating });
+                menuItems.Add(new HomeMenuItem { Id = Convert.ToInt32(s.Id), Title = s.Name, Rating = s.Rating });
             };
+            ListViewMenu.ItemsSource = menuItems;
+        }
+        private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            switch (selectedIndex)
+            {
+                case 0:
+                    menuItems.Sort((HomeMenuItem a, HomeMenuItem b) => a.Title.CompareTo(b.Title));
+                    break;
+                case 1:
+                    menuItems.Sort((HomeMenuItem a, HomeMenuItem b) => b.Rating.CompareTo(a.Rating));
+                    break;
+                default:
+                    break;
+            }
+
+            ListViewMenu.ItemsSource = null;
             ListViewMenu.ItemsSource = menuItems;
         }
     }

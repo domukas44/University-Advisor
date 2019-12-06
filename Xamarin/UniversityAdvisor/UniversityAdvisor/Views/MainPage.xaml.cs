@@ -29,7 +29,7 @@ namespace UniversityAdvisor.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            //MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
         }
 
         public ObservableCollection<User> UserList { get; set; }
@@ -56,13 +56,13 @@ namespace UniversityAdvisor.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
+                    case 0:
                         MenuPages.Add(id, new NavigationPage(new ItemsPage()));
                         break;
-                    case (int)MenuItemType.About:
+                    case 1:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
-                    case (int)MenuItemType.Register:
+                    case 2:
                         MenuPages.Add(id, new NavigationPage(new RegisterPage()));
                         break;
                 }
