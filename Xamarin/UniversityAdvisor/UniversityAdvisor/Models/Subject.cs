@@ -5,11 +5,20 @@ using System.Text;
 
 namespace UniversityAdvisor.Models
 {
-    class Subject
+    public class Subject
     {
+        //private static int idNr = 0;
+
         [PrimaryKey, AutoIncrement]
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public double Rating { get; set; }
+
+        public Subject(string name, double rating)
+        {
+            //Id = idNr++;
+            Name = name;
+            Rating = rating;
+        }
     }
 }
