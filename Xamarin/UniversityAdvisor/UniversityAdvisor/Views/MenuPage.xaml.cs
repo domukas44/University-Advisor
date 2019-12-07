@@ -3,9 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using SQLite;
 using System.IO;
+using System.Linq;
 using UniversityAdvisor.Services;
 
 namespace UniversityAdvisor.Views
@@ -19,7 +18,7 @@ namespace UniversityAdvisor.Views
         MainPage RootPage { get => Application.Current.MainPage as MainPage; }
         List<HomeMenuItem> menuItems;
         string _dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "uniAdv.db3");
-
+        List<Subject> subjects;
         SubjectDataStore sds;
 
         public MenuPage()
@@ -31,7 +30,7 @@ namespace UniversityAdvisor.Views
         private async void PopulateSubjectList()
         {
             sds = new SubjectDataStore();
-            var subjects = await sds.GetItemsAsync(); 
+            subjects = (await sds.GetItemsAsync()).ToList(); 
             menuItems = new List<HomeMenuItem>();
             foreach (Subject s in subjects)
             {
@@ -58,6 +57,10 @@ namespace UniversityAdvisor.Views
 
             ListViewMenu.ItemsSource = null;
             ListViewMenu.ItemsSource = menuItems;
+        }
+        private async void ItemSelected(object sender, ItemTappedEventArgs e)
+        {
+            await Navigation.PushAsync(new SubjectPage(subjects.ElementAt(e.ItemIndex)));
         }
     }
 }

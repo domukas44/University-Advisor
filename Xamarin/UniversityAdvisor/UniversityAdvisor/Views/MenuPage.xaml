@@ -21,7 +21,8 @@
         </Picker>
         <ListView x:Name="ListViewMenu"
                     HasUnevenRows="True"
-                    ItemsSource="{Binding .}">
+                    ItemsSource="{Binding .}"
+                    ItemTapped="ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
