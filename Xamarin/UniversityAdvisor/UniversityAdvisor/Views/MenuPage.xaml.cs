@@ -20,11 +20,19 @@ namespace UniversityAdvisor.Views
         string _dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "uniAdv.db3");
         List<Subject> subjects;
         SubjectDataStore sds;
+        User user;
 
         public MenuPage()
         {
             InitializeComponent();
             PopulateSubjectList();
+        }
+
+        public MenuPage(User u)
+        {
+            InitializeComponent();
+            PopulateSubjectList();
+            user = u;
         }
 
         private async void PopulateSubjectList()
@@ -60,7 +68,7 @@ namespace UniversityAdvisor.Views
         }
         private async void ItemSelected(object sender, ItemTappedEventArgs e)
         {
-            await Navigation.PushAsync(new SubjectPage(subjects.ElementAt(e.ItemIndex)));
+            await Navigation.PushAsync(new SubjectPage(user, subjects.ElementAt(e.ItemIndex)));
         }
     }
 }

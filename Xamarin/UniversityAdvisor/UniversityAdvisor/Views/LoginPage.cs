@@ -58,10 +58,7 @@ namespace UniversityAdvisor.Views
             var user = db.Table<User>().Where(u => u.Email == _emailEntry.Text && u.Password == _passwordEntry.Text).FirstOrDefault();
             if (user != null)
             {
-                await Navigation.PushAsync(new MenuPage
-                {
-                    BindingContext = user
-                });
+                await Navigation.PushAsync(new MenuPage(user));
             }
             else
             {
