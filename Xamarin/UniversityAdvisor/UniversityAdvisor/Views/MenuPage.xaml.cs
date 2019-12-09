@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using System.IO;
 using System.Linq;
 using UniversityAdvisor.Services;
+using System.Data;
 
 namespace UniversityAdvisor.Views
 {
@@ -37,13 +38,26 @@ namespace UniversityAdvisor.Views
 
         private async void PopulateSubjectList()
         {
-            sds = new SubjectDataStore();
-            subjects = (await sds.GetItemsAsync()).ToList(); 
+            DataTable data = SubjectDataTable.GetTable();
+
+            subjects = new List<Subject>();
+
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                Subject subject = new Subject();
+                subject.Id = Convert.ToInt32(data.Rows[i]["Id"]);
+                subject.Name = data.Rows[i]["Name"].ToString();
+                subject.Rating = Convert.ToDouble(data.Rows[i]["Rating"]);
+                subjects.Add(subject);
+            }
+
             menuItems = new List<HomeMenuItem>();
+
             foreach (Subject s in subjects)
             {
                 menuItems.Add(new HomeMenuItem { Id = Convert.ToInt32(s.Id), Title = s.Name, Rating = s.Rating });
             };
+
             ListViewMenu.ItemsSource = menuItems;
         }
         private void OnPickerSelectedIndexChanged(object sender, EventArgs e)

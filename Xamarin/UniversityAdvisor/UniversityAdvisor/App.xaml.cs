@@ -3,11 +3,14 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using UniversityAdvisor.Services;
 using UniversityAdvisor.Views;
+using UniversityAdvisor.Data;
+using System.IO;
 
 namespace UniversityAdvisor
 {
     public partial class App : Application
     {
+        public static ReviewDatabase database;
 
         public App()
         {
@@ -30,6 +33,19 @@ namespace UniversityAdvisor
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        public static ReviewDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new ReviewDatabase(
+                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Review.db3"));
+                }
+                return database;
+            }
         }
     }
 }

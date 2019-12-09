@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UniversityAdvisor.Models
 {
-    class Review
+    public class Review
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

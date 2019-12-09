@@ -19,53 +19,6 @@ namespace UniversityAdvisor.Services
         {
             subjects = new List<Subject>()
             {
-                new Subject ("Buhalterinė apskaita", 0),
-                new Subject ("Informatikos teisė", 0),
-                new Subject ("Vadybos pagrindai", 0),
-                new Subject ("Elektronikos fizikiniai pagrindai", 0), 
-                new Subject ("Fizika informatikams", 7.5),              // test data, reset to 0 later
-                new Subject ("Bioinformatika", 5.0),                    // test data, reset to 0 later
-                new Subject ("Blokų grandinių technologijos", 0),
-                new Subject ("Dirbtinis intelektas", 0),
-                new Subject ("Elektroninės komercijos technologijų pagrindai", 0),
-                new Subject ("Finansinis intelektas", 0),
-                new Subject ("Funkcinis programavimas", 0),
-                new Subject ("Informacinių technologijų veiklos valdymas organizacijoje", 0),
-                new Subject ("Įvadas į verslo procesų vadybą", 0),
-                new Subject ("Judrusis programavimas Ruby", 0),
-                new Subject ("Kompiuterinė grafika", 0),
-                new Subject ("Kompiuterinių žaidimų projektavimas ir kūrimas", 0),
-                new Subject ("Kompiuterių tinklai II", 0),
-                new Subject ("Kompiuterių tinklai profesionalams II", 0),
-                new Subject ("Lygiagretusis programavimas", 0),
-                new Subject ("Loginis programavimas", 0),
-                new Subject ("Oracle PL/SQL programavimas", 0),
-                new Subject ("Programavimas Windows API", 0),
-                new Subject ("Taikomųjų programų kūrimas mobiliesiems įrenginiams ir autonominėms sistemoms", 0),
-                new Subject ("Transliavimo metodai", 0),
-                new Subject ("Žinių vaizdavimas", 0),
-                new Subject ("Diferencialinės lygtys", 0),
-                new Subject ("Kodavimo teorija", 0),
-                new Subject ("Kombinatorika ir grafų teorija", 0),
-                new Subject ("Matematinė analizė", 0),
-                new Subject ("Optimizavimo metodai", 0),
-                new Subject ("Skaitiniai metodai", 0),
-                new Subject ("Statistinė duomenų analizė", 0),
-                new Subject ("Duomenų bazių valdymo sistemų papildomi skyriai", 0),
-                new Subject ("Geografinės informacinės sistemos", 0),
-                new Subject ("Giliojo mokymosi metodai", 0),
-                new Subject ("Kompiuterinė technika", 0),
-                new Subject ("Kompiuterių tinklai profesionalams I", 0),
-                new Subject ("Operacinės sistemos", 0),
-                new Subject ("Programavimas PYTHON kalba", 0),
-                new Subject ("Skaitmeninis intelektas ir sprendimų priėmimas", 0),
-                new Subject ("Informacinės sistemos", 0),
-                new Subject ("Matematinis modeliavimas", 0),
-                new Subject ("Chaoso teorija ir fraktalai", 0),
-                new Subject ("Grafų teorija", 0),
-                new Subject ("Informacijos teorija", 0),
-                new Subject ("Programavimas OS UNIX", 0),
-                new Subject ("UML ir MDA įvadas", 0)
             };
 
             db = new SQLiteConnection(_dbPath);

@@ -9,8 +9,8 @@
         <StackLayout>
             <Label x:Name="nameLabel" Text="{Binding Title}" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
             <Label x:Name="ratingLabel" Text="{Binding Rating}" FontSize="Medium" HorizontalOptions="Center" />
-            <Entry x:Name="reviewEntry" Placeholder="Rašyti atsiliepimą..." Margin="0,20,0,0" />
-            <Picker Title="Įvertinimas" x:Name="ratingPicker">
+            <Entry x:Name="reviewEntry" Placeholder="Rašyti atsiliepimą..." Text="{Binding Comment}" Margin="0,20,0,0" />
+            <Picker Title="Įvertinimas" x:Name="ratingPicker" SelectedItem="{Binding Rating}">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>1</x:String>

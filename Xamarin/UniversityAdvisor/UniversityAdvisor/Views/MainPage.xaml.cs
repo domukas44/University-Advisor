@@ -8,6 +8,7 @@ using Xamarin.Forms.Xaml;
 using UniversityAdvisor.Models;
 using SQLite;
 using System.Collections.ObjectModel;
+using System.Data;
 
 namespace UniversityAdvisor.Views
 {

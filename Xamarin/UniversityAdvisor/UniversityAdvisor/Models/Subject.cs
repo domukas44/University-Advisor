@@ -14,11 +14,5 @@ namespace UniversityAdvisor.Models
         public string Name { get; set; }
         public double Rating { get; set; }
 
-        public Subject(string name, double rating)
-        {
-            //Id = idNr++;
-            Name = name;
-            Rating = rating;
-        }
     }
 }
