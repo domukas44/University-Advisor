@@ -36,5 +36,13 @@ namespace University_advisor.Entity
                 Id = lastReview.Id + 1;
             }
         }
+
+        public List<Review> GetBestReviews(Subject subject, int top)
+        {
+            using (var context = new Context())
+            {
+                return context.Reviews.Where(r => r.Subject.Id == subject.Id).OrderBy(r => r.Rating).Take(top).ToList();
+            }
+        }
     }
 }

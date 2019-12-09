@@ -72,5 +72,17 @@ namespace University_advisor.Entity
         {
             Reviews = new Lazy<List<Review>>(GetReviewList);
         }
+
+        public static int GetReviewCount(string name)
+        {
+            using (var context = new Context())
+            {
+                return context.Subjects.Where(s => s.Name == name).Join(
+                    context.Reviews,
+                    s => s.Id,
+                    r => r.Subject.Id,
+                    (s, r) => new Subject { Id = s.Id }).Count();
+            }
+        }
     }
 }

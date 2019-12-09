@@ -67,7 +67,10 @@ namespace University_advisor.Entity
 
         public List<User> GetUserList()
         {
-            return Converter.ConvertUserWSArrayToUserList(new UserWS.UserWebService().GetUserList());
+            using (var context = new Context())
+            {
+                return context.RegularUsers.Cast<User>().ToList();
+            }
         }
 
         public void SaveAccountToFile()

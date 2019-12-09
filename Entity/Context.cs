@@ -17,5 +17,6 @@ namespace University_advisor.Entity
         public DbSet<RegularUser> RegularUsers { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
     }
 }
