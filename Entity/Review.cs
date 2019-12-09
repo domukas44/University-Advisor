@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using University_advisor.Controllers;
 
@@ -11,6 +12,7 @@ namespace University_advisor.Entity
         public string Author { get; set; }
         public string Comment { get; set; }
         public int Rating { get; set; }
+        [Key]
         public int Id { get; set; }
 
         public Review()

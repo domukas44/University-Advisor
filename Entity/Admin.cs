@@ -4,7 +4,7 @@ using University_advisor.Data;
 
 namespace University_advisor.Entity
 {
-    class Admin : User, IUser
+    public class Admin : User, IUser
     {
         public void DeleteUser(string email)
         {
@@ -41,7 +41,7 @@ namespace University_advisor.Entity
             }
         }
 
-        public string ReturnCurrentUserEmail()
+        public new string ReturnCurrentUserEmail()
         {
             return Email;
         }

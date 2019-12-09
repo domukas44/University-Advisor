@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using University_advisor.Controllers;
@@ -10,6 +11,7 @@ namespace University_advisor.Entity
 {
     public class User : IUser
     {
+        [Key]
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
