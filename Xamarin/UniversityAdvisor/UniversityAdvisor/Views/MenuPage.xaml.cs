@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
-using System.IO;
 using System.Linq;
 using System.Data;
 
@@ -12,7 +11,6 @@ namespace UniversityAdvisor.Views
     [DesignTimeVisible(false)]
     public partial class MenuPage : ContentPage
     {
-        private List<HomeMenuItem> menuItems;
         private List<Subject> subjects;
         private readonly User user;
 
@@ -46,14 +44,7 @@ namespace UniversityAdvisor.Views
                 subjects.Add(subject);
             }
 
-            menuItems = new List<HomeMenuItem>();
-
-            foreach (Subject s in subjects)
-            {
-                menuItems.Add(new HomeMenuItem { Id = Convert.ToInt32(s.Id), Title = s.Name, Rating = s.Rating });
-            };
-
-            ListViewMenu.ItemsSource = menuItems;
+            ListViewMenu.ItemsSource = subjects;
         }
 
         private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
@@ -64,17 +55,17 @@ namespace UniversityAdvisor.Views
             switch (selectedIndex)
             {
                 case 0:
-                    menuItems.Sort((HomeMenuItem a, HomeMenuItem b) => a.Title.CompareTo(b.Title));
+                    subjects.Sort((Subject a, Subject b) => a.Name.CompareTo(b.Name));
                     break;
                 case 1:
-                    menuItems.Sort((HomeMenuItem a, HomeMenuItem b) => b.Rating.CompareTo(a.Rating));
+                    subjects.Sort((Subject a, Subject b) => b.Rating.CompareTo(a.Rating));
                     break;
                 default:
                     break;
             }
 
             ListViewMenu.ItemsSource = null;
-            ListViewMenu.ItemsSource = menuItems;
+            ListViewMenu.ItemsSource = subjects;
         }
 
         private async void ItemSelected(object sender, ItemTappedEventArgs e)
