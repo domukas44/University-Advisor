@@ -6,7 +6,6 @@ namespace UniversityAdvisor.Models
     {
         public static DataTable GetTable()
         {
-
             DataColumn column = new DataColumn("Id")
             {
                 DataType = System.Type.GetType("System.Int32"),
@@ -22,6 +21,11 @@ namespace UniversityAdvisor.Models
             table.Columns.Add(column);
             table.Columns.Add("Name", typeof(string));
             table.Columns.Add("Rating", typeof(decimal));
+            table.Columns.Add(new DataColumn("ReviewCount")
+            {
+                DataType = System.Type.GetType("System.Int32"),
+                DefaultValue = 0
+            });
 
             // Add data
             table.Rows.Add(null,"Buhalterinė apskaita", 0);

@@ -7,14 +7,16 @@ namespace UniversityAdvisor.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SubjectPage : ContentPage
     {
-        private readonly Subject Subject;
-        private readonly User User;
+        private Subject subject;
+        private readonly User user;
+        private readonly MenuPage menu;
 
-        public SubjectPage(User user, Subject subject)
+        public SubjectPage(User user, MenuPage menu, Subject subject)
         {
             InitializeComponent();
-            User = user;
-            Subject = subject;
+            this.user = user;
+            this.menu = menu;
+            this.subject = subject;
             nameLabel.Text = subject.Name;
             ratingLabel.Text = subject.Rating.ToString();
 
@@ -26,10 +28,17 @@ namespace UniversityAdvisor.Views
             if (ratingPicker.SelectedIndex >= 0)
             {
                 var review = (Review)BindingContext;
-                review.SubjectName = Subject.Name;
-                review.Author = User.Email;
-                
-                await App.Database.SaveItemAsync(review);
+                review.SubjectName = subject.Name;
+                review.Author = user.Email;
+
+                var ratingSum = subject.Rating * subject.ReviewCount;
+                ratingSum += review.Rating;
+                subject.ReviewCount++;
+                subject.Rating = ratingSum / subject.ReviewCount;
+                await App.subjectDB.SaveItemAsync(subject);
+                menu.PopulateSubjectList();
+
+                await App.reviewDB.SaveItemAsync(review);
                 await DisplayAlert("", "Atsiliepimas sėkmingai išsiųstas.", "OK");
                 await Navigation.PopAsync();
             }

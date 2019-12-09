@@ -8,7 +8,8 @@ namespace UniversityAdvisor
 {
     public partial class App : Application
     {
-        public static ReviewDatabase database;
+        public static ReviewDatabase reviewDB;
+        public static SubjectDatabase subjectDB;
 
         public App()
         {
@@ -31,16 +32,29 @@ namespace UniversityAdvisor
             // Handle when your app resumes
         }
 
-        public static ReviewDatabase Database
+        public static ReviewDatabase ReviewDB
         {
             get
             {
-                if (database == null)
+                if (reviewDB == null)
                 {
-                    database = new ReviewDatabase(
+                    reviewDB = new ReviewDatabase(
                       Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Review.db3"));
                 }
-                return database;
+                return reviewDB;
+            }
+        }
+
+        public static SubjectDatabase SubjectDB
+        {
+            get
+            {
+                if (subjectDB == null)
+                {
+                    subjectDB = new SubjectDatabase(
+                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Subject.db3"));
+                }
+                return subjectDB;
             }
         }
     }

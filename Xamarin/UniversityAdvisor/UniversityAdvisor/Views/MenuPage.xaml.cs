@@ -27,7 +27,7 @@ namespace UniversityAdvisor.Views
             user = u;
         }
 
-        private void PopulateSubjectList()
+        public void PopulateSubjectList()
         {
             DataTable data = SubjectDataTable.GetTable();
 
@@ -70,7 +70,7 @@ namespace UniversityAdvisor.Views
 
         private async void ItemSelected(object sender, ItemTappedEventArgs e)
         {
-            await Navigation.PushAsync(new SubjectPage(user, subjects.ElementAt(e.ItemIndex)));
+            await Navigation.PushAsync(new SubjectPage(user, this, subjects.ElementAt(e.ItemIndex)));
         }
     }
 }
