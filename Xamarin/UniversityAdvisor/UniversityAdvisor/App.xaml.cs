@@ -1,7 +1,5 @@
 ﻿using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using UniversityAdvisor.Services;
 using UniversityAdvisor.Views;
 using UniversityAdvisor.Data;
 using System.IO;
@@ -15,8 +13,6 @@ namespace UniversityAdvisor
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
             MainPage = new NavigationPage(new LoginPage());
         }
 

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Data;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Data;
 
 namespace UniversityAdvisor.Models
 {
@@ -10,12 +7,14 @@ namespace UniversityAdvisor.Models
         public static DataTable GetTable()
         {
 
-            DataColumn column = new DataColumn("Id");
-            column.DataType = System.Type.GetType("System.Int32");
-            column.AutoIncrement = true;
-            column.AutoIncrementSeed = 1;
-            column.AutoIncrementStep = 1;
-            column.ReadOnly = true;
+            DataColumn column = new DataColumn("Id")
+            {
+                DataType = System.Type.GetType("System.Int32"),
+                AutoIncrement = true,
+                AutoIncrementSeed = 1,
+                AutoIncrementStep = 1,
+                ReadOnly = true
+            };
 
             // Add the column to a new DataTable.
             // Create table

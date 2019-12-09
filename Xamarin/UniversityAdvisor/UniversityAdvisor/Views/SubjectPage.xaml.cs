@@ -1,9 +1,4 @@
-﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using UniversityAdvisor.Models;
+﻿using UniversityAdvisor.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,25 +7,25 @@ namespace UniversityAdvisor.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SubjectPage : ContentPage
     {
-        Subject Subject;
-        User User;
+        private readonly Subject Subject;
+        private readonly User User;
 
         public SubjectPage(User user, Subject subject)
         {
             InitializeComponent();
-            this.User = user;
-            this.Subject = subject;
+            User = user;
+            Subject = subject;
             nameLabel.Text = subject.Name;
             ratingLabel.Text = subject.Rating.ToString();
 
-            this.BindingContext = new Review();
+            BindingContext = new Review();
         }
 
         private async void SendButtonClicked(object sender, System.EventArgs e)
         {
             if (ratingPicker.SelectedIndex >= 0)
             {
-                var review = (Review)this.BindingContext;
+                var review = (Review)BindingContext;
                 review.SubjectName = Subject.Name;
                 review.Author = User.Email;
                 

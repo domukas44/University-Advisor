@@ -5,23 +5,16 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using System.IO;
 using System.Linq;
-using UniversityAdvisor.Services;
 using System.Data;
 
 namespace UniversityAdvisor.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-
     [DesignTimeVisible(false)]
     public partial class MenuPage : ContentPage
     {
-        MainPage RootPage { get => Application.Current.MainPage as MainPage; }
-        List<HomeMenuItem> menuItems;
-        string _dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "uniAdv.db3");
-        List<Subject> subjects;
-        SubjectDataStore sds;
-        User user;
+        private List<HomeMenuItem> menuItems;
+        private List<Subject> subjects;
+        private readonly User user;
 
         public MenuPage()
         {
@@ -36,7 +29,7 @@ namespace UniversityAdvisor.Views
             user = u;
         }
 
-        private async void PopulateSubjectList()
+        private void PopulateSubjectList()
         {
             DataTable data = SubjectDataTable.GetTable();
 
@@ -44,10 +37,12 @@ namespace UniversityAdvisor.Views
 
             for (int i = 0; i < data.Rows.Count; i++)
             {
-                Subject subject = new Subject();
-                subject.Id = Convert.ToInt32(data.Rows[i]["Id"]);
-                subject.Name = data.Rows[i]["Name"].ToString();
-                subject.Rating = Convert.ToDouble(data.Rows[i]["Rating"]);
+                Subject subject = new Subject
+                {
+                    Id = Convert.ToInt32(data.Rows[i]["Id"]),
+                    Name = data.Rows[i]["Name"].ToString(),
+                    Rating = Convert.ToDouble(data.Rows[i]["Rating"])
+                };
                 subjects.Add(subject);
             }
 
@@ -60,6 +55,7 @@ namespace UniversityAdvisor.Views
 
             ListViewMenu.ItemsSource = menuItems;
         }
+
         private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
@@ -80,6 +76,7 @@ namespace UniversityAdvisor.Views
             ListViewMenu.ItemsSource = null;
             ListViewMenu.ItemsSource = menuItems;
         }
+
         private async void ItemSelected(object sender, ItemTappedEventArgs e)
         {
             await Navigation.PushAsync(new SubjectPage(user, subjects.ElementAt(e.ItemIndex)));

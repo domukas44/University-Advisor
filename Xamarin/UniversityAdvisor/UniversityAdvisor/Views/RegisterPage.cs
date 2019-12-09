@@ -1,9 +1,7 @@
 ﻿using SQLite;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using UniversityAdvisor.Models;
 using Xamarin.Forms;
 
@@ -11,42 +9,48 @@ namespace UniversityAdvisor.Views
 {
     public class RegisterPage : ContentPage
     {
-        private Entry _nameEntry;
-        private Entry _emailEntry;
-        private Entry _passwordEntry;
-        private Button _registerButton;
-
-        string _dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "uniAdv.db3");
+        private readonly Entry _nameEntry;
+        private readonly Entry _emailEntry;
+        private readonly Entry _passwordEntry;
+        private readonly Button _registerButton;
+        private readonly string _dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "uniAdv.db3");
         
         public RegisterPage()
         {
-            this.Title = "Register";
+            Title = "Register";
 
             StackLayout stackLayout = new StackLayout();
 
-            _nameEntry = new Entry();
-            _nameEntry.Keyboard = Keyboard.Text;
-            _nameEntry.Placeholder = "Name";
+            _nameEntry = new Entry
+            {
+                Keyboard = Keyboard.Text,
+                Placeholder = "Name"
+            };
             stackLayout.Children.Add(_nameEntry);
 
-            _emailEntry = new Entry();
-            _emailEntry.Keyboard = Keyboard.Email;
-            _emailEntry.Placeholder = "Email Address";
+            _emailEntry = new Entry
+            {
+                Keyboard = Keyboard.Email,
+                Placeholder = "Email Address"
+            };
             stackLayout.Children.Add(_emailEntry);
 
-            _passwordEntry = new Entry();
-            _passwordEntry.Keyboard = Keyboard.Text;
-            _passwordEntry.IsPassword = true;
-            _passwordEntry.Placeholder = "Password";
+            _passwordEntry = new Entry
+            {
+                Keyboard = Keyboard.Text,
+                IsPassword = true,
+                Placeholder = "Password"
+            };
             stackLayout.Children.Add(_passwordEntry);
 
-            _registerButton = new Button();
-            _registerButton.Text = "Register";
+            _registerButton = new Button
+            {
+                Text = "Register"
+            };
             _registerButton.Clicked += _registerButton_Clicked;
             stackLayout.Children.Add(_registerButton);
 
             Content = stackLayout;
-
         }
 
         private async void _registerButton_Clicked(object sender, EventArgs e)
@@ -64,6 +68,7 @@ namespace UniversityAdvisor.Views
                 };
                 db.Insert(user);
                 await DisplayAlert("", "Registration successful.", "OK");
+                await Navigation.PopAsync();
             }
             else
             {

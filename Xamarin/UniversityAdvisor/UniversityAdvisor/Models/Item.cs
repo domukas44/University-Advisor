@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UniversityAdvisor.Models
+﻿namespace UniversityAdvisor.Models
 {
     public class Item
     {
