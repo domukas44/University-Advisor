@@ -1,4 +1,7 @@
-﻿using UniversityAdvisor.Models;
+﻿using SQLite;
+using System;
+using System.IO;
+using UniversityAdvisor.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,6 +13,7 @@ namespace UniversityAdvisor.Views
         private Subject subject;
         private readonly User user;
         private readonly MenuPage menu;
+        private readonly string _dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "uniAdv.db3");
 
         public SubjectPage(User user, MenuPage menu, Subject subject)
         {
@@ -27,6 +31,8 @@ namespace UniversityAdvisor.Views
         {
             if (ratingPicker.SelectedIndex >= 0)
             {
+                var db = new SQLiteConnection(_dbPath);
+
                 var review = (Review)BindingContext;
                 review.SubjectName = subject.Name;
                 review.Author = user.Email;
@@ -35,7 +41,10 @@ namespace UniversityAdvisor.Views
                 ratingSum += review.Rating;
                 subject.ReviewCount++;
                 subject.Rating = ratingSum / subject.ReviewCount;
-                await App.subjectDB.SaveItemAsync(subject);
+                //await App.subjectDB.SaveItemAsync(subject);
+                //db.Table<Subject>().
+                //db.Update(subject);
+                SubjectDataTable.UpdateSubjectRating(subject);
                 menu.PopulateSubjectList();
 
                 await App.reviewDB.SaveItemAsync(review);

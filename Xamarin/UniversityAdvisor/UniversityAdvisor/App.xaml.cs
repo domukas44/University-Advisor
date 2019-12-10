@@ -39,7 +39,7 @@ namespace UniversityAdvisor
                 if (reviewDB == null)
                 {
                     reviewDB = new ReviewDatabase(
-                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Review.db3"));
+                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "review.db3"));
                 }
                 return reviewDB;
             }
@@ -52,7 +52,7 @@ namespace UniversityAdvisor
                 if (subjectDB == null)
                 {
                     subjectDB = new SubjectDatabase(
-                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Subject.db3"));
+                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "subject.db3"));
                 }
                 return subjectDB;
             }
