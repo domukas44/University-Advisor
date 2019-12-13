@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using UniversityAdvisor.Data;
 
 namespace UniversityAdvisor.Droid
 {
@@ -21,6 +22,8 @@ namespace UniversityAdvisor.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            App.SubjectManager = new SubjectManager(new SoapService());
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

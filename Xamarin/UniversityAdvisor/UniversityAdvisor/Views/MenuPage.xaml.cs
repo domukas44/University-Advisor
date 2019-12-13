@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
 using System.Linq;
-using System.Data;
 
 namespace UniversityAdvisor.Views
 {
@@ -27,23 +26,9 @@ namespace UniversityAdvisor.Views
             user = u;
         }
 
-        public void PopulateSubjectList()
+        public async void PopulateSubjectList()
         {
-            DataTable data = SubjectDataTable.GetTable();
-
-            subjects = new List<Subject>();
-
-            for (int i = 0; i < data.Rows.Count; i++)
-            {
-                Subject subject = new Subject
-                {
-                    Id = Convert.ToInt32(data.Rows[i]["Id"]),
-                    Name = data.Rows[i]["Name"].ToString(),
-                    Rating = Convert.ToDouble(data.Rows[i]["Rating"])
-                };
-                subjects.Add(subject);
-            }
-
+            subjects = await App.SubjectManager.GetSubjectsAsync();
             ListViewMenu.ItemsSource = subjects;
         }
 

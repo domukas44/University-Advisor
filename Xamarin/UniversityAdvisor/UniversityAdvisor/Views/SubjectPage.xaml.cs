@@ -41,13 +41,10 @@ namespace UniversityAdvisor.Views
                 ratingSum += review.Rating;
                 subject.ReviewCount++;
                 subject.Rating = ratingSum / subject.ReviewCount;
-                //await App.subjectDB.SaveItemAsync(subject);
-                //db.Table<Subject>().
-                //db.Update(subject);
-                SubjectDataTable.UpdateSubjectRating(subject);
-                menu.PopulateSubjectList();
+                // UpdateSubjectRating(subject);
+                menu.PopulateSubjectList();         // update menu subject list
 
-                await App.reviewDB.SaveItemAsync(review);
+                //await App.reviewDB.SaveItemAsync(review);
                 await DisplayAlert("", "Atsiliepimas sėkmingai išsiųstas.", "OK");
                 await Navigation.PopAsync();
             }
