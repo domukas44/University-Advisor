@@ -1,14 +1,13 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using UniversityAdvisor.Views;
 using UniversityAdvisor.Data;
-using System.IO;
 
 namespace UniversityAdvisor
 {
     public partial class App : Application
     {
         public static SubjectManager SubjectManager { get; set; }
+        public static ReviewManager ReviewManager { get; set; }
 
         public App()
         {

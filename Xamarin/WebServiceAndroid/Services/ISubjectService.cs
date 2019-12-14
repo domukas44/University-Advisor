@@ -7,6 +7,7 @@ namespace WebService.Services
     {
         bool DoesSubjectExist(int id);
         Subject Find(int id);
+        Subject Find(string name);
         IEnumerable<Subject> GetData();
         void InsertData(Subject subject);
         void UpdateData(Subject subject);

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using UniversityAdvisor.Models;
 
@@ -16,7 +15,7 @@ namespace UniversityAdvisor.Data
 
 		public Task<List<Subject>> GetSubjectsAsync()
 		{
-			return soapService.RefreshDataAsync();
+			return soapService.RefreshSubjectDataAsync();
 		}
 
 		public Task SaveSubjectAsync(Subject subject, bool isNew = false)

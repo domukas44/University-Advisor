@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS reviews;
+
+CREATE TABLE reviews 
+(id INT IDENTITY(1,1) PRIMARY KEY,
+subjectname VARCHAR(80) NOT NULL,
+author VARCHAR(50) NOT NULL,
+comment VARCHAR(max),
+rating INT NOT NULL
+);

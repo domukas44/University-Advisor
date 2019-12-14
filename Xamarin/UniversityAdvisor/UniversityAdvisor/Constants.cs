@@ -1,22 +1,20 @@
-﻿using Xamarin.Forms;
-
-namespace UniversityAdvisor
+﻿namespace UniversityAdvisor
 {
     public static class Constants
     {
         // URL of ASMX service
-        public static string SoapUrl
+        public static string SubjectSoapUrl
         {
             get
             {
-                var defaultUrl = "http://192.168.1.42:59379/SubjectService.asmx";
-
-                if (Device.RuntimePlatform == Device.Android)
-                {
-                    defaultUrl = "http://192.168.1.42:59379/SubjectService.asmx";
-                }
-
-                return defaultUrl;
+                return "http://192.168.1.42:59379/SubjectService.asmx";
+            }
+        }
+        public static string ReviewSoapUrl
+        {
+            get
+            {
+                return "http://192.168.1.42:59379/ReviewService.asmx";
             }
         }
     }

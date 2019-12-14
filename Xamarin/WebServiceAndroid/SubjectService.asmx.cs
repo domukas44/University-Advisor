@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using WebService.Models;
@@ -23,6 +22,23 @@ namespace WebService
         }
 
         [WebMethod]
+        public Subject GetSubject(string name)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    throw new SoapException("Subject name field is required", SoapException.ClientFaultCode);
+                }
+                return subjectService.Find(name);
+            }
+            catch (Exception ex)
+            {
+                throw new SoapException("Error", SoapException.ServerFaultCode, ex);
+            }
+        }
+
+        [WebMethod]
         public void CreateSubject(Subject subject)
         {
             try
@@ -30,13 +46,6 @@ namespace WebService
                 if (subject == null || string.IsNullOrWhiteSpace(subject.Name))
                 {
                     throw new SoapException("Subject name field is required", SoapException.ClientFaultCode);
-                }
-
-                // Determine if the ID already exists
-                var subjectExists = subjectService.DoesSubjectExist(subject.Id);
-                if (subjectExists)
-                {
-                    throw new SoapException("Subject ID is in use", SoapException.ClientFaultCode);
                 }
                 subjectService.InsertData(subject);
             }
@@ -55,9 +64,7 @@ namespace WebService
                 {
                     throw new SoapException("Subject name field is required", SoapException.ClientFaultCode);
                 }
-
-                var subject1 = subjectService.Find(subject.Id);
-                if (subject1 != null)
+                if (subjectService.Find(subject.Id) != null)
                 {
                     subjectService.UpdateData(subject);
                 }
@@ -77,8 +84,7 @@ namespace WebService
         {
             try
             {
-                var subject1 = subjectService.Find(id);
-                if (subject1 != null)
+                if (subjectService.Find(id) != null)
                 {
                     subjectService.DeleteData(id);
                 }

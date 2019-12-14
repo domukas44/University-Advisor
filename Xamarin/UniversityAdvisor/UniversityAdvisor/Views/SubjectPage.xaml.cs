@@ -1,7 +1,4 @@
-﻿using SQLite;
-using System;
-using System.IO;
-using UniversityAdvisor.Models;
+﻿using UniversityAdvisor.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,7 +10,6 @@ namespace UniversityAdvisor.Views
         private Subject subject;
         private readonly User user;
         private readonly MenuPage menu;
-        private readonly string _dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "uniAdv.db3");
 
         public SubjectPage(User user, MenuPage menu, Subject subject)
         {
@@ -25,26 +21,24 @@ namespace UniversityAdvisor.Views
             ratingLabel.Text = subject.Rating.ToString();
 
             BindingContext = new Review();
+            
         }
 
         private async void SendButtonClicked(object sender, System.EventArgs e)
         {
             if (ratingPicker.SelectedIndex >= 0)
             {
-                var db = new SQLiteConnection(_dbPath);
-
                 var review = (Review)BindingContext;
                 review.SubjectName = subject.Name;
                 review.Author = user.Email;
+                if (review.Comment == null || review.Comment.Equals(""))
+                {
+                    review.Comment = "[empty]";
+                }
 
-                var ratingSum = subject.Rating * subject.ReviewCount;
-                ratingSum += review.Rating;
-                subject.ReviewCount++;
-                subject.Rating = ratingSum / subject.ReviewCount;
-                // UpdateSubjectRating(subject);
-                menu.PopulateSubjectList();         // update menu subject list
+                await App.ReviewManager.SaveReviewAsync(review, true);   // saves review and accordingly updates the subject's rating
+                menu.PopulateSubjectList();      // update menu subject list
 
-                //await App.reviewDB.SaveItemAsync(review);
                 await DisplayAlert("", "Atsiliepimas sėkmingai išsiųstas.", "OK");
                 await Navigation.PopAsync();
             }

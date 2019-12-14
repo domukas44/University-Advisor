@@ -31,6 +31,8 @@ namespace UniversityAdvisor.Droid.SubjectWS {
         
         private System.Threading.SendOrPostCallback GetSubjectsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetSubjectOperationCompleted;
+        
         private System.Threading.SendOrPostCallback CreateSubjectOperationCompleted;
         
         private System.Threading.SendOrPostCallback EditSubjectOperationCompleted;
@@ -79,6 +81,9 @@ namespace UniversityAdvisor.Droid.SubjectWS {
         public event GetSubjectsCompletedEventHandler GetSubjectsCompleted;
         
         /// <remarks/>
+        public event GetSubjectCompletedEventHandler GetSubjectCompleted;
+        
+        /// <remarks/>
         public event CreateSubjectCompletedEventHandler CreateSubjectCompleted;
         
         /// <remarks/>
@@ -111,6 +116,35 @@ namespace UniversityAdvisor.Droid.SubjectWS {
             if ((this.GetSubjectsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetSubjectsCompleted(this, new GetSubjectsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.xamarin.com/webservices/GetSubject", RequestNamespace="http://www.xamarin.com/webservices/", ResponseNamespace="http://www.xamarin.com/webservices/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Subject GetSubject(string name) {
+            object[] results = this.Invoke("GetSubject", new object[] {
+                        name});
+            return ((Subject)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSubjectAsync(string name) {
+            this.GetSubjectAsync(name, null);
+        }
+        
+        /// <remarks/>
+        public void GetSubjectAsync(string name, object userState) {
+            if ((this.GetSubjectOperationCompleted == null)) {
+                this.GetSubjectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSubjectOperationCompleted);
+            }
+            this.InvokeAsync("GetSubject", new object[] {
+                        name}, this.GetSubjectOperationCompleted, userState);
+        }
+        
+        private void OnGetSubjectOperationCompleted(object arg) {
+            if ((this.GetSubjectCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSubjectCompleted(this, new GetSubjectCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -296,6 +330,32 @@ namespace UniversityAdvisor.Droid.SubjectWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Subject[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void GetSubjectCompletedEventHandler(object sender, GetSubjectCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSubjectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSubjectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Subject Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Subject)(this.results[0]));
             }
         }
     }

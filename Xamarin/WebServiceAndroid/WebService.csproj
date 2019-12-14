@@ -67,14 +67,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ReviewService.asmx" />
     <Content Include="SubjectService.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReviewService.asmx.cs">
+      <DependentUpon>ReviewService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\IReviewRepository.cs" />
     <Compile Include="Services\ISubjectRepository.cs" />
+    <Compile Include="Services\IReviewService.cs" />
     <Compile Include="Services\ISubjectService.cs" />
+    <Compile Include="Services\ReviewRepository.cs" />
+    <Compile Include="Services\ReviewService.cs" />
     <Compile Include="Services\SubjectRepository.cs" />
     <Compile Include="Services\SubjectService.cs" />
     <Compile Include="SubjectService.asmx.cs">

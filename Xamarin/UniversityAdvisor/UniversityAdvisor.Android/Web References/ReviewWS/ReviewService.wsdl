@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.xamarin.com/webservices/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.xamarin.com/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.xamarin.com/webservices/">
+      <s:element name="GetReviews">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetReviewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReviewsResult" type="tns:ArrayOfReview" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfReview">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Review" nillable="true" type="tns:Review" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Review">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubjectName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Author" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rating" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateReview">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="review" type="tns:Review" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateReviewResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="EditReview">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="review" type="tns:Review" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditReviewResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteReview">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteReviewResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetReviewsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReviews" />
+  </wsdl:message>
+  <wsdl:message name="GetReviewsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReviewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateReviewSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateReview" />
+  </wsdl:message>
+  <wsdl:message name="CreateReviewSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateReviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditReviewSoapIn">
+    <wsdl:part name="parameters" element="tns:EditReview" />
+  </wsdl:message>
+  <wsdl:message name="EditReviewSoapOut">
+    <wsdl:part name="parameters" element="tns:EditReviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteReviewSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteReview" />
+  </wsdl:message>
+  <wsdl:message name="DeleteReviewSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteReviewResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ReviewServiceSoap">
+    <wsdl:operation name="GetReviews">
+      <wsdl:input message="tns:GetReviewsSoapIn" />
+      <wsdl:output message="tns:GetReviewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateReview">
+      <wsdl:input message="tns:CreateReviewSoapIn" />
+      <wsdl:output message="tns:CreateReviewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditReview">
+      <wsdl:input message="tns:EditReviewSoapIn" />
+      <wsdl:output message="tns:EditReviewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteReview">
+      <wsdl:input message="tns:DeleteReviewSoapIn" />
+      <wsdl:output message="tns:DeleteReviewSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReviewServiceSoap" type="tns:ReviewServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetReviews">
+      <soap:operation soapAction="http://www.xamarin.com/webservices/GetReviews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateReview">
+      <soap:operation soapAction="http://www.xamarin.com/webservices/CreateReview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditReview">
+      <soap:operation soapAction="http://www.xamarin.com/webservices/EditReview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteReview">
+      <soap:operation soapAction="http://www.xamarin.com/webservices/DeleteReview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ReviewServiceSoap12" type="tns:ReviewServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetReviews">
+      <soap12:operation soapAction="http://www.xamarin.com/webservices/GetReviews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateReview">
+      <soap12:operation soapAction="http://www.xamarin.com/webservices/CreateReview" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditReview">
+      <soap12:operation soapAction="http://www.xamarin.com/webservices/EditReview" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteReview">
+      <soap12:operation soapAction="http://www.xamarin.com/webservices/DeleteReview" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReviewService">
+    <wsdl:port name="ReviewServiceSoap" binding="tns:ReviewServiceSoap">
+      <soap:address location="http://192.168.1.42:59379/ReviewService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ReviewServiceSoap12" binding="tns:ReviewServiceSoap12">
+      <soap12:address location="http://192.168.1.42:59379/ReviewService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

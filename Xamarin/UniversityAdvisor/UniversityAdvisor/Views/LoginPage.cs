@@ -16,14 +16,14 @@ namespace UniversityAdvisor.Views
 
         public LoginPage()
         {
-            Title = "Login";
+            Title = "Prisijungti";
 
             StackLayout stackLayout = new StackLayout();
 
             _emailEntry = new Entry
             {
                 Keyboard = Keyboard.Email,
-                Placeholder = "Email"
+                Placeholder = "El. paštas"
             };
             stackLayout.Children.Add(_emailEntry);
 
@@ -31,20 +31,20 @@ namespace UniversityAdvisor.Views
             {
                 Keyboard = Keyboard.Text,
                 IsPassword = true,
-                Placeholder = "Password"
+                Placeholder = "Slaptažodis"
             };
             stackLayout.Children.Add(_passwordEntry);
 
             _loginButton = new Button
             {
-                Text = "Login"
+                Text = "Prisijungti"
             };
             _loginButton.Clicked += _loginButton_Clicked;
             stackLayout.Children.Add(_loginButton);
 
             _registerButton = new Button
             {
-                Text = "Register"
+                Text = "Registruotis"
             };
             _registerButton.Clicked += _registerButton_Clicked;
             stackLayout.Children.Add(_registerButton);
@@ -67,7 +67,7 @@ namespace UniversityAdvisor.Views
             }
             else
             {
-                await DisplayAlert("", "Wrong email and/or password.", "OK");
+                await DisplayAlert("", "Neteisingas el. paštas ir/ar slaptažodis.", "OK");
             }
         }
     }

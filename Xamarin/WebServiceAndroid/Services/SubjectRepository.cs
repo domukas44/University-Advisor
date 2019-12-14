@@ -18,7 +18,8 @@ namespace WebService.Services
         {
             // connect to DB, fill data set from DB
             cn.ConnectionString = "Server=DESKTOP-MU7GUGU\\SQLEXPRESS;Database=Test;Trusted_Connection=True;";
-            cn.Open();
+            if (cn.State == ConnectionState.Closed)
+                cn.Open();
 
             SqlCommand cmd = new SqlCommand
             {
@@ -27,9 +28,9 @@ namespace WebService.Services
             };
 
             da = new SqlDataAdapter("SELECT id, name, rating, reviewcount FROM subjects", cn);
-            cn.Close();
             ds = new DataSet();
             da.Fill(ds, "subjects");
+            //cn.Close();
         }
 
         public IEnumerable<Subject> All
@@ -53,36 +54,75 @@ namespace WebService.Services
 
         public Subject Find(int id)
         {
-            cn.Open();
+            if (cn.State == ConnectionState.Closed)
+                cn.Open();
             SqlCommand select = new SqlCommand
             {
                 Connection = cn,
                 CommandType = CommandType.Text,
-                CommandText = "SELECT rating FROM subjects WHERE id = @id;"
+                CommandText = "SELECT name, rating, reviewcount FROM subjects WHERE id = @id;"
             };
             select.Parameters.AddWithValue("@id", id);
             using (SqlDataReader reader = select.ExecuteReader())
             {
-                if (reader.HasRows)
+                if (reader.Read())
                 {
-                    return new Subject { 
+                    var subject = new Subject { 
                         Id = id, 
                         Name = reader["name"].ToString(), 
                         Rating = Convert.ToDouble(reader["rating"]), 
                         ReviewCount = Convert.ToInt32(reader["reviewcount"]) 
                     };
+                    //cn.Close();
+                    return subject;
                 }
             }
+            //cn.Close();
             return null;
 
             // or:
             // return subjectList.Where(subject => subject.Id == id).FirstOrDefault();
         }
 
+        public Subject Find(string name)
+        {
+            if (cn.State == ConnectionState.Closed)
+                cn.Open();
+            SqlCommand select = new SqlCommand
+            {
+                Connection = cn,
+                CommandType = CommandType.Text,
+                CommandText = "SELECT id, rating, reviewcount FROM subjects WHERE name = @name;"
+            };
+            select.Parameters.AddWithValue("@name", name);
+            using (SqlDataReader reader = select.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    var subject = new Subject
+                    {
+                        Id = Convert.ToInt32(reader["id"]),
+                        Name = name,
+                        Rating = Convert.ToDouble(reader["rating"]),
+                        ReviewCount = Convert.ToInt32(reader["reviewcount"])
+                    };
+                    //cn.Close();
+                    return subject;
+                }
+            }
+            //cn.Close();
+            return null;
+
+            // or:
+            // return subjectList.Where(subject => subject.name == name).FirstOrDefault();
+        }
+
         public void Insert(Subject subject)
         {
             // inserts subject into DB. Resets dataset and subjectList
-            cn.Open();
+           
+            if (cn.State == ConnectionState.Closed)
+                cn.Open();
             SqlCommand insert = new SqlCommand
             {
                 Connection = cn,
@@ -91,7 +131,6 @@ namespace WebService.Services
             };
             insert.Parameters.AddWithValue("@name", subject.Name);
             insert.ExecuteNonQuery();
-            cn.Close();
 
             ds = new DataSet();
             da.Fill(ds, "subjects");
@@ -109,13 +148,16 @@ namespace WebService.Services
             row["reviewcount"] = 0;
 
             cn.Open();
-            da.Update(ds.Tables["subjects"]);*/     // update DB using DataAdapter
+            da.Update(ds.Tables["subjects"]);     // update DB using DataAdapter
+            cn.Close();*/
         }
 
         public void Update(Subject subject)
         {
             // updates given subject in DB. Resets dataset and subjectList
-            cn.Open();
+           
+            if (cn.State == ConnectionState.Closed)
+                cn.Open();
             SqlCommand update = new SqlCommand
             {
                 Connection = cn,
@@ -127,7 +169,6 @@ namespace WebService.Services
             update.Parameters.AddWithValue("@reviewcount", subject.ReviewCount);
             da.UpdateCommand = update;
             da.UpdateCommand.ExecuteNonQuery();
-            cn.Close();
 
             ds = new DataSet();
             da.Fill(ds, "subjects");
@@ -138,7 +179,8 @@ namespace WebService.Services
         public void Delete(int id)
         {
             // deletes subject from DB. Resets dataset and subjectList
-            cn.Open();
+            if (cn.State == ConnectionState.Closed)
+                cn.Open();
             SqlCommand delete = new SqlCommand
             {
                 Connection = cn,
@@ -147,12 +189,16 @@ namespace WebService.Services
             };
             delete.Parameters.AddWithValue("@id", id);
             delete.ExecuteNonQuery();
-            cn.Close();
 
             ds = new DataSet();
             da.Fill(ds, "subjects");
 
             subjectList = All.ToList();
+        }
+
+        public void Dispose()
+        {
+            cn.Close();
         }
     }
 }

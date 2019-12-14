@@ -1,9 +1,9 @@
-DROP TABLE subjects;
+DROP TABLE IF EXISTS subjects;
 
 CREATE TABLE subjects 
 (id INT IDENTITY(1,1) PRIMARY KEY,
 name VARCHAR(80) NOT NULL,
-rating DECIMAL(3,2) NOT NULL DEFAULT 0,
+rating DECIMAL(4,2) NOT NULL DEFAULT 0,
 reviewcount INT NOT NULL DEFAULT 0);
 
 INSERT INTO subjects (name) VALUES ('Buhalterinė apskaita');

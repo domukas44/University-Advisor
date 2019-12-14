@@ -4,11 +4,11 @@ using WebService.Models;
 
 namespace WebService.Services
 {
-    public class SubjectService : ISubjectService
+    public class ReviewService :IReviewService
     {
-        private readonly ISubjectRepository _repository;
+        private readonly IReviewRepository _repository;
 
-        public SubjectService(ISubjectRepository repository)
+        public ReviewService(IReviewRepository repository)
         {
             if (repository == null)
             {
@@ -17,16 +17,16 @@ namespace WebService.Services
             _repository = repository;
         }
 
-        public bool DoesSubjectExist(int id)
+        public bool DoesReviewExist(int id)
         {
             if (string.IsNullOrWhiteSpace(id.ToString()))
             {
                 throw new ArgumentNullException(id.ToString());
             }
-            return _repository.DoesSubjectExist(id);
+            return _repository.DoesReviewExist(id);
         }
 
-        public Subject Find(int id)
+        public Review Find(int id)
         {
             if (string.IsNullOrWhiteSpace(id.ToString()))
             {
@@ -35,36 +35,27 @@ namespace WebService.Services
             return _repository.Find(id);
         }
 
-        public Subject Find(string name)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentNullException("name");
-            }
-            return _repository.Find(name);
-        }
-
-        public IEnumerable<Subject> GetData()
+        public IEnumerable<Review> GetData()
         {
             return _repository.All;
         }
 
-        public void InsertData(Subject subject)
+        public void InsertData(Review review)
         {
-            if (subject == null)
+            if (review == null)
             {
-                throw new ArgumentNullException("subject");
+                throw new ArgumentNullException("review");
             }
-            _repository.Insert(subject);
+            _repository.Insert(review);
         }
 
-        public void UpdateData(Subject subject)
+        public void UpdateData(Review review)
         {
-            if (subject == null)
+            if (review == null)
             {
-                throw new ArgumentNullException("subject");
+                throw new ArgumentNullException("review");
             }
-            _repository.Update(subject);
+            _repository.Update(review);
         }
 
         public void DeleteData(int id)

@@ -25,6 +25,20 @@
           <s:element minOccurs="1" maxOccurs="1" name="ReviewCount" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetSubject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSubjectResult" type="tns:Subject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="CreateSubject">
         <s:complexType>
           <s:sequence>
@@ -63,6 +77,12 @@
   <wsdl:message name="GetSubjectsSoapOut">
     <wsdl:part name="parameters" element="tns:GetSubjectsResponse" />
   </wsdl:message>
+  <wsdl:message name="GetSubjectSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubject" />
+  </wsdl:message>
+  <wsdl:message name="GetSubjectSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubjectResponse" />
+  </wsdl:message>
   <wsdl:message name="CreateSubjectSoapIn">
     <wsdl:part name="parameters" element="tns:CreateSubject" />
   </wsdl:message>
@@ -86,6 +106,10 @@
       <wsdl:input message="tns:GetSubjectsSoapIn" />
       <wsdl:output message="tns:GetSubjectsSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetSubject">
+      <wsdl:input message="tns:GetSubjectSoapIn" />
+      <wsdl:output message="tns:GetSubjectSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="CreateSubject">
       <wsdl:input message="tns:CreateSubjectSoapIn" />
       <wsdl:output message="tns:CreateSubjectSoapOut" />
@@ -103,6 +127,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetSubjects">
       <soap:operation soapAction="http://www.xamarin.com/webservices/GetSubjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubject">
+      <soap:operation soapAction="http://www.xamarin.com/webservices/GetSubject" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -142,6 +175,15 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetSubjects">
       <soap12:operation soapAction="http://www.xamarin.com/webservices/GetSubjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubject">
+      <soap12:operation soapAction="http://www.xamarin.com/webservices/GetSubject" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

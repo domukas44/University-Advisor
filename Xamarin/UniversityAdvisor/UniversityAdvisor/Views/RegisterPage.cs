@@ -17,21 +17,21 @@ namespace UniversityAdvisor.Views
         
         public RegisterPage()
         {
-            Title = "Register";
+            Title = "Registruotis";
 
             StackLayout stackLayout = new StackLayout();
 
             _nameEntry = new Entry
             {
                 Keyboard = Keyboard.Text,
-                Placeholder = "Name"
+                Placeholder = "Vardas"
             };
             stackLayout.Children.Add(_nameEntry);
 
             _emailEntry = new Entry
             {
                 Keyboard = Keyboard.Email,
-                Placeholder = "Email Address"
+                Placeholder = "El. paštas"
             };
             stackLayout.Children.Add(_emailEntry);
 
@@ -39,13 +39,13 @@ namespace UniversityAdvisor.Views
             {
                 Keyboard = Keyboard.Text,
                 IsPassword = true,
-                Placeholder = "Password"
+                Placeholder = "Slaptažodis"
             };
             stackLayout.Children.Add(_passwordEntry);
 
             _registerButton = new Button
             {
-                Text = "Register"
+                Text = "Registruotis"
             };
             _registerButton.Clicked += _registerButton_Clicked;
             stackLayout.Children.Add(_registerButton);
@@ -67,12 +67,12 @@ namespace UniversityAdvisor.Views
                     Password = _passwordEntry.Text
                 };
                 db.Insert(user);
-                await DisplayAlert("", "Registration successful.", "OK");
+                await DisplayAlert("", "Registracija sėkminga.", "OK");
                 await Navigation.PopAsync();
             }
             else
             {
-                await DisplayAlert("", "This email is already used.", "OK");
+                await DisplayAlert("", "Šis el. paštas jau užregistruotas.", "OK");
             }
         }
     }
