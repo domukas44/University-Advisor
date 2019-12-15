@@ -3,12 +3,14 @@ using Xamarin.Forms;
 using UniversityAdvisor.Views;
 using UniversityAdvisor.Data;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace UniversityAdvisor
 {
     public partial class App : Application
     {
         public static ReviewDatabase database;
+        private static Context _context = null;
 
         public App()
         {
@@ -41,6 +43,20 @@ namespace UniversityAdvisor
                       Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Review.db3"));
                 }
                 return database;
+            }
+        }
+
+        public static Context Context
+        {
+            get
+            {
+                if (_context == null)
+                {
+                    _context = new Context();
+                    _context.Database.EnsureCreated();
+                    _context.Database.Migrate();
+                }
+                return _context;
             }
         }
     }

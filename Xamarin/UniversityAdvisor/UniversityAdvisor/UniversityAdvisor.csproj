@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\UniversityAdvisor.Data\UniversityAdvisor.Data.csproj" />
     <ProjectReference Include="..\..\UniversityAdvisor.Models\UniversityAdvisor.Models.csproj" />
   </ItemGroup>
 
