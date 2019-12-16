@@ -59,8 +59,7 @@ namespace UniversityAdvisor.Views
 
         private async void _loginButton_Clicked(object sender, EventArgs e)
         {
-            var db = new SQLiteConnection(_dbPath);
-            var user = db.Table<User>().Where(u => u.Email == _emailEntry.Text && u.Password == _passwordEntry.Text).FirstOrDefault();
+            User user = App.Repository.FindUser(_emailEntry.Text, _passwordEntry.Text);
             if (user != null)
             {
                 await Navigation.PushAsync(new MenuPage(user));

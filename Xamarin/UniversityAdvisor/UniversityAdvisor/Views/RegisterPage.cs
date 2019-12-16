@@ -55,18 +55,15 @@ namespace UniversityAdvisor.Views
 
         private async void _registerButton_Clicked(object sender, EventArgs e)
         {
-            var db = new SQLiteConnection(_dbPath);
-            db.CreateTable<User>();
-
-            if (!db.Table<User>().Where(u => u.Email == _emailEntry.Text).Any())
+            User newUser = new User
             {
-                User user = new User()
-                {
-                    Name = _nameEntry.Text,
-                    Email = _emailEntry.Text,
-                    Password = _passwordEntry.Text
-                };
-                db.Insert(user);
+                Name = _nameEntry.Text,
+                Email = _emailEntry.Text,
+                Password = _passwordEntry.Text
+            };
+            if (!App.Repository.UserExists(newUser))
+            {
+                App.Repository.InsertUser(newUser);
                 await DisplayAlert("", "Registracija sėkminga.", "OK");
                 await Navigation.PopAsync();
             }
