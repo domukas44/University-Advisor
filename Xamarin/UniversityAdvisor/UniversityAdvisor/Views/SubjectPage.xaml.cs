@@ -42,6 +42,10 @@ namespace UniversityAdvisor.Views
                 await DisplayAlert("", "Atsiliepimas sėkmingai išsiųstas.", "OK");
                 await Navigation.PopAsync();
             }
+            else
+            {
+                await DisplayAlert("", "Būtina pasirinkti įvertinimą.", "OK");
+            }
         }
     }
 }

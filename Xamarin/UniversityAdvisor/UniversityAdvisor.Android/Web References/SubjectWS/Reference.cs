@@ -43,7 +43,7 @@ namespace UniversityAdvisor.Droid.SubjectWS {
         
         /// <remarks/>
         public SubjectService() {
-            this.Url = "http://192.168.1.42:59379/SubjectService.asmx";
+            this.Url = "http://192.168.43.11:58092/SubjectService.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

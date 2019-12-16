@@ -135,10 +135,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.1.42:59379/SubjectService.asmx">
+    <WebReferenceUrl Include="http://192.168.43.11:58092/ReviewService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\SubjectWS\</RelPath>
-      <UpdateFromURL>http://192.168.1.42:59379/SubjectService.asmx</UpdateFromURL>
+      <RelPath>Web References\ReviewWS\</RelPath>
+      <UpdateFromURL>http://192.168.43.11:58092/ReviewService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -148,10 +148,10 @@
       <CachedSettingsPropName>
       </CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://192.168.1.42:59379/ReviewService.asmx">
+    <WebReferenceUrl Include="http://192.168.43.11:58092/SubjectService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\ReviewWS\</RelPath>
-      <UpdateFromURL>http://192.168.1.42:59379/ReviewService.asmx</UpdateFromURL>
+      <RelPath>Web References\SubjectWS\</RelPath>
+      <UpdateFromURL>http://192.168.43.11:58092/SubjectService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

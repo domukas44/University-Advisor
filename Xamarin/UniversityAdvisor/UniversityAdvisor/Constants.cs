@@ -7,14 +7,14 @@
         {
             get
             {
-                return "http://192.168.1.42:59379/SubjectService.asmx";
+                return "http://192.168.43.11:58092/SubjectService.asmx";
             }
         }
         public static string ReviewSoapUrl
         {
             get
             {
-                return "http://192.168.1.42:59379/ReviewService.asmx";
+                return "http://192.168.43.11:58092/ReviewService.asmx";
             }
         }
     }

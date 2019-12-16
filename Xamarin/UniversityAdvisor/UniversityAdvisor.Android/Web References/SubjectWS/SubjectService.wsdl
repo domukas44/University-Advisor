@@ -221,10 +221,10 @@
   </wsdl:binding>
   <wsdl:service name="SubjectService">
     <wsdl:port name="SubjectServiceSoap" binding="tns:SubjectServiceSoap">
-      <soap:address location="http://192.168.1.42:59379/SubjectService.asmx" />
+      <soap:address location="http://192.168.43.11:58092/SubjectService.asmx" />
     </wsdl:port>
     <wsdl:port name="SubjectServiceSoap12" binding="tns:SubjectServiceSoap12">
-      <soap12:address location="http://192.168.1.42:59379/SubjectService.asmx" />
+      <soap12:address location="http://192.168.43.11:58092/SubjectService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

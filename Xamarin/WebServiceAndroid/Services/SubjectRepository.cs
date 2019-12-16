@@ -17,7 +17,7 @@ namespace WebService.Services
         public SubjectRepository()
         {
             // connect to DB, fill data set from DB
-            cn.ConnectionString = "Server=DESKTOP-MU7GUGU\\SQLEXPRESS;Database=Test;Trusted_Connection=True;";
+            cn.ConnectionString = "Server=GABRIELESLAPTOP\\SQLEXPRESS;Database=Test;Trusted_Connection=True;";
             if (cn.State == ConnectionState.Closed)
                 cn.Open();
 

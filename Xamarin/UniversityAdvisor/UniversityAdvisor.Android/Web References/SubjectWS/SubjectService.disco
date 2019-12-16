@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
-  <contractRef ref="http://192.168.1.42:59379/SubjectService.asmx?wsdl" docRef="http://192.168.1.42:59379/SubjectService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
-  <soap address="http://192.168.1.42:59379/SubjectService.asmx" xmlns:q1="http://www.xamarin.com/webservices/" binding="q1:SubjectServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
-  <soap address="http://192.168.1.42:59379/SubjectService.asmx" xmlns:q2="http://www.xamarin.com/webservices/" binding="q2:SubjectServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <contractRef ref="http://192.168.43.11:58092/SubjectService.asmx?wsdl" docRef="http://192.168.43.11:58092/SubjectService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://192.168.43.11:58092/SubjectService.asmx" xmlns:q1="http://www.xamarin.com/webservices/" binding="q1:SubjectServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://192.168.43.11:58092/SubjectService.asmx" xmlns:q2="http://www.xamarin.com/webservices/" binding="q2:SubjectServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
 </discovery>

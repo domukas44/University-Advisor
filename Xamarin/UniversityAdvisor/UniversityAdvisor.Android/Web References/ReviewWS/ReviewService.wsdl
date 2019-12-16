@@ -180,10 +180,10 @@
   </wsdl:binding>
   <wsdl:service name="ReviewService">
     <wsdl:port name="ReviewServiceSoap" binding="tns:ReviewServiceSoap">
-      <soap:address location="http://192.168.1.42:59379/ReviewService.asmx" />
+      <soap:address location="http://192.168.43.11:58092/ReviewService.asmx" />
     </wsdl:port>
     <wsdl:port name="ReviewServiceSoap12" binding="tns:ReviewServiceSoap12">
-      <soap12:address location="http://192.168.1.42:59379/ReviewService.asmx" />
+      <soap12:address location="http://192.168.43.11:58092/ReviewService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
